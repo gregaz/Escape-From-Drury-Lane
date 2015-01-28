@@ -1,0 +1,616 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F12BA58519F6040F00C6B1FF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12BA58419F6040F00C6B1FF /* Foundation.framework */; };
+		F12BA58719F6040F00C6B1FF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12BA58619F6040F00C6B1FF /* CoreGraphics.framework */; };
+		F12BA58919F6040F00C6B1FF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12BA58819F6040F00C6B1FF /* UIKit.framework */; };
+		F12BA58B19F6040F00C6B1FF /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12BA58A19F6040F00C6B1FF /* SpriteKit.framework */; };
+		F12BA59119F6040F00C6B1FF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F12BA58F19F6040F00C6B1FF /* InfoPlist.strings */; };
+		F12BA59319F6040F00C6B1FF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F12BA59219F6040F00C6B1FF /* main.m */; };
+		F12BA59719F6040F00C6B1FF /* GEAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F12BA59619F6040F00C6B1FF /* GEAAppDelegate.m */; };
+		F12BA59A19F6040F00C6B1FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F12BA59819F6040F00C6B1FF /* Main.storyboard */; };
+		F12BA59D19F6040F00C6B1FF /* GEAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F12BA59C19F6040F00C6B1FF /* GEAViewController.m */; };
+		F12BA5A019F6040F00C6B1FF /* GEAMyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = F12BA59F19F6040F00C6B1FF /* GEAMyScene.m */; };
+		F12BA5A219F6040F00C6B1FF /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = F12BA5A119F6040F00C6B1FF /* Spaceship.png */; };
+		F12BA5A419F6040F00C6B1FF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F12BA5A319F6040F00C6B1FF /* Images.xcassets */; };
+		F12BA5AB19F6040F00C6B1FF /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12BA5AA19F6040F00C6B1FF /* XCTest.framework */; };
+		F12BA5AC19F6040F00C6B1FF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12BA58419F6040F00C6B1FF /* Foundation.framework */; };
+		F12BA5AD19F6040F00C6B1FF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12BA58819F6040F00C6B1FF /* UIKit.framework */; };
+		F12BA5B519F6040F00C6B1FF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F12BA5B319F6040F00C6B1FF /* InfoPlist.strings */; };
+		F12BA5B719F6040F00C6B1FF /* Pie_FightTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F12BA5B619F6040F00C6B1FF /* Pie_FightTests.m */; };
+		F1C0065C1A61F29800E264EC /* door.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C0065A1A61F29800E264EC /* door.png */; };
+		F1C006621A61F70F00E264EC /* closedhole.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C006601A61F70F00E264EC /* closedhole.png */; };
+		F1C006651A61F7FE00E264EC /* openhole.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C006631A61F7FE00E264EC /* openhole.png */; };
+		F1C006681A63656000E264EC /* GEAJoyStick.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C006671A63656000E264EC /* GEAJoyStick.m */; };
+		F1C0066D1A63726A00E264EC /* baseCenter.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C006691A63726A00E264EC /* baseCenter.png */; };
+		F1C0066E1A63726A00E264EC /* centerJoystick.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C0066B1A63726A00E264EC /* centerJoystick.png */; };
+		F1C006711A638FDD00E264EC /* GEAButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C006701A638FDD00E264EC /* GEAButton.m */; };
+		F1C006741A6E11CA00E264EC /* gingerBreadMan.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C006721A6E11CA00E264EC /* gingerBreadMan.png */; };
+		F1C006781A6E137900E264EC /* throwButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C006761A6E137900E264EC /* throwButton.png */; };
+		F1C0067B1A6E152C00E264EC /* GEAGingerBreadMan.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C0067A1A6E152C00E264EC /* GEAGingerBreadMan.m */; };
+		F1C0067E1A772A8F00E264EC /* muffin.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C0067C1A772A8F00E264EC /* muffin.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F12BA5AE19F6040F00C6B1FF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F12BA57919F6040E00C6B1FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F12BA58019F6040F00C6B1FF;
+			remoteInfo = "Pie Fight";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F12BA58119F6040F00C6B1FF /* Pie Fight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pie Fight.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F12BA58419F6040F00C6B1FF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F12BA58619F6040F00C6B1FF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		F12BA58819F6040F00C6B1FF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F12BA58A19F6040F00C6B1FF /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		F12BA58E19F6040F00C6B1FF /* Pie Fight-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Pie Fight-Info.plist"; sourceTree = "<group>"; };
+		F12BA59019F6040F00C6B1FF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F12BA59219F6040F00C6B1FF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F12BA59419F6040F00C6B1FF /* Pie Fight-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pie Fight-Prefix.pch"; sourceTree = "<group>"; };
+		F12BA59519F6040F00C6B1FF /* GEAAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GEAAppDelegate.h; sourceTree = "<group>"; };
+		F12BA59619F6040F00C6B1FF /* GEAAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GEAAppDelegate.m; sourceTree = "<group>"; };
+		F12BA59919F6040F00C6B1FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F12BA59B19F6040F00C6B1FF /* GEAViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GEAViewController.h; sourceTree = "<group>"; };
+		F12BA59C19F6040F00C6B1FF /* GEAViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GEAViewController.m; sourceTree = "<group>"; };
+		F12BA59E19F6040F00C6B1FF /* GEAMyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GEAMyScene.h; sourceTree = "<group>"; };
+		F12BA59F19F6040F00C6B1FF /* GEAMyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GEAMyScene.m; sourceTree = "<group>"; };
+		F12BA5A119F6040F00C6B1FF /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
+		F12BA5A319F6040F00C6B1FF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F12BA5A919F6040F00C6B1FF /* Pie FightTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Pie FightTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F12BA5AA19F6040F00C6B1FF /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		F12BA5B219F6040F00C6B1FF /* Pie FightTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Pie FightTests-Info.plist"; sourceTree = "<group>"; };
+		F12BA5B419F6040F00C6B1FF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F12BA5B619F6040F00C6B1FF /* Pie_FightTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Pie_FightTests.m; sourceTree = "<group>"; };
+		F1C0065B1A61F29800E264EC /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/door.png; sourceTree = "<group>"; };
+		F1C006611A61F70F00E264EC /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "Pie Fight/en.lproj/closedhole.png"; sourceTree = "<group>"; };
+		F1C006641A61F7FE00E264EC /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "Pie Fight/en.lproj/openhole.png"; sourceTree = "<group>"; };
+		F1C006661A63656000E264EC /* GEAJoyStick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GEAJoyStick.h; sourceTree = "<group>"; };
+		F1C006671A63656000E264EC /* GEAJoyStick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GEAJoyStick.m; sourceTree = "<group>"; };
+		F1C0066A1A63726A00E264EC /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/baseCenter.png; sourceTree = "<group>"; };
+		F1C0066C1A63726A00E264EC /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/centerJoystick.png; sourceTree = "<group>"; };
+		F1C0066F1A638FDD00E264EC /* GEAButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GEAButton.h; sourceTree = "<group>"; };
+		F1C006701A638FDD00E264EC /* GEAButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GEAButton.m; sourceTree = "<group>"; };
+		F1C006731A6E11CA00E264EC /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/gingerBreadMan.png; sourceTree = "<group>"; };
+		F1C006771A6E137900E264EC /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/throwButton.png; sourceTree = "<group>"; };
+		F1C006791A6E152C00E264EC /* GEAGingerBreadMan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GEAGingerBreadMan.h; sourceTree = "<group>"; };
+		F1C0067A1A6E152C00E264EC /* GEAGingerBreadMan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GEAGingerBreadMan.m; sourceTree = "<group>"; };
+		F1C0067D1A772A8F00E264EC /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/muffin.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F12BA57E19F6040F00C6B1FF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F12BA58719F6040F00C6B1FF /* CoreGraphics.framework in Frameworks */,
+				F12BA58919F6040F00C6B1FF /* UIKit.framework in Frameworks */,
+				F12BA58B19F6040F00C6B1FF /* SpriteKit.framework in Frameworks */,
+				F12BA58519F6040F00C6B1FF /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F12BA5A619F6040F00C6B1FF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F12BA5AB19F6040F00C6B1FF /* XCTest.framework in Frameworks */,
+				F12BA5AD19F6040F00C6B1FF /* UIKit.framework in Frameworks */,
+				F12BA5AC19F6040F00C6B1FF /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F12BA57819F6040E00C6B1FF = {
+			isa = PBXGroup;
+			children = (
+				F12BA58C19F6040F00C6B1FF /* Pie Fight */,
+				F12BA5B019F6040F00C6B1FF /* Pie FightTests */,
+				F12BA58319F6040F00C6B1FF /* Frameworks */,
+				F12BA58219F6040F00C6B1FF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F12BA58219F6040F00C6B1FF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F12BA58119F6040F00C6B1FF /* Pie Fight.app */,
+				F12BA5A919F6040F00C6B1FF /* Pie FightTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F12BA58319F6040F00C6B1FF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F12BA58419F6040F00C6B1FF /* Foundation.framework */,
+				F12BA58619F6040F00C6B1FF /* CoreGraphics.framework */,
+				F12BA58819F6040F00C6B1FF /* UIKit.framework */,
+				F12BA58A19F6040F00C6B1FF /* SpriteKit.framework */,
+				F12BA5AA19F6040F00C6B1FF /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F12BA58C19F6040F00C6B1FF /* Pie Fight */ = {
+			isa = PBXGroup;
+			children = (
+				F1C006751A6E11D600E264EC /* Images */,
+				F1C0066F1A638FDD00E264EC /* GEAButton.h */,
+				F1C006701A638FDD00E264EC /* GEAButton.m */,
+				F1C006661A63656000E264EC /* GEAJoyStick.h */,
+				F1C006671A63656000E264EC /* GEAJoyStick.m */,
+				F12BA59519F6040F00C6B1FF /* GEAAppDelegate.h */,
+				F12BA59619F6040F00C6B1FF /* GEAAppDelegate.m */,
+				F12BA59819F6040F00C6B1FF /* Main.storyboard */,
+				F12BA59B19F6040F00C6B1FF /* GEAViewController.h */,
+				F12BA59C19F6040F00C6B1FF /* GEAViewController.m */,
+				F1C006791A6E152C00E264EC /* GEAGingerBreadMan.h */,
+				F1C0067A1A6E152C00E264EC /* GEAGingerBreadMan.m */,
+				F12BA59E19F6040F00C6B1FF /* GEAMyScene.h */,
+				F12BA59F19F6040F00C6B1FF /* GEAMyScene.m */,
+				F12BA5A319F6040F00C6B1FF /* Images.xcassets */,
+				F12BA58D19F6040F00C6B1FF /* Supporting Files */,
+			);
+			path = "Pie Fight";
+			sourceTree = "<group>";
+		};
+		F12BA58D19F6040F00C6B1FF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F12BA58E19F6040F00C6B1FF /* Pie Fight-Info.plist */,
+				F12BA58F19F6040F00C6B1FF /* InfoPlist.strings */,
+				F12BA59219F6040F00C6B1FF /* main.m */,
+				F12BA59419F6040F00C6B1FF /* Pie Fight-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F12BA5B019F6040F00C6B1FF /* Pie FightTests */ = {
+			isa = PBXGroup;
+			children = (
+				F12BA5B619F6040F00C6B1FF /* Pie_FightTests.m */,
+				F12BA5B119F6040F00C6B1FF /* Supporting Files */,
+			);
+			path = "Pie FightTests";
+			sourceTree = "<group>";
+		};
+		F12BA5B119F6040F00C6B1FF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F12BA5B219F6040F00C6B1FF /* Pie FightTests-Info.plist */,
+				F12BA5B319F6040F00C6B1FF /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F1C006751A6E11D600E264EC /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				F1C0067C1A772A8F00E264EC /* muffin.png */,
+				F1C006761A6E137900E264EC /* throwButton.png */,
+				F1C006721A6E11CA00E264EC /* gingerBreadMan.png */,
+				F1C0065A1A61F29800E264EC /* door.png */,
+				F12BA5A119F6040F00C6B1FF /* Spaceship.png */,
+				F1C006691A63726A00E264EC /* baseCenter.png */,
+				F1C006601A61F70F00E264EC /* closedhole.png */,
+				F1C0066B1A63726A00E264EC /* centerJoystick.png */,
+				F1C006631A61F7FE00E264EC /* openhole.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F12BA58019F6040F00C6B1FF /* Pie Fight */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F12BA5BA19F6040F00C6B1FF /* Build configuration list for PBXNativeTarget "Pie Fight" */;
+			buildPhases = (
+				F12BA57D19F6040F00C6B1FF /* Sources */,
+				F12BA57E19F6040F00C6B1FF /* Frameworks */,
+				F12BA57F19F6040F00C6B1FF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pie Fight";
+			productName = "Pie Fight";
+			productReference = F12BA58119F6040F00C6B1FF /* Pie Fight.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F12BA5A819F6040F00C6B1FF /* Pie FightTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F12BA5BD19F6040F00C6B1FF /* Build configuration list for PBXNativeTarget "Pie FightTests" */;
+			buildPhases = (
+				F12BA5A519F6040F00C6B1FF /* Sources */,
+				F12BA5A619F6040F00C6B1FF /* Frameworks */,
+				F12BA5A719F6040F00C6B1FF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F12BA5AF19F6040F00C6B1FF /* PBXTargetDependency */,
+			);
+			name = "Pie FightTests";
+			productName = "Pie FightTests";
+			productReference = F12BA5A919F6040F00C6B1FF /* Pie FightTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F12BA57919F6040E00C6B1FF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = GEA;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Gregory Azuolas";
+				TargetAttributes = {
+					F12BA5A819F6040F00C6B1FF = {
+						TestTargetID = F12BA58019F6040F00C6B1FF;
+					};
+				};
+			};
+			buildConfigurationList = F12BA57C19F6040E00C6B1FF /* Build configuration list for PBXProject "Pie Fight" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F12BA57819F6040E00C6B1FF;
+			productRefGroup = F12BA58219F6040F00C6B1FF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F12BA58019F6040F00C6B1FF /* Pie Fight */,
+				F12BA5A819F6040F00C6B1FF /* Pie FightTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F12BA57F19F6040F00C6B1FF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1C006651A61F7FE00E264EC /* openhole.png in Resources */,
+				F12BA59119F6040F00C6B1FF /* InfoPlist.strings in Resources */,
+				F1C006781A6E137900E264EC /* throwButton.png in Resources */,
+				F12BA5A419F6040F00C6B1FF /* Images.xcassets in Resources */,
+				F1C006741A6E11CA00E264EC /* gingerBreadMan.png in Resources */,
+				F12BA5A219F6040F00C6B1FF /* Spaceship.png in Resources */,
+				F1C006621A61F70F00E264EC /* closedhole.png in Resources */,
+				F1C0066D1A63726A00E264EC /* baseCenter.png in Resources */,
+				F12BA59A19F6040F00C6B1FF /* Main.storyboard in Resources */,
+				F1C0065C1A61F29800E264EC /* door.png in Resources */,
+				F1C0067E1A772A8F00E264EC /* muffin.png in Resources */,
+				F1C0066E1A63726A00E264EC /* centerJoystick.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F12BA5A719F6040F00C6B1FF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F12BA5B519F6040F00C6B1FF /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F12BA57D19F6040F00C6B1FF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F12BA5A019F6040F00C6B1FF /* GEAMyScene.m in Sources */,
+				F1C006711A638FDD00E264EC /* GEAButton.m in Sources */,
+				F12BA59719F6040F00C6B1FF /* GEAAppDelegate.m in Sources */,
+				F1C0067B1A6E152C00E264EC /* GEAGingerBreadMan.m in Sources */,
+				F12BA59D19F6040F00C6B1FF /* GEAViewController.m in Sources */,
+				F12BA59319F6040F00C6B1FF /* main.m in Sources */,
+				F1C006681A63656000E264EC /* GEAJoyStick.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F12BA5A519F6040F00C6B1FF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F12BA5B719F6040F00C6B1FF /* Pie_FightTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F12BA5AF19F6040F00C6B1FF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F12BA58019F6040F00C6B1FF /* Pie Fight */;
+			targetProxy = F12BA5AE19F6040F00C6B1FF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F12BA58F19F6040F00C6B1FF /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F12BA59019F6040F00C6B1FF /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F12BA59819F6040F00C6B1FF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F12BA59919F6040F00C6B1FF /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F12BA5B319F6040F00C6B1FF /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F12BA5B419F6040F00C6B1FF /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F1C0065A1A61F29800E264EC /* door.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1C0065B1A61F29800E264EC /* en */,
+			);
+			name = door.png;
+			sourceTree = "<group>";
+		};
+		F1C006601A61F70F00E264EC /* closedhole.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1C006611A61F70F00E264EC /* en */,
+			);
+			name = closedhole.png;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		F1C006631A61F7FE00E264EC /* openhole.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1C006641A61F7FE00E264EC /* en */,
+			);
+			name = openhole.png;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		F1C006691A63726A00E264EC /* baseCenter.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1C0066A1A63726A00E264EC /* en */,
+			);
+			name = baseCenter.png;
+			sourceTree = "<group>";
+		};
+		F1C0066B1A63726A00E264EC /* centerJoystick.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1C0066C1A63726A00E264EC /* en */,
+			);
+			name = centerJoystick.png;
+			sourceTree = "<group>";
+		};
+		F1C006721A6E11CA00E264EC /* gingerBreadMan.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1C006731A6E11CA00E264EC /* en */,
+			);
+			name = gingerBreadMan.png;
+			sourceTree = "<group>";
+		};
+		F1C006761A6E137900E264EC /* throwButton.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1C006771A6E137900E264EC /* en */,
+			);
+			name = throwButton.png;
+			sourceTree = "<group>";
+		};
+		F1C0067C1A772A8F00E264EC /* muffin.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1C0067D1A772A8F00E264EC /* en */,
+			);
+			name = muffin.png;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F12BA5B819F6040F00C6B1FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		F12BA5B919F6040F00C6B1FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F12BA5BB19F6040F00C6B1FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pie Fight/Pie Fight-Prefix.pch";
+				INFOPLIST_FILE = "Pie Fight/Pie Fight-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		F12BA5BC19F6040F00C6B1FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pie Fight/Pie Fight-Prefix.pch";
+				INFOPLIST_FILE = "Pie Fight/Pie Fight-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		F12BA5BE19F6040F00C6B1FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Pie Fight.app/Pie Fight";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pie Fight/Pie Fight-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Pie FightTests/Pie FightTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		F12BA5BF19F6040F00C6B1FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Pie Fight.app/Pie Fight";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pie Fight/Pie Fight-Prefix.pch";
+				INFOPLIST_FILE = "Pie FightTests/Pie FightTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F12BA57C19F6040E00C6B1FF /* Build configuration list for PBXProject "Pie Fight" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F12BA5B819F6040F00C6B1FF /* Debug */,
+				F12BA5B919F6040F00C6B1FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F12BA5BA19F6040F00C6B1FF /* Build configuration list for PBXNativeTarget "Pie Fight" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F12BA5BB19F6040F00C6B1FF /* Debug */,
+				F12BA5BC19F6040F00C6B1FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F12BA5BD19F6040F00C6B1FF /* Build configuration list for PBXNativeTarget "Pie FightTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F12BA5BE19F6040F00C6B1FF /* Debug */,
+				F12BA5BF19F6040F00C6B1FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F12BA57919F6040E00C6B1FF /* Project object */;
+}
