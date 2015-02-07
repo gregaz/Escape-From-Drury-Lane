@@ -24,10 +24,18 @@
 #import "GEAJoyStick.h"
 #import "GEAButton.h"
 #import "GEAGingerBreadMan.h"
+#import "GEARandomizablePositionNode.h"
+#import "GEAHoleNode.h"
+#import "GEAMuffinStackNode.h"
+#import "GEADoorNode.h"
 #include <stdlib.h>
 
 static const uint32_t playerCategory =  0x1 << 0;
-static const uint32_t obstacleCategory =  0x1 << 1;
+static const uint32_t holeCategory =  0x1 << 1;
+static const uint32_t muffinCategory =  0x1 << 2;
+static const uint32_t muffinStackCategory =  0x1 << 3;
+static const uint32_t enemyCategory =  0x1 << 4;
+static const uint32_t doorCategory =  0x1 << 5;
 static const int incAmount = 20;
 static const int controlsHeight = 45;
 static const int speedModifier = 2;
@@ -35,9 +43,11 @@ static const int speedModifier = 2;
 
 @implementation GEAMyScene{
     GEAGingerBreadMan *player;
-    SKSpriteNode *door;
+    GEADoorNode *door;
     int levelNumber;
     int score;
+    bool didFlipHolesOnce;
+    bool wasThrowPressed;
     NSMutableArray *holes;
     NSMutableArray *muffinStacks;
     GEAJoyStick *joystick;
@@ -52,12 +62,16 @@ static const int speedModifier = 2;
         self.physicsWorld.contactDelegate = self;
         levelNumber = -1;
         score = -1;
+        holes = [NSMutableArray array];
+        muffinStacks = [NSMutableArray array];
+        didFlipHolesOnce = false;
+        wasThrowPressed = false;
         [self addScoreBoard];
         [self addControls];
         [self initializePlayer];
         [self initializeDoor];
         [self nextLevel];
-        //[self addDebugLabels];
+       // [self addDebugLabels];
         
     }
     return self;
@@ -122,11 +136,11 @@ static const int speedModifier = 2;
     player = [[GEAGingerBreadMan alloc] initGingerManWithoutMuffinWithImageNamed: @"gingerBreadMan.png"];
     [player setScale:0.1];
     
-    //Adding SpriteKit physicsBody for collision detection
+    //Adding SpriteKit physicsBody for collision detection TODO put this in gingerbreadman class
     player.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:player.size];
     player.physicsBody.categoryBitMask = playerCategory;
     player.physicsBody.dynamic = YES;
-    player.physicsBody.contactTestBitMask = obstacleCategory;
+    player.physicsBody.contactTestBitMask = muffinStackCategory;
     player.physicsBody.collisionBitMask = 0;
     player.name = @"player";
     [self resetPlayer];
@@ -136,7 +150,8 @@ static const int speedModifier = 2;
 }
 
 -(void)resetPlayer {
-    player.position = CGPointMake(self.frame.size.width * 0.9, [self generateRandomYValueForPosition]);
+    player.position = CGPointMake(self.frame.size.width * 0.9, 0.0);
+    [player randomizeYPositionForIncrements:incAmount andControlsHeight:controlsHeight andSceneHeight: self.frame.size.height];
 }
 
 -(void)spawnMuffinStacks {
@@ -150,18 +165,25 @@ static const int speedModifier = 2;
 }
 
 -(void)clearMuffinStacks {
-    for (SKSpriteNode *muffinStack in muffinStacks) {
+    for (GEAMuffinStackNode *muffinStack in muffinStacks) {
         [muffinStack removeFromParent];
     }
     [muffinStacks removeAllObjects];
 }
 
 -(void)addMuffinStack {
-    SKSpriteNode *muffinStack = [SKSpriteNode spriteNodeWithImageNamed:@"muffin.png"];
+    GEAMuffinStackNode *muffinStack = [[GEAMuffinStackNode alloc] initWithRandomNumberOfMuffins];
+    
+    //TODO put this in muffinstack class
+    muffinStack.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:muffinStack.size];
+    muffinStack.physicsBody.categoryBitMask = muffinStackCategory;
+    muffinStack.physicsBody.contactTestBitMask = playerCategory;
+    muffinStack.physicsBody.dynamic = YES;
+    muffinStack.physicsBody.collisionBitMask = 0;
+    
     do {
-        muffinStack.position = CGPointMake([self generateRandomXValueForPosition], [self generateRandomYValueForPosition]);
+        [muffinStack randomizePositionForIncrements:incAmount andControlsHeight:controlsHeight andSceneHeight:self.frame.size.height andSceneWidth:self.frame.size.width];
     } while ( [self anyHolesOrMuffinStacksLieOnSprite: muffinStack] );
-    [muffinStack setScale: 0.05];
     [self addChild: muffinStack];
     [muffinStacks addObject: muffinStack];
 }
@@ -176,29 +198,31 @@ static const int speedModifier = 2;
 }
 
 -(void)clearHoles {
-    for (SKSpriteNode *hole in holes) {
+    for (GEAHoleNode *hole in holes) {
         [hole removeFromParent];
     }
     [holes removeAllObjects];
 }
 
 -(void)initializeDoor {
-    door = [SKSpriteNode spriteNodeWithImageNamed: @"door.png"];
+    door = [GEADoorNode spriteNodeWithImageNamed: @"door.png"];
     [self resetDoorPosition];
     [door setScale: 0.1];
     [self addChild: door];
 }
 
 -(void)resetDoorPosition {
-    door.position = CGPointMake(self.frame.size.width * 0.05, [self generateRandomYValueForPosition]);
+    door.position = CGPointMake(self.frame.size.width * 0.05, 0.0);
+    [door randomizeYPositionForIncrements:incAmount andControlsHeight:controlsHeight andSceneHeight:self.frame.size.height];
 }
 
 -(void)addHole {
-    SKSpriteNode *hole = [SKSpriteNode spriteNodeWithImageNamed:@"openhole.png"];
+    GEAHoleNode *hole = [[GEAHoleNode alloc] initWithRandomState];
     
     do {
-        hole.position = CGPointMake([self generateRandomXValueForPosition], [self generateRandomYValueForPosition]);
+        [hole randomizePositionForIncrements: incAmount andControlsHeight:controlsHeight andSceneHeight:self.frame.size.height andSceneWidth:self.frame.size.width];
     } while ( [self anyHolesOrMuffinStacksLieOnSprite: hole] );
+    
     [hole setScale: 0.1];
     [self addChild: hole];
     [holes addObject: hole];
@@ -217,11 +241,6 @@ static const int speedModifier = 2;
     return false;
 }
 
--(int)generateRandomXValueForPosition {
-    int xInc = self.frame.size.width / incAmount;
-    return (int) ((arc4random_uniform((int) (xInc * 0.7)) + xInc*0.15 ) * incAmount);
-}
-
 -(int)generateRandomYValueForPosition {
     int yInc = (self.frame.size.height - controlsHeight) / incAmount;
     return (int) ((arc4random_uniform(((int)yInc * 0.8)) + yInc*0.1 ) * incAmount) + controlsHeight;
@@ -230,8 +249,17 @@ static const int speedModifier = 2;
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
     
-    //SKLabelNode *label = (SKLabelNode *)[self childNodeWithName:@"joystickLabel"];
+   // SKLabelNode *label = (SKLabelNode *)[self childNodeWithName:@"joystickLabel"];
     
+    if(((int)currentTime % 10) == 1 && !didFlipHolesOnce) {
+        for (GEAHoleNode *hole in holes) {
+            [hole flipFlopHole];
+            didFlipHolesOnce = true;
+        }
+    }
+    if(((int)currentTime % 10) == 2){
+        didFlipHolesOnce = false;
+    }
     
     float newPlayerX = (float) player.position.x + joystick.x*speedModifier;
     float newPlayerY = (float) player.position.y + joystick.y*speedModifier;
@@ -242,13 +270,24 @@ static const int speedModifier = 2;
     if((newPlayerY > self.frame.size.height) || (newPlayerY < 0)) {
         newPlayerY = player.position.y;
     }
-    //label.text = [NSString stringWithFormat: @"X: %d, oX: %f J: %f", newPlayerX, player.position.x, joystick.x*speedModifier];
+   // label.text = [NSString stringWithFormat: @"X: %i, X: %i J: %f", (int)currentTime, ((int)currentTime) % 10, joystick.x*speedModifier];
     player.position = CGPointMake( newPlayerX, newPlayerY);
     
-    if(throwButton.isPressed) {
+    if (!throwButton.isPressed && wasThrowPressed) {
         [player throwMuffinWithDirectionVectorX: joystick.x andY: joystick.y];
     }
+    wasThrowPressed = throwButton.isPressed;
+}
+
+- (void)didBeginContact:(SKPhysicsContact *)contact {
+    if( contact.bodyA.categoryBitMask == playerCategory && contact.bodyB.categoryBitMask == muffinStackCategory) {
+        [(GEAGingerBreadMan*) contact.bodyA.node pickupMuffinFromMuffinStack: (GEAMuffinStackNode*) contact.bodyB.node ];
+    }
     
+    if(contact.bodyB.categoryBitMask == playerCategory && contact.bodyA.categoryBitMask == muffinStackCategory) {
+        [(GEAGingerBreadMan*) contact.bodyB.node pickupMuffinFromMuffinStack: (GEAMuffinStackNode*) contact.bodyA.node ];
+
+    }
     
 }
 

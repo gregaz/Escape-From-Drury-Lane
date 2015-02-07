@@ -7,12 +7,16 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "GEARandomizablePositionNode.h"
+#import "GEAMuffinNode.h"
+#import "GEAMuffinStackNode.h"
 
-@interface GEAGingerBreadMan : SKSpriteNode
+@interface GEAGingerBreadMan : GEARandomizablePositionNode
 
 -(void) throwMuffinWithDirectionVectorX: (double) x andY: (double) y;
 -(id) initGingerManWithMuffinOrNil: (SKSpriteNode*) muffin andImageNamed: (NSString*) imageName;
 -(id) initGingerManWithoutMuffinWithImageNamed: (NSString*) imageName;
-@property SKSpriteNode* muffin;
+-(void) pickupMuffinFromMuffinStack: (GEAMuffinStackNode*) aMuffinStack;
+@property GEAMuffinNode* muffin;
 
 @end

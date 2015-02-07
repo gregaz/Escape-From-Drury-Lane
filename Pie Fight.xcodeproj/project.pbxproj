@@ -17,7 +17,6 @@
 		F12BA59A19F6040F00C6B1FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F12BA59819F6040F00C6B1FF /* Main.storyboard */; };
 		F12BA59D19F6040F00C6B1FF /* GEAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F12BA59C19F6040F00C6B1FF /* GEAViewController.m */; };
 		F12BA5A019F6040F00C6B1FF /* GEAMyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = F12BA59F19F6040F00C6B1FF /* GEAMyScene.m */; };
-		F12BA5A219F6040F00C6B1FF /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = F12BA5A119F6040F00C6B1FF /* Spaceship.png */; };
 		F12BA5A419F6040F00C6B1FF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F12BA5A319F6040F00C6B1FF /* Images.xcassets */; };
 		F12BA5AB19F6040F00C6B1FF /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12BA5AA19F6040F00C6B1FF /* XCTest.framework */; };
 		F12BA5AC19F6040F00C6B1FF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12BA58419F6040F00C6B1FF /* Foundation.framework */; };
@@ -35,6 +34,19 @@
 		F1C006781A6E137900E264EC /* throwButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C006761A6E137900E264EC /* throwButton.png */; };
 		F1C0067B1A6E152C00E264EC /* GEAGingerBreadMan.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C0067A1A6E152C00E264EC /* GEAGingerBreadMan.m */; };
 		F1C0067E1A772A8F00E264EC /* muffin.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C0067C1A772A8F00E264EC /* muffin.png */; };
+		F1C0068B1A79D42000E264EC /* GEAMuffinStackNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C0068A1A79D42000E264EC /* GEAMuffinStackNode.m */; };
+		F1C006901A79D7A300E264EC /* GEAHoleNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C0068D1A79D7A300E264EC /* GEAHoleNode.m */; };
+		F1C006911A79D7A300E264EC /* GEARandomizablePositionNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C0068F1A79D7A300E264EC /* GEARandomizablePositionNode.m */; };
+		F1C006941A79DCA000E264EC /* GEADoorNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C006931A79DCA000E264EC /* GEADoorNode.m */; };
+		F1C006A51A869CBA00E264EC /* muffinStack1.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C006951A869CBA00E264EC /* muffinStack1.png */; };
+		F1C006A61A869CBA00E264EC /* muffinStack2.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C006971A869CBA00E264EC /* muffinStack2.png */; };
+		F1C006A71A869CBA00E264EC /* muffinStack3.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C006991A869CBA00E264EC /* muffinStack3.png */; };
+		F1C006A81A869CBA00E264EC /* muffinStack4.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C0069B1A869CBA00E264EC /* muffinStack4.png */; };
+		F1C006A91A869CBA00E264EC /* muffinStack5.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C0069D1A869CBA00E264EC /* muffinStack5.png */; };
+		F1C006AA1A869CBA00E264EC /* muffinStack6.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C0069F1A869CBA00E264EC /* muffinStack6.png */; };
+		F1C006AB1A869CBA00E264EC /* muffinStack7.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C006A11A869CBA00E264EC /* muffinStack7.png */; };
+		F1C006AC1A869CBA00E264EC /* muffinStack8.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C006A31A869CBA00E264EC /* muffinStack8.png */; };
+		F1C006B01A86BF0900E264EC /* GEAMuffinNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C006AF1A86BF0900E264EC /* GEAMuffinNode.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +76,6 @@
 		F12BA59C19F6040F00C6B1FF /* GEAViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GEAViewController.m; sourceTree = "<group>"; };
 		F12BA59E19F6040F00C6B1FF /* GEAMyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GEAMyScene.h; sourceTree = "<group>"; };
 		F12BA59F19F6040F00C6B1FF /* GEAMyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GEAMyScene.m; sourceTree = "<group>"; };
-		F12BA5A119F6040F00C6B1FF /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
 		F12BA5A319F6040F00C6B1FF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F12BA5A919F6040F00C6B1FF /* Pie FightTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Pie FightTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F12BA5AA19F6040F00C6B1FF /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -85,6 +96,24 @@
 		F1C006791A6E152C00E264EC /* GEAGingerBreadMan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GEAGingerBreadMan.h; sourceTree = "<group>"; };
 		F1C0067A1A6E152C00E264EC /* GEAGingerBreadMan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GEAGingerBreadMan.m; sourceTree = "<group>"; };
 		F1C0067D1A772A8F00E264EC /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/muffin.png; sourceTree = "<group>"; };
+		F1C006891A79D42000E264EC /* GEAMuffinStackNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GEAMuffinStackNode.h; sourceTree = "<group>"; };
+		F1C0068A1A79D42000E264EC /* GEAMuffinStackNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GEAMuffinStackNode.m; sourceTree = "<group>"; };
+		F1C0068C1A79D7A300E264EC /* GEAHoleNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GEAHoleNode.h; sourceTree = "<group>"; };
+		F1C0068D1A79D7A300E264EC /* GEAHoleNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GEAHoleNode.m; sourceTree = "<group>"; };
+		F1C0068E1A79D7A300E264EC /* GEARandomizablePositionNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GEARandomizablePositionNode.h; sourceTree = "<group>"; };
+		F1C0068F1A79D7A300E264EC /* GEARandomizablePositionNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GEARandomizablePositionNode.m; sourceTree = "<group>"; };
+		F1C006921A79DCA000E264EC /* GEADoorNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GEADoorNode.h; sourceTree = "<group>"; };
+		F1C006931A79DCA000E264EC /* GEADoorNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GEADoorNode.m; sourceTree = "<group>"; };
+		F1C006961A869CBA00E264EC /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/muffinStack1.png; sourceTree = "<group>"; };
+		F1C006981A869CBA00E264EC /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/muffinStack2.png; sourceTree = "<group>"; };
+		F1C0069A1A869CBA00E264EC /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/muffinStack3.png; sourceTree = "<group>"; };
+		F1C0069C1A869CBA00E264EC /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/muffinStack4.png; sourceTree = "<group>"; };
+		F1C0069E1A869CBA00E264EC /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/muffinStack5.png; sourceTree = "<group>"; };
+		F1C006A01A869CBA00E264EC /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/muffinStack6.png; sourceTree = "<group>"; };
+		F1C006A21A869CBA00E264EC /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/muffinStack7.png; sourceTree = "<group>"; };
+		F1C006A41A869CBA00E264EC /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/muffinStack8.png; sourceTree = "<group>"; };
+		F1C006AE1A86BF0900E264EC /* GEAMuffinNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GEAMuffinNode.h; sourceTree = "<group>"; };
+		F1C006AF1A86BF0900E264EC /* GEAMuffinNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GEAMuffinNode.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,18 +175,14 @@
 		F12BA58C19F6040F00C6B1FF /* Pie Fight */ = {
 			isa = PBXGroup;
 			children = (
+				F1C006831A79D32B00E264EC /* Controller Classes */,
 				F1C006751A6E11D600E264EC /* Images */,
-				F1C0066F1A638FDD00E264EC /* GEAButton.h */,
-				F1C006701A638FDD00E264EC /* GEAButton.m */,
-				F1C006661A63656000E264EC /* GEAJoyStick.h */,
-				F1C006671A63656000E264EC /* GEAJoyStick.m */,
 				F12BA59519F6040F00C6B1FF /* GEAAppDelegate.h */,
+				F1C006841A79D34A00E264EC /* GEA Nodes */,
 				F12BA59619F6040F00C6B1FF /* GEAAppDelegate.m */,
 				F12BA59819F6040F00C6B1FF /* Main.storyboard */,
 				F12BA59B19F6040F00C6B1FF /* GEAViewController.h */,
 				F12BA59C19F6040F00C6B1FF /* GEAViewController.m */,
-				F1C006791A6E152C00E264EC /* GEAGingerBreadMan.h */,
-				F1C0067A1A6E152C00E264EC /* GEAGingerBreadMan.m */,
 				F12BA59E19F6040F00C6B1FF /* GEAMyScene.h */,
 				F12BA59F19F6040F00C6B1FF /* GEAMyScene.m */,
 				F12BA5A319F6040F00C6B1FF /* Images.xcassets */,
@@ -198,17 +223,62 @@
 		F1C006751A6E11D600E264EC /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				F1C006AD1A869CC100E264EC /* muffinStacks */,
 				F1C0067C1A772A8F00E264EC /* muffin.png */,
 				F1C006761A6E137900E264EC /* throwButton.png */,
 				F1C006721A6E11CA00E264EC /* gingerBreadMan.png */,
 				F1C0065A1A61F29800E264EC /* door.png */,
-				F12BA5A119F6040F00C6B1FF /* Spaceship.png */,
 				F1C006691A63726A00E264EC /* baseCenter.png */,
 				F1C006601A61F70F00E264EC /* closedhole.png */,
 				F1C0066B1A63726A00E264EC /* centerJoystick.png */,
 				F1C006631A61F7FE00E264EC /* openhole.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		F1C006831A79D32B00E264EC /* Controller Classes */ = {
+			isa = PBXGroup;
+			children = (
+				F1C0066F1A638FDD00E264EC /* GEAButton.h */,
+				F1C006701A638FDD00E264EC /* GEAButton.m */,
+				F1C006661A63656000E264EC /* GEAJoyStick.h */,
+				F1C006671A63656000E264EC /* GEAJoyStick.m */,
+			);
+			name = "Controller Classes";
+			sourceTree = "<group>";
+		};
+		F1C006841A79D34A00E264EC /* GEA Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				F1C0068C1A79D7A300E264EC /* GEAHoleNode.h */,
+				F1C0068D1A79D7A300E264EC /* GEAHoleNode.m */,
+				F1C006AE1A86BF0900E264EC /* GEAMuffinNode.h */,
+				F1C006AF1A86BF0900E264EC /* GEAMuffinNode.m */,
+				F1C0068E1A79D7A300E264EC /* GEARandomizablePositionNode.h */,
+				F1C0068F1A79D7A300E264EC /* GEARandomizablePositionNode.m */,
+				F1C006891A79D42000E264EC /* GEAMuffinStackNode.h */,
+				F1C0068A1A79D42000E264EC /* GEAMuffinStackNode.m */,
+				F1C006791A6E152C00E264EC /* GEAGingerBreadMan.h */,
+				F1C0067A1A6E152C00E264EC /* GEAGingerBreadMan.m */,
+				F1C006921A79DCA000E264EC /* GEADoorNode.h */,
+				F1C006931A79DCA000E264EC /* GEADoorNode.m */,
+			);
+			name = "GEA Nodes";
+			sourceTree = "<group>";
+		};
+		F1C006AD1A869CC100E264EC /* muffinStacks */ = {
+			isa = PBXGroup;
+			children = (
+				F1C006951A869CBA00E264EC /* muffinStack1.png */,
+				F1C006971A869CBA00E264EC /* muffinStack2.png */,
+				F1C006991A869CBA00E264EC /* muffinStack3.png */,
+				F1C0069B1A869CBA00E264EC /* muffinStack4.png */,
+				F1C0069D1A869CBA00E264EC /* muffinStack5.png */,
+				F1C0069F1A869CBA00E264EC /* muffinStack6.png */,
+				F1C006A11A869CBA00E264EC /* muffinStack7.png */,
+				F1C006A31A869CBA00E264EC /* muffinStack8.png */,
+			);
+			name = muffinStacks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,18 +358,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1C006AB1A869CBA00E264EC /* muffinStack7.png in Resources */,
 				F1C006651A61F7FE00E264EC /* openhole.png in Resources */,
 				F12BA59119F6040F00C6B1FF /* InfoPlist.strings in Resources */,
+				F1C006A81A869CBA00E264EC /* muffinStack4.png in Resources */,
+				F1C006A61A869CBA00E264EC /* muffinStack2.png in Resources */,
 				F1C006781A6E137900E264EC /* throwButton.png in Resources */,
 				F12BA5A419F6040F00C6B1FF /* Images.xcassets in Resources */,
+				F1C006A51A869CBA00E264EC /* muffinStack1.png in Resources */,
 				F1C006741A6E11CA00E264EC /* gingerBreadMan.png in Resources */,
-				F12BA5A219F6040F00C6B1FF /* Spaceship.png in Resources */,
+				F1C006AA1A869CBA00E264EC /* muffinStack6.png in Resources */,
 				F1C006621A61F70F00E264EC /* closedhole.png in Resources */,
 				F1C0066D1A63726A00E264EC /* baseCenter.png in Resources */,
 				F12BA59A19F6040F00C6B1FF /* Main.storyboard in Resources */,
+				F1C006AC1A869CBA00E264EC /* muffinStack8.png in Resources */,
 				F1C0065C1A61F29800E264EC /* door.png in Resources */,
 				F1C0067E1A772A8F00E264EC /* muffin.png in Resources */,
+				F1C006A91A869CBA00E264EC /* muffinStack5.png in Resources */,
 				F1C0066E1A63726A00E264EC /* centerJoystick.png in Resources */,
+				F1C006A71A869CBA00E264EC /* muffinStack3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,10 +397,15 @@
 			files = (
 				F12BA5A019F6040F00C6B1FF /* GEAMyScene.m in Sources */,
 				F1C006711A638FDD00E264EC /* GEAButton.m in Sources */,
+				F1C006941A79DCA000E264EC /* GEADoorNode.m in Sources */,
+				F1C006901A79D7A300E264EC /* GEAHoleNode.m in Sources */,
 				F12BA59719F6040F00C6B1FF /* GEAAppDelegate.m in Sources */,
 				F1C0067B1A6E152C00E264EC /* GEAGingerBreadMan.m in Sources */,
+				F1C006B01A86BF0900E264EC /* GEAMuffinNode.m in Sources */,
 				F12BA59D19F6040F00C6B1FF /* GEAViewController.m in Sources */,
+				F1C0068B1A79D42000E264EC /* GEAMuffinStackNode.m in Sources */,
 				F12BA59319F6040F00C6B1FF /* main.m in Sources */,
+				F1C006911A79D7A300E264EC /* GEARandomizablePositionNode.m in Sources */,
 				F1C006681A63656000E264EC /* GEAJoyStick.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -435,6 +517,70 @@
 				F1C0067D1A772A8F00E264EC /* en */,
 			);
 			name = muffin.png;
+			sourceTree = "<group>";
+		};
+		F1C006951A869CBA00E264EC /* muffinStack1.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1C006961A869CBA00E264EC /* en */,
+			);
+			name = muffinStack1.png;
+			sourceTree = "<group>";
+		};
+		F1C006971A869CBA00E264EC /* muffinStack2.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1C006981A869CBA00E264EC /* en */,
+			);
+			name = muffinStack2.png;
+			sourceTree = "<group>";
+		};
+		F1C006991A869CBA00E264EC /* muffinStack3.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1C0069A1A869CBA00E264EC /* en */,
+			);
+			name = muffinStack3.png;
+			sourceTree = "<group>";
+		};
+		F1C0069B1A869CBA00E264EC /* muffinStack4.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1C0069C1A869CBA00E264EC /* en */,
+			);
+			name = muffinStack4.png;
+			sourceTree = "<group>";
+		};
+		F1C0069D1A869CBA00E264EC /* muffinStack5.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1C0069E1A869CBA00E264EC /* en */,
+			);
+			name = muffinStack5.png;
+			sourceTree = "<group>";
+		};
+		F1C0069F1A869CBA00E264EC /* muffinStack6.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1C006A01A869CBA00E264EC /* en */,
+			);
+			name = muffinStack6.png;
+			sourceTree = "<group>";
+		};
+		F1C006A11A869CBA00E264EC /* muffinStack7.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1C006A21A869CBA00E264EC /* en */,
+			);
+			name = muffinStack7.png;
+			sourceTree = "<group>";
+		};
+		F1C006A31A869CBA00E264EC /* muffinStack8.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1C006A41A869CBA00E264EC /* en */,
+			);
+			name = muffinStack8.png;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
