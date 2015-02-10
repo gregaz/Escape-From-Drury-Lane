@@ -47,6 +47,7 @@
 		F1C006AB1A869CBA00E264EC /* muffinStack7.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C006A11A869CBA00E264EC /* muffinStack7.png */; };
 		F1C006AC1A869CBA00E264EC /* muffinStack8.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C006A31A869CBA00E264EC /* muffinStack8.png */; };
 		F1C006B01A86BF0900E264EC /* GEAMuffinNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C006AF1A86BF0900E264EC /* GEAMuffinNode.m */; };
+		F1C006B71A89A6E500E264EC /* muffinMan.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C006B51A89A6E500E264EC /* muffinMan.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +115,7 @@
 		F1C006A41A869CBA00E264EC /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/muffinStack8.png; sourceTree = "<group>"; };
 		F1C006AE1A86BF0900E264EC /* GEAMuffinNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GEAMuffinNode.h; sourceTree = "<group>"; };
 		F1C006AF1A86BF0900E264EC /* GEAMuffinNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GEAMuffinNode.m; sourceTree = "<group>"; };
+		F1C006B61A89A6E500E264EC /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/muffinMan.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +227,7 @@
 			children = (
 				F1C006AD1A869CC100E264EC /* muffinStacks */,
 				F1C0067C1A772A8F00E264EC /* muffin.png */,
+				F1C006B51A89A6E500E264EC /* muffinMan.png */,
 				F1C006761A6E137900E264EC /* throwButton.png */,
 				F1C006721A6E11CA00E264EC /* gingerBreadMan.png */,
 				F1C0065A1A61F29800E264EC /* door.png */,
@@ -371,6 +374,7 @@
 				F1C006621A61F70F00E264EC /* closedhole.png in Resources */,
 				F1C0066D1A63726A00E264EC /* baseCenter.png in Resources */,
 				F12BA59A19F6040F00C6B1FF /* Main.storyboard in Resources */,
+				F1C006B71A89A6E500E264EC /* muffinMan.png in Resources */,
 				F1C006AC1A869CBA00E264EC /* muffinStack8.png in Resources */,
 				F1C0065C1A61F29800E264EC /* door.png in Resources */,
 				F1C0067E1A772A8F00E264EC /* muffin.png in Resources */,
@@ -581,6 +585,14 @@
 				F1C006A41A869CBA00E264EC /* en */,
 			);
 			name = muffinStack8.png;
+			sourceTree = "<group>";
+		};
+		F1C006B51A89A6E500E264EC /* muffinMan.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1C006B61A89A6E500E264EC /* en */,
+			);
+			name = muffinMan.png;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

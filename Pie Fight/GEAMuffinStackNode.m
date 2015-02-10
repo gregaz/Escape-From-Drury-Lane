@@ -32,7 +32,7 @@
 }
 
 -(void)loseOneMuffin {
-    [self setNumberOfMuffins: self.numberOfMuffins - 1];
+    [self setMuffinCount: self.numberOfMuffins - 1];
 }
 
 @end

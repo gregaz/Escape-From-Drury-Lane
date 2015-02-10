@@ -13,6 +13,7 @@
 -(id) initWithButtonImageNamed: (NSString *) buttonImage {
     self = [super initWithImageNamed: buttonImage];
     self.isPressed = false;
+    [self setUserInteractionEnabled:YES];
     return self;
 }
 

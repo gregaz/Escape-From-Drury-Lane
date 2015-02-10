@@ -33,7 +33,7 @@ static inline CGPoint geaMultiply(CGPoint point, float factor) {
         
         CGPoint destination = geaMultiply(CGPointMake(x, y), 1000);
         
-        float velocity = 480.0/1.0;
+        float velocity = 480.0/100.0;
         float duration = self.size.width / velocity;
         
         SKAction* moveAction = [SKAction moveTo:destination duration:duration];
@@ -45,8 +45,10 @@ static inline CGPoint geaMultiply(CGPoint point, float factor) {
 }
 
 -(void) pickupMuffinFromMuffinStack: (GEAMuffinStackNode*) aMuffinStack {
-    self.muffin = [[GEAMuffinNode alloc] initWithImageNamed: @"muffin.png"];
-    [aMuffinStack loseOneMuffin];
+    if(![self hasMuffin]) {
+        self.muffin = [[GEAMuffinNode alloc] initWithImageNamed: @"muffin.png"];
+        [aMuffinStack loseOneMuffin];
+    }
 }
 
 -(bool) hasMuffin {

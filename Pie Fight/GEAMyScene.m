@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Gregory Azuolas. All rights reserved.
 //
 // TODO:
-// Add muffins - implement throw muffin
+// Add muffins - implement throw muffin - done
 // Add enemies
 // Add animations - player, enemies, door, holes
 // Add collisions - door, enemies, muffins
@@ -50,6 +50,7 @@ static const int speedModifier = 2;
     bool wasThrowPressed;
     NSMutableArray *holes;
     NSMutableArray *muffinStacks;
+    NSMutableArray *muffinMen;
     GEAJoyStick *joystick;
     GEAButton *throwButton;
 }
@@ -64,6 +65,7 @@ static const int speedModifier = 2;
         score = -1;
         holes = [NSMutableArray array];
         muffinStacks = [NSMutableArray array];
+        muffinMen = [NSMutableArray array];
         didFlipHolesOnce = false;
         wasThrowPressed = false;
         [self addScoreBoard];
@@ -274,7 +276,9 @@ static const int speedModifier = 2;
     player.position = CGPointMake( newPlayerX, newPlayerY);
     
     if (!throwButton.isPressed && wasThrowPressed) {
-        [player throwMuffinWithDirectionVectorX: joystick.x andY: joystick.y];
+        //To do once i can test on phone
+        //[player throwMuffinWithDirectionVectorX: joystick.x andY: joystick.y];
+        [player throwMuffinWithDirectionVectorX: -0.2 andY: 0.3];
     }
     wasThrowPressed = throwButton.isPressed;
 }
