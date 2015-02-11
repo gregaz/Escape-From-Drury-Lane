@@ -7,8 +7,7 @@
 //
 // TODO:
 // Add muffins - implement throw muffin - done
-// Add enemies
-// Add animations - player, enemies, door, holes
+// Add enemies - done
 // Add collisions - door, enemies, muffins
 // Start screen
 // Death screen
@@ -16,6 +15,7 @@
 // Ads between screens
 // Level progression screen
 // Improve drawings - dany?
+// Add animations - player, enemies, door, holes - dany??
 // Instant replay/closing door?
 // Settings R/L handed
 
@@ -29,21 +29,12 @@
 #import "GEAMuffinStackNode.h"
 #import "GEADoorNode.h"
 #import "GEAMuffinMan.h"
+#import "GEAConstants.h"
 #include <stdlib.h>
 
-//player can make contact with muffinstacks, holes, enemies, door
-//enemies can make contact with holes, muffins, player
-
-static const uint32_t playerCategory =  0x1 << 0;
-static const uint32_t holeCategory =  0x1 << 1;
-static const uint32_t muffinCategory =  0x1 << 2;
-static const uint32_t muffinStackCategory =  0x1 << 3;
-static const uint32_t enemyCategory =  0x1 << 4;
-static const uint32_t doorCategory =  0x1 << 5;
 static const int incAmount = 20;
 static const int controlsHeight = 45;
 static const int speedModifier = 2;
-
 
 @implementation GEAMyScene{
     GEAGingerBreadMan *player;
@@ -182,13 +173,7 @@ static const int speedModifier = 2;
 -(void)spawnMuffinManFromHole: (GEAHoleNode*) aHole {
     //TODO animation
     GEAMuffinMan* muffinMan = [[GEAMuffinMan alloc] initWithImageNamed: @"muffinMan.png"];
-    
-    muffinMan.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:muffinMan.size];
-    muffinMan.physicsBody.categoryBitMask = enemyCategory;
-    muffinMan.physicsBody.dynamic = YES;
-    muffinMan.physicsBody.contactTestBitMask = muffinCategory + playerCategory + holeCategory;
-    muffinMan.physicsBody.collisionBitMask = 0;
-    
+    [muffinMan initializeCollisionConfig];
     [muffinMan setPosition: aHole.position];
     [muffinMan setScale: 0.2];
     [self addChild:muffinMan];
@@ -216,13 +201,7 @@ static const int speedModifier = 2;
 -(void)addMuffinStack {
     GEAMuffinStackNode *muffinStack = [[GEAMuffinStackNode alloc] initWithRandomNumberOfMuffins];
     
-    //TODO put this in muffinstack class
-    muffinStack.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:muffinStack.size];
-    muffinStack.physicsBody.categoryBitMask = muffinStackCategory;
-    muffinStack.physicsBody.contactTestBitMask = playerCategory;
-    muffinStack.physicsBody.dynamic = YES;
-    muffinStack.physicsBody.collisionBitMask = 0;
-    
+    [muffinStack initializeCollisionConfig];
     do {
         [muffinStack randomizePositionForIncrements:incAmount andControlsHeight:controlsHeight andSceneHeight:self.frame.size.height andSceneWidth:self.frame.size.width];
     } while ( [self anyHolesOrMuffinStacksLieOnSprite: muffinStack] );
@@ -248,6 +227,7 @@ static const int speedModifier = 2;
 
 -(void)initializeDoor {
     door = [GEADoorNode spriteNodeWithImageNamed: @"door.png"];
+    [door initializeCollisionConfig];
     [self resetDoorPosition];
     [door setScale: 0.1];
     [self addChild: door];
@@ -260,7 +240,7 @@ static const int speedModifier = 2;
 
 -(void)addHole {
     GEAHoleNode *hole = [[GEAHoleNode alloc] initWithRandomState];
-    
+    [hole initializeCollisionConfig];
     do {
         [hole randomizePositionForIncrements: incAmount andControlsHeight:controlsHeight andSceneHeight:self.frame.size.height andSceneWidth:self.frame.size.width];
     } while ( [self anyHolesOrMuffinStacksLieOnSprite: hole] );
@@ -338,6 +318,13 @@ static const int speedModifier = 2;
     if(contact.bodyB.categoryBitMask == playerCategory && contact.bodyA.categoryBitMask == muffinStackCategory) {
         [(GEAGingerBreadMan*) contact.bodyB.node pickupMuffinFromMuffinStack: (GEAMuffinStackNode*) contact.bodyA.node ];
 
+    }
+    if((contact.bodyA.categoryBitMask == muffinCategory && contact.bodyB.categoryBitMask == enemyCategory)||
+       (contact.bodyB.categoryBitMask == muffinCategory && contact.bodyA.categoryBitMask == enemyCategory))
+    {
+        //add enemy kill animation here
+        [contact.bodyA.node removeFromParent];
+        [contact.bodyB.node removeFromParent];
     }
     
 }

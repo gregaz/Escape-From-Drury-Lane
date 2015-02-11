@@ -14,6 +14,7 @@
 -(id)initWithRandomNumberOfMuffins;
 -(void)setNumberOfMuffins: (int)numberOfMuffins;
 -(void)loseOneMuffin;
+-(void) initializeCollisionConfig;
 @property int numberOfMuffins;
 
 @end

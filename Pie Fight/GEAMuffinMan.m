@@ -7,10 +7,20 @@
 //
 
 #import "GEAMuffinMan.h"
+#import "GEAConstants.h"
 
 static const int speed = 20;
 
 @implementation GEAMuffinMan
+
+-(void) initializeCollisionConfig {
+    self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.size];
+    self.physicsBody.categoryBitMask = enemyCategory;
+    self.physicsBody.dynamic = YES;
+    self.physicsBody.contactTestBitMask = muffinCategory + playerCategory + holeCategory;
+    self.physicsBody.collisionBitMask = 0;
+    
+}
 
 -(void)moveTowardsLocation: (CGPoint) destination {
     double duration = [GEAPointMath distanceBetween:destination and:self.position] / speed;

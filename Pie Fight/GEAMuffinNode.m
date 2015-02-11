@@ -7,7 +7,17 @@
 //
 
 #import "GEAMuffinNode.h"
+#import "GEAConstants.h"
 
 @implementation GEAMuffinNode
+
+-(void)initializeCollisionConfig {
+    self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.size];
+    self.physicsBody.categoryBitMask = muffinCategory;
+    self.physicsBody.dynamic = YES;
+    self.physicsBody.contactTestBitMask = enemyCategory;
+    self.physicsBody.collisionBitMask = 0;
+    
+}
 
 @end

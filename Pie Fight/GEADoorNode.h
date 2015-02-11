@@ -10,4 +10,6 @@
 
 @interface GEADoorNode : GEARandomizablePositionNode
 
+-(void)initializeCollisionConfig;
+
 @end

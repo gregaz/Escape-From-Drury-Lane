@@ -7,6 +7,7 @@
 //
 
 #import "GEAMuffinStackNode.h"
+#import "GEAConstants.h"
 
 @implementation GEAMuffinStackNode {
     int _numberOfMuffins;
@@ -18,6 +19,14 @@
     self = [super initWithImageNamed:@"muffinStack8.png"];
     [self setMuffinCount: (int) arc4random_uniform(8)+1 ];
     return self;
+}
+
+-(void) initializeCollisionConfig {
+    self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.size];
+    self.physicsBody.categoryBitMask = muffinStackCategory;
+    self.physicsBody.contactTestBitMask = playerCategory;
+    self.physicsBody.dynamic = YES;
+    self.physicsBody.collisionBitMask = 0;
 }
 
 -(void)setMuffinCount: (int)muffinCount {

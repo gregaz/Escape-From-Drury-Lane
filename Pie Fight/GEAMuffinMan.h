@@ -11,6 +11,7 @@
 
 @interface GEAMuffinMan : GEARandomizablePositionNode
 
+-(void) initializeCollisionConfig;
 -(void)moveTowardsLocation: (CGPoint) destination;
 
 @end

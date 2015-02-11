@@ -10,4 +10,6 @@
 
 @interface GEAMuffinNode : SKSpriteNode
 
+-(void)initializeCollisionConfig;
+
 @end

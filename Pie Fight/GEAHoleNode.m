@@ -7,6 +7,7 @@
 //
 
 #import "GEAHoleNode.h"
+#import "GEAConstants.h"
 
 @implementation GEAHoleNode {
     bool isOpen;
@@ -34,6 +35,14 @@
     } else {
         self.texture = [SKTexture textureWithImageNamed: @"closedhole.png"];
     }
+}
+
+-(void)initializeCollisionConfig {
+    self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.size];
+    self.physicsBody.categoryBitMask = holeCategory;
+    self.physicsBody.dynamic = YES;
+    self.physicsBody.contactTestBitMask = enemyCategory + playerCategory;
+    self.physicsBody.collisionBitMask = 0;
 }
 
 

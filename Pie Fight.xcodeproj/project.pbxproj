@@ -50,6 +50,7 @@
 		F1C006B71A89A6E500E264EC /* muffinMan.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C006B51A89A6E500E264EC /* muffinMan.png */; };
 		F1C006BA1A89ADE900E264EC /* GEAMuffinMan.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C006B91A89ADE900E264EC /* GEAMuffinMan.m */; };
 		F1C006BE1A8AF0C500E264EC /* GEAPointMath.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C006BD1A8AF0C500E264EC /* GEAPointMath.m */; };
+		F1C006C21A8B087300E264EC /* GEAConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C006C11A8B087300E264EC /* GEAConstants.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +123,8 @@
 		F1C006B91A89ADE900E264EC /* GEAMuffinMan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GEAMuffinMan.m; sourceTree = "<group>"; };
 		F1C006BC1A8AF0C500E264EC /* GEAPointMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GEAPointMath.h; sourceTree = "<group>"; };
 		F1C006BD1A8AF0C500E264EC /* GEAPointMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GEAPointMath.m; sourceTree = "<group>"; };
+		F1C006C01A8B087300E264EC /* GEAConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GEAConstants.h; sourceTree = "<group>"; };
+		F1C006C11A8B087300E264EC /* GEAConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GEAConstants.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +186,7 @@
 		F12BA58C19F6040F00C6B1FF /* Pie Fight */ = {
 			isa = PBXGroup;
 			children = (
+				F1C006BF1A8B086000E264EC /* Constants */,
 				F1C006BB1A8AF07C00E264EC /* Math */,
 				F1C006831A79D32B00E264EC /* Controller Classes */,
 				F1C006751A6E11D600E264EC /* Images */,
@@ -300,6 +304,15 @@
 				F1C006BD1A8AF0C500E264EC /* GEAPointMath.m */,
 			);
 			name = Math;
+			sourceTree = "<group>";
+		};
+		F1C006BF1A8B086000E264EC /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				F1C006C01A8B087300E264EC /* GEAConstants.h */,
+				F1C006C11A8B087300E264EC /* GEAConstants.m */,
+			);
+			name = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -431,6 +444,7 @@
 				F1C006911A79D7A300E264EC /* GEARandomizablePositionNode.m in Sources */,
 				F1C006681A63656000E264EC /* GEAJoyStick.m in Sources */,
 				F1C006BA1A89ADE900E264EC /* GEAMuffinMan.m in Sources */,
+				F1C006C21A8B087300E264EC /* GEAConstants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

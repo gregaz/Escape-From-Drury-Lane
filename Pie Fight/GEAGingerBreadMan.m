@@ -24,6 +24,7 @@
     if([self hasMuffin] || (x == 0.0 && y == 0.0)) {
         [self.muffin setPosition: self.position];
         [self.muffin setScale: 0.05];
+        [self.muffin initializeCollisionConfig];
         
         [[self parent] addChild: self.muffin];
         

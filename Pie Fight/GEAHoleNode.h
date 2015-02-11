@@ -14,5 +14,6 @@
 -(void)flipFlopHole;
 -(id)initWithRandomState;
 -(bool)isHoleOpen;
+-(void)initializeCollisionConfig;
 
 @end
