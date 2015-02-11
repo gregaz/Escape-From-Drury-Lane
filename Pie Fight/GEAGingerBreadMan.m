@@ -10,10 +10,6 @@
 
 @implementation GEAGingerBreadMan
 
-static inline CGPoint geaMultiply(CGPoint point, float factor) {
-    return CGPointMake(point.x * factor, point.y * factor);
-}
-
 -(id) initGingerManWithMuffinOrNil: (GEAMuffinNode*) muffin andImageNamed: (NSString*) imageName {
     self = [super initWithImageNamed: imageName];
     self.muffin = muffin;
@@ -31,7 +27,8 @@ static inline CGPoint geaMultiply(CGPoint point, float factor) {
         
         [[self parent] addChild: self.muffin];
         
-        CGPoint destination = geaMultiply(CGPointMake(x, y), 1000);
+        CGPoint destination = [GEAPointMath addPoint:self.muffin.position
+                                            andPoint:([GEAPointMath scalePoint: CGPointMake(x, y) by:1000.0])];
         
         float velocity = 480.0/100.0;
         float duration = self.size.width / velocity;
@@ -41,6 +38,12 @@ static inline CGPoint geaMultiply(CGPoint point, float factor) {
         [self.muffin runAction:[SKAction sequence:@[moveAction, moveDoneAction]]];
     
     self.muffin = nil;
+    //Check if there is a new muffin to pickup (didBeginContact won't be called again unless you leave the stack first
+        for (SKPhysicsBody* physicsBody in self.physicsBody.allContactedBodies) {
+            if([physicsBody.node isMemberOfClass: [GEAMuffinStackNode class]]){
+                [self pickupMuffinFromMuffinStack: (GEAMuffinStackNode*)physicsBody.node];
+            }
+        }
     }
 }
 

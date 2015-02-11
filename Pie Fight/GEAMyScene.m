@@ -28,7 +28,11 @@
 #import "GEAHoleNode.h"
 #import "GEAMuffinStackNode.h"
 #import "GEADoorNode.h"
+#import "GEAMuffinMan.h"
 #include <stdlib.h>
+
+//player can make contact with muffinstacks, holes, enemies, door
+//enemies can make contact with holes, muffins, player
 
 static const uint32_t playerCategory =  0x1 << 0;
 static const uint32_t holeCategory =  0x1 << 1;
@@ -48,6 +52,7 @@ static const int speedModifier = 2;
     int score;
     bool didFlipHolesOnce;
     bool wasThrowPressed;
+    bool didUpdateTrajectories;
     NSMutableArray *holes;
     NSMutableArray *muffinStacks;
     NSMutableArray *muffinMen;
@@ -68,6 +73,7 @@ static const int speedModifier = 2;
         muffinMen = [NSMutableArray array];
         didFlipHolesOnce = false;
         wasThrowPressed = false;
+        didUpdateTrajectories = false;
         [self addScoreBoard];
         [self addControls];
         [self initializePlayer];
@@ -84,8 +90,10 @@ static const int speedModifier = 2;
     [self incrementScore];
     [self clearHoles];
     [self clearMuffinStacks];
+    [self clearMuffinMen];
     [self resetPlayer];
     [self spawnHoles];
+    [self spawnMuffinMen];
     [self spawnMuffinStacks];
     [self resetDoorPosition];
 }
@@ -142,7 +150,7 @@ static const int speedModifier = 2;
     player.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:player.size];
     player.physicsBody.categoryBitMask = playerCategory;
     player.physicsBody.dynamic = YES;
-    player.physicsBody.contactTestBitMask = muffinStackCategory;
+    player.physicsBody.contactTestBitMask = muffinStackCategory + holeCategory + doorCategory + enemyCategory;
     player.physicsBody.collisionBitMask = 0;
     player.name = @"player";
     [self resetPlayer];
@@ -154,6 +162,38 @@ static const int speedModifier = 2;
 -(void)resetPlayer {
     player.position = CGPointMake(self.frame.size.width * 0.9, 0.0);
     [player randomizeYPositionForIncrements:incAmount andControlsHeight:controlsHeight andSceneHeight: self.frame.size.height];
+}
+
+-(void)clearMuffinMen {
+    for (GEAMuffinMan *muffinMan in muffinMen) {
+        [muffinMan removeFromParent];
+    }
+    [muffinMen removeAllObjects];
+}
+
+-(void)spawnMuffinMen {
+    for (GEAHoleNode *hole in holes) {
+        if([hole isHoleOpen]) {
+            [self spawnMuffinManFromHole: hole];
+        }
+    }
+}
+
+-(void)spawnMuffinManFromHole: (GEAHoleNode*) aHole {
+    //TODO animation
+    GEAMuffinMan* muffinMan = [[GEAMuffinMan alloc] initWithImageNamed: @"muffinMan.png"];
+    
+    muffinMan.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:muffinMan.size];
+    muffinMan.physicsBody.categoryBitMask = enemyCategory;
+    muffinMan.physicsBody.dynamic = YES;
+    muffinMan.physicsBody.contactTestBitMask = muffinCategory + playerCategory + holeCategory;
+    muffinMan.physicsBody.collisionBitMask = 0;
+    
+    [muffinMan setPosition: aHole.position];
+    [muffinMan setScale: 0.2];
+    [self addChild:muffinMan];
+    [muffinMen addObject: muffinMan];
+    
 }
 
 -(void)spawnMuffinStacks {
@@ -243,11 +283,6 @@ static const int speedModifier = 2;
     return false;
 }
 
--(int)generateRandomYValueForPosition {
-    int yInc = (self.frame.size.height - controlsHeight) / incAmount;
-    return (int) ((arc4random_uniform(((int)yInc * 0.8)) + yInc*0.1 ) * incAmount) + controlsHeight;
-}
-
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
     
@@ -256,12 +291,24 @@ static const int speedModifier = 2;
     if(((int)currentTime % 10) == 1 && !didFlipHolesOnce) {
         for (GEAHoleNode *hole in holes) {
             [hole flipFlopHole];
+            [self spawnMuffinMen];
             didFlipHolesOnce = true;
         }
     }
     if(((int)currentTime % 10) == 2){
         didFlipHolesOnce = false;
     }
+    
+    if(((int)currentTime % 2) == 1 && !didUpdateTrajectories) {
+        for (GEAMuffinMan *muffinMan in muffinMen) {
+            [muffinMan moveTowardsLocation:player.position];
+            didUpdateTrajectories = true;
+        }
+    }
+    if(((int)currentTime % 2) == 0){
+        didUpdateTrajectories = false;
+    }
+    
     
     float newPlayerX = (float) player.position.x + joystick.x*speedModifier;
     float newPlayerY = (float) player.position.y + joystick.y*speedModifier;
@@ -278,7 +325,7 @@ static const int speedModifier = 2;
     if (!throwButton.isPressed && wasThrowPressed) {
         //To do once i can test on phone
         //[player throwMuffinWithDirectionVectorX: joystick.x andY: joystick.y];
-        [player throwMuffinWithDirectionVectorX: -0.2 andY: 0.3];
+        [player throwMuffinWithDirectionVectorX: 0.0 andY: 0.3];
     }
     wasThrowPressed = throwButton.isPressed;
 }

@@ -12,6 +12,10 @@
     bool isOpen;
 }
 
+-(bool)isHoleOpen {
+    return isOpen;
+}
+
 -(id)initWithRandomState {
     self = [super initWithImageNamed:@"closedhole.png"];
     isOpen = arc4random_uniform(2) == 0;

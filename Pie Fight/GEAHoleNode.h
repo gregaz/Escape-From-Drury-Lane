@@ -13,5 +13,6 @@
 
 -(void)flipFlopHole;
 -(id)initWithRandomState;
+-(bool)isHoleOpen;
 
 @end

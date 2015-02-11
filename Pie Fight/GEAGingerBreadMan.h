@@ -10,6 +10,7 @@
 #import "GEARandomizablePositionNode.h"
 #import "GEAMuffinNode.h"
 #import "GEAMuffinStackNode.h"
+#import "GEAPointMath.h"
 
 @interface GEAGingerBreadMan : GEARandomizablePositionNode
 
