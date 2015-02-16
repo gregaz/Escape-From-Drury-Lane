@@ -8,6 +8,6 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface GEAMyScene : SKScene
+@interface GEAGameScene : SKScene
 
 @end

@@ -9,7 +9,7 @@
 #import "GEAMuffinMan.h"
 #import "GEAConstants.h"
 
-static const int speed = 20;
+static const int speed = 100;
 
 @implementation GEAMuffinMan
 

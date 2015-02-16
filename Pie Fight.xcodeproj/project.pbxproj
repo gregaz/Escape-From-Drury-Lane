@@ -16,7 +16,7 @@
 		F12BA59719F6040F00C6B1FF /* GEAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F12BA59619F6040F00C6B1FF /* GEAAppDelegate.m */; };
 		F12BA59A19F6040F00C6B1FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F12BA59819F6040F00C6B1FF /* Main.storyboard */; };
 		F12BA59D19F6040F00C6B1FF /* GEAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F12BA59C19F6040F00C6B1FF /* GEAViewController.m */; };
-		F12BA5A019F6040F00C6B1FF /* GEAMyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = F12BA59F19F6040F00C6B1FF /* GEAMyScene.m */; };
+		F12BA5A019F6040F00C6B1FF /* GEAGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = F12BA59F19F6040F00C6B1FF /* GEAGameScene.m */; };
 		F12BA5A419F6040F00C6B1FF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F12BA5A319F6040F00C6B1FF /* Images.xcassets */; };
 		F12BA5AB19F6040F00C6B1FF /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12BA5AA19F6040F00C6B1FF /* XCTest.framework */; };
 		F12BA5AC19F6040F00C6B1FF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12BA58419F6040F00C6B1FF /* Foundation.framework */; };
@@ -51,6 +51,10 @@
 		F1C006BA1A89ADE900E264EC /* GEAMuffinMan.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C006B91A89ADE900E264EC /* GEAMuffinMan.m */; };
 		F1C006BE1A8AF0C500E264EC /* GEAPointMath.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C006BD1A8AF0C500E264EC /* GEAPointMath.m */; };
 		F1C006C21A8B087300E264EC /* GEAConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C006C11A8B087300E264EC /* GEAConstants.m */; };
+		F1C006C61A91936C00E264EC /* GEAStartMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C006C51A91936C00E264EC /* GEAStartMenuScene.m */; };
+		F1C006CD1A91977100E264EC /* settingsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C006C91A91977100E264EC /* settingsButton.png */; };
+		F1C006CE1A91977100E264EC /* startButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C006CB1A91977100E264EC /* startButton.png */; };
+		F1C006D11A919E4E00E264EC /* highScoresButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C006CF1A919E4E00E264EC /* highScoresButton.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,8 +82,8 @@
 		F12BA59919F6040F00C6B1FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F12BA59B19F6040F00C6B1FF /* GEAViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GEAViewController.h; sourceTree = "<group>"; };
 		F12BA59C19F6040F00C6B1FF /* GEAViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GEAViewController.m; sourceTree = "<group>"; };
-		F12BA59E19F6040F00C6B1FF /* GEAMyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GEAMyScene.h; sourceTree = "<group>"; };
-		F12BA59F19F6040F00C6B1FF /* GEAMyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GEAMyScene.m; sourceTree = "<group>"; };
+		F12BA59E19F6040F00C6B1FF /* GEAGameScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GEAGameScene.h; sourceTree = "<group>"; };
+		F12BA59F19F6040F00C6B1FF /* GEAGameScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GEAGameScene.m; sourceTree = "<group>"; };
 		F12BA5A319F6040F00C6B1FF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F12BA5A919F6040F00C6B1FF /* Pie FightTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Pie FightTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F12BA5AA19F6040F00C6B1FF /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -125,6 +129,11 @@
 		F1C006BD1A8AF0C500E264EC /* GEAPointMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GEAPointMath.m; sourceTree = "<group>"; };
 		F1C006C01A8B087300E264EC /* GEAConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GEAConstants.h; sourceTree = "<group>"; };
 		F1C006C11A8B087300E264EC /* GEAConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GEAConstants.m; sourceTree = "<group>"; };
+		F1C006C41A91936C00E264EC /* GEAStartMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GEAStartMenuScene.h; sourceTree = "<group>"; };
+		F1C006C51A91936C00E264EC /* GEAStartMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GEAStartMenuScene.m; sourceTree = "<group>"; };
+		F1C006CA1A91977100E264EC /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/settingsButton.png; sourceTree = "<group>"; };
+		F1C006CC1A91977100E264EC /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/startButton.png; sourceTree = "<group>"; };
+		F1C006D01A919E4E00E264EC /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/highScoresButton.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,8 +205,7 @@
 				F12BA59819F6040F00C6B1FF /* Main.storyboard */,
 				F12BA59B19F6040F00C6B1FF /* GEAViewController.h */,
 				F12BA59C19F6040F00C6B1FF /* GEAViewController.m */,
-				F12BA59E19F6040F00C6B1FF /* GEAMyScene.h */,
-				F12BA59F19F6040F00C6B1FF /* GEAMyScene.m */,
+				F1C006C31A91926200E264EC /* GEA Scenes */,
 				F12BA5A319F6040F00C6B1FF /* Images.xcassets */,
 				F12BA58D19F6040F00C6B1FF /* Supporting Files */,
 			);
@@ -236,16 +244,8 @@
 		F1C006751A6E11D600E264EC /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				F1C006AD1A869CC100E264EC /* muffinStacks */,
-				F1C0067C1A772A8F00E264EC /* muffin.png */,
-				F1C006B51A89A6E500E264EC /* muffinMan.png */,
-				F1C006761A6E137900E264EC /* throwButton.png */,
-				F1C006721A6E11CA00E264EC /* gingerBreadMan.png */,
-				F1C0065A1A61F29800E264EC /* door.png */,
-				F1C006691A63726A00E264EC /* baseCenter.png */,
-				F1C006601A61F70F00E264EC /* closedhole.png */,
-				F1C0066B1A63726A00E264EC /* centerJoystick.png */,
-				F1C006631A61F7FE00E264EC /* openhole.png */,
+				F1C006C81A91972700E264EC /* Menu Images */,
+				F1C006C71A91970A00E264EC /* Game Images */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -313,6 +313,44 @@
 				F1C006C11A8B087300E264EC /* GEAConstants.m */,
 			);
 			name = Constants;
+			sourceTree = "<group>";
+		};
+		F1C006C31A91926200E264EC /* GEA Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				F12BA59F19F6040F00C6B1FF /* GEAGameScene.m */,
+				F12BA59E19F6040F00C6B1FF /* GEAGameScene.h */,
+				F1C006C41A91936C00E264EC /* GEAStartMenuScene.h */,
+				F1C006C51A91936C00E264EC /* GEAStartMenuScene.m */,
+			);
+			name = "GEA Scenes";
+			sourceTree = "<group>";
+		};
+		F1C006C71A91970A00E264EC /* Game Images */ = {
+			isa = PBXGroup;
+			children = (
+				F1C006AD1A869CC100E264EC /* muffinStacks */,
+				F1C0067C1A772A8F00E264EC /* muffin.png */,
+				F1C006B51A89A6E500E264EC /* muffinMan.png */,
+				F1C006761A6E137900E264EC /* throwButton.png */,
+				F1C006721A6E11CA00E264EC /* gingerBreadMan.png */,
+				F1C0065A1A61F29800E264EC /* door.png */,
+				F1C006691A63726A00E264EC /* baseCenter.png */,
+				F1C006601A61F70F00E264EC /* closedhole.png */,
+				F1C0066B1A63726A00E264EC /* centerJoystick.png */,
+				F1C006631A61F7FE00E264EC /* openhole.png */,
+			);
+			name = "Game Images";
+			sourceTree = "<group>";
+		};
+		F1C006C81A91972700E264EC /* Menu Images */ = {
+			isa = PBXGroup;
+			children = (
+				F1C006CF1A919E4E00E264EC /* highScoresButton.png */,
+				F1C006C91A91977100E264EC /* settingsButton.png */,
+				F1C006CB1A91977100E264EC /* startButton.png */,
+			);
+			name = "Menu Images";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -395,6 +433,7 @@
 				F1C006AB1A869CBA00E264EC /* muffinStack7.png in Resources */,
 				F1C006651A61F7FE00E264EC /* openhole.png in Resources */,
 				F12BA59119F6040F00C6B1FF /* InfoPlist.strings in Resources */,
+				F1C006CD1A91977100E264EC /* settingsButton.png in Resources */,
 				F1C006A81A869CBA00E264EC /* muffinStack4.png in Resources */,
 				F1C006A61A869CBA00E264EC /* muffinStack2.png in Resources */,
 				F1C006781A6E137900E264EC /* throwButton.png in Resources */,
@@ -403,11 +442,13 @@
 				F1C006741A6E11CA00E264EC /* gingerBreadMan.png in Resources */,
 				F1C006AA1A869CBA00E264EC /* muffinStack6.png in Resources */,
 				F1C006621A61F70F00E264EC /* closedhole.png in Resources */,
+				F1C006CE1A91977100E264EC /* startButton.png in Resources */,
 				F1C0066D1A63726A00E264EC /* baseCenter.png in Resources */,
 				F12BA59A19F6040F00C6B1FF /* Main.storyboard in Resources */,
 				F1C006B71A89A6E500E264EC /* muffinMan.png in Resources */,
 				F1C006AC1A869CBA00E264EC /* muffinStack8.png in Resources */,
 				F1C0065C1A61F29800E264EC /* door.png in Resources */,
+				F1C006D11A919E4E00E264EC /* highScoresButton.png in Resources */,
 				F1C0067E1A772A8F00E264EC /* muffin.png in Resources */,
 				F1C006A91A869CBA00E264EC /* muffinStack5.png in Resources */,
 				F1C0066E1A63726A00E264EC /* centerJoystick.png in Resources */,
@@ -430,7 +471,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F12BA5A019F6040F00C6B1FF /* GEAMyScene.m in Sources */,
+				F12BA5A019F6040F00C6B1FF /* GEAGameScene.m in Sources */,
 				F1C006711A638FDD00E264EC /* GEAButton.m in Sources */,
 				F1C006941A79DCA000E264EC /* GEADoorNode.m in Sources */,
 				F1C006901A79D7A300E264EC /* GEAHoleNode.m in Sources */,
@@ -442,6 +483,7 @@
 				F12BA59319F6040F00C6B1FF /* main.m in Sources */,
 				F1C006BE1A8AF0C500E264EC /* GEAPointMath.m in Sources */,
 				F1C006911A79D7A300E264EC /* GEARandomizablePositionNode.m in Sources */,
+				F1C006C61A91936C00E264EC /* GEAStartMenuScene.m in Sources */,
 				F1C006681A63656000E264EC /* GEAJoyStick.m in Sources */,
 				F1C006BA1A89ADE900E264EC /* GEAMuffinMan.m in Sources */,
 				F1C006C21A8B087300E264EC /* GEAConstants.m in Sources */,
@@ -627,6 +669,30 @@
 				F1C006B61A89A6E500E264EC /* en */,
 			);
 			name = muffinMan.png;
+			sourceTree = "<group>";
+		};
+		F1C006C91A91977100E264EC /* settingsButton.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1C006CA1A91977100E264EC /* en */,
+			);
+			name = settingsButton.png;
+			sourceTree = "<group>";
+		};
+		F1C006CB1A91977100E264EC /* startButton.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1C006CC1A91977100E264EC /* en */,
+			);
+			name = startButton.png;
+			sourceTree = "<group>";
+		};
+		F1C006CF1A919E4E00E264EC /* highScoresButton.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1C006D01A919E4E00E264EC /* en */,
+			);
+			name = highScoresButton.png;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -1,5 +1,5 @@
 //
-//  GEAMyScene.m
+//  GEAGameScene.m
 //  Pie Fight
 //
 //  Created by Gregory Azuolas on 10/20/14.
@@ -20,7 +20,7 @@
 // Settings R/L handed
 
 
-#import "GEAMyScene.h"
+#import "GEAGameScene.h"
 #import "GEAJoyStick.h"
 #import "GEAButton.h"
 #import "GEAGingerBreadMan.h"
@@ -32,11 +32,11 @@
 #import "GEAConstants.h"
 #include <stdlib.h>
 
-static const int incAmount = 20;
+static const int incAmount = 30;
 static const int controlsHeight = 45;
 static const int speedModifier = 2;
 
-@implementation GEAMyScene{
+@implementation GEAGameScene{
     GEAGingerBreadMan *player;
     GEADoorNode *door;
     int levelNumber;
@@ -44,6 +44,8 @@ static const int speedModifier = 2;
     bool didFlipHolesOnce;
     bool wasThrowPressed;
     bool didUpdateTrajectories;
+    bool shouldGoToNextLevel;
+    bool shouldEndGame;
     NSMutableArray *holes;
     NSMutableArray *muffinStacks;
     NSMutableArray *muffinMen;
@@ -65,6 +67,8 @@ static const int speedModifier = 2;
         didFlipHolesOnce = false;
         wasThrowPressed = false;
         didUpdateTrajectories = false;
+        shouldGoToNextLevel = false;
+        shouldEndGame = false;
         [self addScoreBoard];
         [self addControls];
         [self initializePlayer];
@@ -89,6 +93,9 @@ static const int speedModifier = 2;
     [self resetDoorPosition];
 }
 
+-(void)endGame {
+    //Go to retry menu
+}
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch *touch = [touches anyObject];
@@ -151,13 +158,13 @@ static const int speedModifier = 2;
 }
 
 -(void)resetPlayer {
-    player.position = CGPointMake(self.frame.size.width * 0.9, 0.0);
+    [player setPosition: CGPointMake(self.frame.size.width * 0.9, 0.0)];
     [player randomizeYPositionForIncrements:incAmount andControlsHeight:controlsHeight andSceneHeight: self.frame.size.height];
 }
 
 -(void)clearMuffinMen {
     for (GEAMuffinMan *muffinMan in muffinMen) {
-        [muffinMan removeFromParent];
+        [muffinMan runAction: [SKAction removeFromParent]];
     }
     [muffinMen removeAllObjects];
 }
@@ -193,7 +200,7 @@ static const int speedModifier = 2;
 
 -(void)clearMuffinStacks {
     for (GEAMuffinStackNode *muffinStack in muffinStacks) {
-        [muffinStack removeFromParent];
+        [muffinStack runAction: [SKAction removeFromParent]];
     }
     [muffinStacks removeAllObjects];
 }
@@ -220,7 +227,7 @@ static const int speedModifier = 2;
 
 -(void)clearHoles {
     for (GEAHoleNode *hole in holes) {
-        [hole removeFromParent];
+        [hole runAction: [SKAction removeFromParent] ];
     }
     [holes removeAllObjects];
 }
@@ -234,7 +241,7 @@ static const int speedModifier = 2;
 }
 
 -(void)resetDoorPosition {
-    door.position = CGPointMake(self.frame.size.width * 0.05, 0.0);
+    [door setPosition: CGPointMake(self.frame.size.width * 0.05, 0.0)];
     [door randomizeYPositionForIncrements:incAmount andControlsHeight:controlsHeight andSceneHeight:self.frame.size.height];
 }
 
@@ -265,49 +272,58 @@ static const int speedModifier = 2;
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
-    
+    //i love chithra
    // SKLabelNode *label = (SKLabelNode *)[self childNodeWithName:@"joystickLabel"];
-    
-    if(((int)currentTime % 10) == 1 && !didFlipHolesOnce) {
-        for (GEAHoleNode *hole in holes) {
-            [hole flipFlopHole];
-            [self spawnMuffinMen];
-            didFlipHolesOnce = true;
+    if (shouldEndGame) {
+        [self endGame];
+    } else {
+        if(shouldGoToNextLevel) {
+            //this doesnt seem to work in didBeginContact: bad timing mayhaps?
+            shouldGoToNextLevel = false;
+            [self nextLevel];
+        } else {
+            if(((int)currentTime % 10) == 1 && !didFlipHolesOnce) {
+                for (GEAHoleNode *hole in holes) {
+                    [hole flipFlopHole];
+                    [self spawnMuffinMen];
+                    didFlipHolesOnce = true;
+                }
+            }
+            if(((int)currentTime % 10) == 2){
+                didFlipHolesOnce = false;
+            }
+            
+            if(((int)currentTime % 2) == 1 && !didUpdateTrajectories) {
+                for (GEAMuffinMan *muffinMan in muffinMen) {
+                    [muffinMan moveTowardsLocation:player.position];
+                    didUpdateTrajectories = true;
+                }
+            }
+            if(((int)currentTime % 2) == 0){
+                didUpdateTrajectories = false;
+            }
+            
+            
+            float newPlayerX = (float) player.position.x + joystick.x*speedModifier;
+            float newPlayerY = (float) player.position.y + joystick.y*speedModifier;
+            
+            if((newPlayerX > self.frame.size.width) || (newPlayerX < 0)) {
+                newPlayerX = player.position.x;
+            }
+            if((newPlayerY > self.frame.size.height) || (newPlayerY < 0)) {
+                newPlayerY = player.position.y;
+            }
+           // label.text = [NSString stringWithFormat: @"X: %i, X: %i J: %f", (int)currentTime, ((int)currentTime) % 10, joystick.x*speedModifier];
+            player.position = CGPointMake( newPlayerX, newPlayerY);
+            
+            if (!throwButton.isPressed && wasThrowPressed) {
+                //To do once i can test on phone
+                //[player throwMuffinWithDirectionVectorX: joystick.x andY: joystick.y];
+                [player throwMuffinWithDirectionVectorX: 0.0 andY: 0.3];
+            }
+            wasThrowPressed = throwButton.isPressed;
         }
     }
-    if(((int)currentTime % 10) == 2){
-        didFlipHolesOnce = false;
-    }
-    
-    if(((int)currentTime % 2) == 1 && !didUpdateTrajectories) {
-        for (GEAMuffinMan *muffinMan in muffinMen) {
-            [muffinMan moveTowardsLocation:player.position];
-            didUpdateTrajectories = true;
-        }
-    }
-    if(((int)currentTime % 2) == 0){
-        didUpdateTrajectories = false;
-    }
-    
-    
-    float newPlayerX = (float) player.position.x + joystick.x*speedModifier;
-    float newPlayerY = (float) player.position.y + joystick.y*speedModifier;
-    
-    if((newPlayerX > self.frame.size.width) || (newPlayerX < 0)) {
-        newPlayerX = player.position.x;
-    }
-    if((newPlayerY > self.frame.size.height) || (newPlayerY < 0)) {
-        newPlayerY = player.position.y;
-    }
-   // label.text = [NSString stringWithFormat: @"X: %i, X: %i J: %f", (int)currentTime, ((int)currentTime) % 10, joystick.x*speedModifier];
-    player.position = CGPointMake( newPlayerX, newPlayerY);
-    
-    if (!throwButton.isPressed && wasThrowPressed) {
-        //To do once i can test on phone
-        //[player throwMuffinWithDirectionVectorX: joystick.x andY: joystick.y];
-        [player throwMuffinWithDirectionVectorX: 0.0 andY: 0.3];
-    }
-    wasThrowPressed = throwButton.isPressed;
 }
 
 - (void)didBeginContact:(SKPhysicsContact *)contact {
@@ -319,6 +335,7 @@ static const int speedModifier = 2;
         [(GEAGingerBreadMan*) contact.bodyB.node pickupMuffinFromMuffinStack: (GEAMuffinStackNode*) contact.bodyA.node ];
 
     }
+    
     if((contact.bodyA.categoryBitMask == muffinCategory && contact.bodyB.categoryBitMask == enemyCategory)||
        (contact.bodyB.categoryBitMask == muffinCategory && contact.bodyA.categoryBitMask == enemyCategory))
     {
@@ -326,6 +343,15 @@ static const int speedModifier = 2;
         [contact.bodyA.node removeFromParent];
         [contact.bodyB.node removeFromParent];
     }
+    
+    if( (contact.bodyA.categoryBitMask == playerCategory && contact.bodyB.categoryBitMask == doorCategory) || (contact.bodyA.categoryBitMask == doorCategory && contact.bodyB.categoryBitMask == playerCategory)) {
+        shouldGoToNextLevel = true;
+    }
+    
+    if ( (contact.bodyA.categoryBitMask == enemyCategory && contact.bodyB.categoryBitMask == playerCategory) || (contact.bodyB.categoryBitMask == enemyCategory && contact.bodyA.categoryBitMask == playerCategory)) {
+        shouldEndGame = true;
+    }
+    
     
 }
 

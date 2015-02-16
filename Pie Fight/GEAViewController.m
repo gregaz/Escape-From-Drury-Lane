@@ -7,7 +7,8 @@
 //
 
 #import "GEAViewController.h"
-#import "GEAMyScene.h"
+#import "GEAGameScene.h"
+#import "GEAStartMenuScene.h"
 
 @implementation GEAViewController
 
@@ -21,7 +22,7 @@
         skView.showsNodeCount = YES;
         
         // Create and configure the scene.
-        SKScene * scene = [GEAMyScene sceneWithSize:skView.bounds.size];
+        SKScene * scene = [GEAStartMenuScene sceneWithSize:skView.bounds.size];
         scene.scaleMode = SKSceneScaleModeAspectFill;
         
         // Present the scene.
