@@ -37,6 +37,11 @@
 		F148258E1A9D77C0006EDFE3 /* Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F14825831A9D77C0006EDFE3 /* Icon-76@2x.png */; };
 		F148258F1A9D77C0006EDFE3 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F14825841A9D77C0006EDFE3 /* iTunesArtwork@2x.png */; };
 		F14825951AA221B6006EDFE3 /* backButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F14825931AA221B6006EDFE3 /* backButton.png */; };
+		F14825981AA240AE006EDFE3 /* GEAButtonEnabledScene.m in Sources */ = {isa = PBXBuildFile; fileRef = F14825971AA240AE006EDFE3 /* GEAButtonEnabledScene.m */; };
+		F148259D1AA24511006EDFE3 /* leftHandedButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F14825991AA24511006EDFE3 /* leftHandedButton.png */; };
+		F148259E1AA24511006EDFE3 /* rightHandedButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F148259B1AA24511006EDFE3 /* rightHandedButton.png */; };
+		F14825A31AA24649006EDFE3 /* leftHandedSelectedButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F148259F1AA24649006EDFE3 /* leftHandedSelectedButton.png */; };
+		F14825A41AA24649006EDFE3 /* rightHandedSelectedButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F14825A11AA24649006EDFE3 /* rightHandedSelectedButton.png */; };
 		F1C0065C1A61F29800E264EC /* door.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C0065A1A61F29800E264EC /* door.png */; };
 		F1C006621A61F70F00E264EC /* closedhole.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C006601A61F70F00E264EC /* closedhole.png */; };
 		F1C006651A61F7FE00E264EC /* openhole.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C006631A61F7FE00E264EC /* openhole.png */; };
@@ -120,6 +125,12 @@
 		F14825831A9D77C0006EDFE3 /* Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-76@2x.png"; path = "Icon Pics/Icon-76@2x.png"; sourceTree = "<group>"; };
 		F14825841A9D77C0006EDFE3 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iTunesArtwork@2x.png"; path = "Icon Pics/iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		F14825941AA221B6006EDFE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/backButton.png; sourceTree = "<group>"; };
+		F14825961AA240AE006EDFE3 /* GEAButtonEnabledScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GEAButtonEnabledScene.h; sourceTree = "<group>"; };
+		F14825971AA240AE006EDFE3 /* GEAButtonEnabledScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GEAButtonEnabledScene.m; sourceTree = "<group>"; };
+		F148259A1AA24511006EDFE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/leftHandedButton.png; sourceTree = "<group>"; };
+		F148259C1AA24511006EDFE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/rightHandedButton.png; sourceTree = "<group>"; };
+		F14825A01AA24649006EDFE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/leftHandedSelectedButton.png; sourceTree = "<group>"; };
+		F14825A21AA24649006EDFE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/rightHandedSelectedButton.png; sourceTree = "<group>"; };
 		F1C0065B1A61F29800E264EC /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/door.png; sourceTree = "<group>"; };
 		F1C006611A61F70F00E264EC /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "Pie Fight/en.lproj/closedhole.png"; sourceTree = "<group>"; };
 		F1C006641A61F7FE00E264EC /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "Pie Fight/en.lproj/openhole.png"; sourceTree = "<group>"; };
@@ -389,6 +400,8 @@
 				F1C006D31A91A72000E264EC /* GEASettingsScene.m */,
 				F1C006D51A91A74900E264EC /* GEAHighScoreScene.h */,
 				F1C006D61A91A74900E264EC /* GEAHighScoreScene.m */,
+				F14825961AA240AE006EDFE3 /* GEAButtonEnabledScene.h */,
+				F14825971AA240AE006EDFE3 /* GEAButtonEnabledScene.m */,
 			);
 			name = "GEA Scenes";
 			sourceTree = "<group>";
@@ -412,6 +425,10 @@
 		F1C006C81A91972700E264EC /* Menu Images */ = {
 			isa = PBXGroup;
 			children = (
+				F148259F1AA24649006EDFE3 /* leftHandedSelectedButton.png */,
+				F14825A11AA24649006EDFE3 /* rightHandedSelectedButton.png */,
+				F14825991AA24511006EDFE3 /* leftHandedButton.png */,
+				F148259B1AA24511006EDFE3 /* rightHandedButton.png */,
 				F14825931AA221B6006EDFE3 /* backButton.png */,
 				F14825701A9C1180006EDFE3 /* retryButton.png */,
 				F1C006CF1A919E4E00E264EC /* highScoresButton.png */,
@@ -528,7 +545,11 @@
 				F14825851A9D77C0006EDFE3 /* Icon-29.png in Resources */,
 				F1C006B71A89A6E500E264EC /* muffinMan.png in Resources */,
 				F14825861A9D77C0006EDFE3 /* Icon-29@2x.png in Resources */,
+				F14825A31AA24649006EDFE3 /* leftHandedSelectedButton.png in Resources */,
 				F1C006AC1A869CBA00E264EC /* muffinStack8.png in Resources */,
+				F14825A41AA24649006EDFE3 /* rightHandedSelectedButton.png in Resources */,
+				F148259E1AA24511006EDFE3 /* rightHandedButton.png in Resources */,
+				F148259D1AA24511006EDFE3 /* leftHandedButton.png in Resources */,
 				F1C0065C1A61F29800E264EC /* door.png in Resources */,
 				F14825881A9D77C0006EDFE3 /* Icon-40.png in Resources */,
 				F1C006D11A919E4E00E264EC /* highScoresButton.png in Resources */,
@@ -559,6 +580,7 @@
 				F12BA5A019F6040F00C6B1FF /* GEAGameScene.m in Sources */,
 				F1C006711A638FDD00E264EC /* GEAButton.m in Sources */,
 				F1C006941A79DCA000E264EC /* GEADoorNode.m in Sources */,
+				F14825981AA240AE006EDFE3 /* GEAButtonEnabledScene.m in Sources */,
 				F1C006901A79D7A300E264EC /* GEAHoleNode.m in Sources */,
 				F1C006D41A91A72000E264EC /* GEASettingsScene.m in Sources */,
 				F12BA59719F6040F00C6B1FF /* GEAAppDelegate.m in Sources */,
@@ -642,6 +664,38 @@
 				F14825941AA221B6006EDFE3 /* en */,
 			);
 			name = backButton.png;
+			sourceTree = "<group>";
+		};
+		F14825991AA24511006EDFE3 /* leftHandedButton.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F148259A1AA24511006EDFE3 /* en */,
+			);
+			name = leftHandedButton.png;
+			sourceTree = "<group>";
+		};
+		F148259B1AA24511006EDFE3 /* rightHandedButton.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F148259C1AA24511006EDFE3 /* en */,
+			);
+			name = rightHandedButton.png;
+			sourceTree = "<group>";
+		};
+		F148259F1AA24649006EDFE3 /* leftHandedSelectedButton.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F14825A01AA24649006EDFE3 /* en */,
+			);
+			name = leftHandedSelectedButton.png;
+			sourceTree = "<group>";
+		};
+		F14825A11AA24649006EDFE3 /* rightHandedSelectedButton.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F14825A21AA24649006EDFE3 /* en */,
+			);
+			name = rightHandedSelectedButton.png;
 			sourceTree = "<group>";
 		};
 		F1C0065A1A61F29800E264EC /* door.png */ = {

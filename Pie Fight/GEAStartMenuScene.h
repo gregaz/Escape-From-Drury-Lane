@@ -7,7 +7,8 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "GEAButtonEnabledScene.h"
 
-@interface GEAStartMenuScene : SKScene
+@interface GEAStartMenuScene : GEAButtonEnabledScene
 
 @end

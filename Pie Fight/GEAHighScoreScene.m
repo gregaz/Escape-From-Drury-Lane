@@ -11,7 +11,6 @@
 #import "GEAStartMenuScene.h"
 
 @implementation GEAHighScoreScene {
-    bool wasBackPressed;
     GEAButton *backButton;
 }
 
@@ -72,14 +71,12 @@
 
 
 -(void)update:(CFTimeInterval)currentTime {
-    if (!backButton.isPressed && wasBackPressed) {
+    if ([backButton shouldActionPress]) {
         GEAStartMenuScene* startScene = [GEAStartMenuScene sceneWithSize:self.view.bounds.size];
         startScene.scaleMode = SKSceneScaleModeAspectFill;
         [self.view presentScene: startScene];
     }
-    wasBackPressed = backButton.isPressed;
-    
-    
+    [super update: currentTime];
 }
 
 @end

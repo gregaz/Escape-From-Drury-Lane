@@ -8,7 +8,9 @@
 
 #import "GEAButton.h"
 
-@implementation GEAButton
+@implementation GEAButton {
+    bool wasPressed;
+}
 
 -(id) initWithButtonImageNamed: (NSString *) buttonImage {
     self = [super initWithImageNamed: buttonImage];
@@ -30,6 +32,21 @@
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     [super touchesEnded:touches withEvent:event];
     self.isPressed = false;
+}
+
+//This must be called every time a scene is updated for the button to work properly (at the end of update)
+//Make your scene be a subclass of GEAButtonEnabledScene and implement the update method as follows to use these buttons:
+//-(void)update:(CFTimeInterval)currentTime {
+//  <YOUR UPDATE CODE HERE>
+//[super update:currentTime];
+//}
+-(void) updateButtonStatus {
+    wasPressed = self.isPressed;
+}
+
+//Call this to check if you should action something based on button input (needs updateButtonStatus to work)
+-(bool) shouldActionPress {
+    return wasPressed && !self.isPressed;
 }
 
 @end

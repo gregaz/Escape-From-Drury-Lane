@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 Gregory Azuolas. All rights reserved.
 //
 // TODO:
-// High Scores
-// Settings screen - R/L handed
 // Fix hole/muffinstack placement bug
 // Add background/controls border
 // Ads between screens
@@ -40,11 +38,9 @@ static const int speedModifier = 2;
     int levelNumber;
     int score;
     bool didFlipHolesOnce;
-    bool wasThrowPressed;
     bool didUpdateTrajectories;
     bool shouldGoToNextLevel;
     bool shouldEndGame;
-    bool wasRetryPressed;
     bool hasGameEnded;
     NSMutableArray *holes;
     NSMutableArray *muffinStacks;
@@ -66,11 +62,9 @@ static const int speedModifier = 2;
         muffinStacks = [NSMutableArray array];
         muffinMen = [NSMutableArray array];
         didFlipHolesOnce = false;
-        wasThrowPressed = false;
         didUpdateTrajectories = false;
         shouldGoToNextLevel = false;
         shouldEndGame = false;
-        wasRetryPressed = false;
         hasGameEnded = false;
         [self addScoreBoard];
         [self addControls];
@@ -171,14 +165,28 @@ static const int speedModifier = 2;
 }
 
 -(void)addControls {
+    float joystickX;
+    float throwButtonX;
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString* handedness = [defaults stringForKey:@"handedness"];
+    
+    if([handedness isEqualToString: @"right" ]) {
+        joystickX = 0.8;
+        throwButtonX = 0.2;
+    } else {
+        joystickX = 0.2;
+        throwButtonX = 0.8;
+    }
+    
     joystick = [[GEAJoyStick alloc] initWithJoystickImage: @"centerJoystick.png" baseImage: @"baseCenter.png"];
-    [joystick setPosition:CGPointMake(self.frame.size.width*0.2,self.frame.size.height*0.1)];
+    [joystick setPosition:CGPointMake(self.frame.size.width*joystickX,self.frame.size.height*0.1)];
     [self addChild: joystick];
     
     throwButton = [[GEAButton alloc] initWithButtonImageNamed:@"throwButton.png"];
     [throwButton setName: @"throwButton"];
     [throwButton setScale: .6];
-    [throwButton setPosition: CGPointMake(self.frame.size.width*0.8,self.frame.size.height*0.1)];
+    [throwButton setPosition: CGPointMake(self.frame.size.width*throwButtonX,self.frame.size.height*0.1)];
     [self addChild:throwButton];
 }
 
@@ -316,12 +324,11 @@ static const int speedModifier = 2;
     /* Called before each frame is rendered */
    // SKLabelNode *label = (SKLabelNode *)[self childNodeWithName:@"joystickLabel"];
     if (hasGameEnded) {
-        if (!retryButton.isPressed && wasRetryPressed) {
+        if ([retryButton shouldActionPress]) {
             GEAStartMenuScene *startScene = [GEAStartMenuScene sceneWithSize:self.view.bounds.size];
             startScene.scaleMode = SKSceneScaleModeAspectFill;
             [self.view presentScene: startScene];
         }
-        wasRetryPressed = retryButton.isPressed;
     } else {
         if (shouldEndGame) {
             [self endGame];
@@ -365,15 +372,14 @@ static const int speedModifier = 2;
                // label.text = [NSString stringWithFormat: @"X: %i, X: %i J: %f", (int)currentTime, ((int)currentTime) % 10, joystick.x*speedModifier];
                 player.position = CGPointMake( newPlayerX, newPlayerY);
                 
-                if (!throwButton.isPressed && wasThrowPressed) {
-                    //To do once i can test on phone
+                if ([throwButton shouldActionPress]) {
                     [player throwMuffinWithDirectionVectorX: joystick.x andY: joystick.y];
                     //[player throwMuffinWithDirectionVectorX: 0.0 andY: 0.3];
                 }
-                wasThrowPressed = throwButton.isPressed;
             }
         }
     }
+    [super update:currentTime];
 }
 
 - (void)didBeginContact:(SKPhysicsContact *)contact {

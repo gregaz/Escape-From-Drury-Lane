@@ -11,7 +11,10 @@
 @interface GEAButton : SKSpriteNode
 
 -(id) initWithButtonImageNamed: (NSString *) buttonImage;
+-(void) updateButtonStatus;
+-(bool) shouldActionPress;
 
 @property bool isPressed;
+
 
 @end

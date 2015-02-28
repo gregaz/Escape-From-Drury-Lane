@@ -13,9 +13,6 @@
 #import "GEASettingsScene.h"
 
 @implementation GEAStartMenuScene {
-    bool wasStartPressed;
-    bool wasSettingsPressed;
-    bool wasHighScoresPressed;
     GEAButton *startButton;
     GEAButton *settingsButton;
     GEAButton *highScoresButton;
@@ -27,13 +24,19 @@
         self.backgroundColor = [SKColor blackColor];
         //Making self delegate of physics World
         self.physicsWorld.gravity = CGVectorMake(0,0);
-        wasStartPressed = false;
-        wasSettingsPressed = false;
-        wasHighScoresPressed = false;
+        [self initUserDefaults];
         [self initMenuButtons];
         [self initMenuLabels];
     }
     return self;
+}
+
+-(void) initUserDefaults {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if([defaults stringForKey:@"handedness"] == nil) {
+        [defaults setObject: @"right" forKey: @"handedness"];
+        [defaults synchronize];
+    }
 }
 
 -(void)initMenuButtons {
@@ -75,26 +78,25 @@
 }
 
 -(void)update:(CFTimeInterval)currentTime {
-    if (!startButton.isPressed && wasStartPressed) {
+    if ( [startButton shouldActionPress]) {
         GEAGameScene* gameScene = [GEAGameScene sceneWithSize:self.view.bounds.size];
         gameScene.scaleMode = SKSceneScaleModeAspectFill;
         [self.view presentScene: gameScene];
     }
-    wasStartPressed = startButton.isPressed;
     
-    
-    if (!settingsButton.isPressed && wasSettingsPressed) {
-        //todo
+    if ([settingsButton shouldActionPress]) {
+        GEASettingsScene* settingsScene = [GEASettingsScene sceneWithSize:self.view.bounds.size];
+        settingsScene.scaleMode = SKSceneScaleModeAspectFill;
+        [self.view presentScene: settingsScene];
     }
-    wasSettingsPressed = settingsButton.isPressed;
     
-    
-    if (!highScoresButton.isPressed && wasHighScoresPressed) {
+    if ([highScoresButton shouldActionPress]) {
         GEAHighScoreScene* highScoreScene = [GEAHighScoreScene sceneWithSize:self.view.bounds.size];
         highScoreScene.scaleMode = SKSceneScaleModeAspectFill;
         [self.view presentScene: highScoreScene];
     }
-    wasHighScoresPressed = highScoresButton.isPressed;
+    
+    [super update:currentTime];
     
 
 }
