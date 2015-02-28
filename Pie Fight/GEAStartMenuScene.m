@@ -9,6 +9,8 @@
 #import "GEAStartMenuScene.h"
 #import "GEAButton.h"
 #import "GEAGameScene.h"
+#import "GEAHighScoreScene.h"
+#import "GEASettingsScene.h"
 
 @implementation GEAStartMenuScene {
     bool wasStartPressed;
@@ -63,13 +65,13 @@
 }
 
 -(void) initMenuLabels {
-    SKLabelNode *scoreLabel = [SKLabelNode labelNodeWithFontNamed: @"Arial"];
-    scoreLabel.position = CGPointMake(self.frame.size.width*0.5,self.frame.size.height*0.75);
-    scoreLabel.fontSize = 50;
-    scoreLabel.fontColor = [UIColor whiteColor];
-    scoreLabel.text = @"Escape from Drury Lane";
-    scoreLabel.name = @"Title";
-    [self addChild:scoreLabel];
+    SKLabelNode *titleLabel = [SKLabelNode labelNodeWithFontNamed: @"Arial"];
+    titleLabel.position = CGPointMake(self.frame.size.width*0.5,self.frame.size.height*0.75);
+    titleLabel.fontSize = 50;
+    titleLabel.fontColor = [UIColor whiteColor];
+    titleLabel.text = @"Escape from Drury Lane";
+    titleLabel.name = @"Title";
+    [self addChild: titleLabel];
 }
 
 -(void)update:(CFTimeInterval)currentTime {
@@ -88,7 +90,9 @@
     
     
     if (!highScoresButton.isPressed && wasHighScoresPressed) {
-        //todo
+        GEAHighScoreScene* highScoreScene = [GEAHighScoreScene sceneWithSize:self.view.bounds.size];
+        highScoreScene.scaleMode = SKSceneScaleModeAspectFill;
+        [self.view presentScene: highScoreScene];
     }
     wasHighScoresPressed = highScoresButton.isPressed;
     

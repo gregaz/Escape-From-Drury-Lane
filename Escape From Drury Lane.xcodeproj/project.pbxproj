@@ -23,6 +23,20 @@
 		F12BA5AD19F6040F00C6B1FF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12BA58819F6040F00C6B1FF /* UIKit.framework */; };
 		F12BA5B519F6040F00C6B1FF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F12BA5B319F6040F00C6B1FF /* InfoPlist.strings */; };
 		F12BA5B719F6040F00C6B1FF /* Pie_FightTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F12BA5B619F6040F00C6B1FF /* Pie_FightTests.m */; };
+		F14825721A9C1180006EDFE3 /* retryButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F14825701A9C1180006EDFE3 /* retryButton.png */; };
+		F14825781A9D61C7006EDFE3 /* gingerBreadManWithMuffin.png in Resources */ = {isa = PBXBuildFile; fileRef = F14825761A9D61C7006EDFE3 /* gingerBreadManWithMuffin.png */; };
+		F14825851A9D77C0006EDFE3 /* Icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = F148257A1A9D77C0006EDFE3 /* Icon-29.png */; };
+		F14825861A9D77C0006EDFE3 /* Icon-29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F148257B1A9D77C0006EDFE3 /* Icon-29@2x.png */; };
+		F14825871A9D77C0006EDFE3 /* Icon-29@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F148257C1A9D77C0006EDFE3 /* Icon-29@3x.png */; };
+		F14825881A9D77C0006EDFE3 /* Icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = F148257D1A9D77C0006EDFE3 /* Icon-40.png */; };
+		F14825891A9D77C0006EDFE3 /* Icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F148257E1A9D77C0006EDFE3 /* Icon-40@2x.png */; };
+		F148258A1A9D77C0006EDFE3 /* Icon-40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F148257F1A9D77C0006EDFE3 /* Icon-40@3x.png */; };
+		F148258B1A9D77C0006EDFE3 /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F14825801A9D77C0006EDFE3 /* Icon-60@2x.png */; };
+		F148258C1A9D77C0006EDFE3 /* Icon-60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F14825811A9D77C0006EDFE3 /* Icon-60@3x.png */; };
+		F148258D1A9D77C0006EDFE3 /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = F14825821A9D77C0006EDFE3 /* Icon-76.png */; };
+		F148258E1A9D77C0006EDFE3 /* Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F14825831A9D77C0006EDFE3 /* Icon-76@2x.png */; };
+		F148258F1A9D77C0006EDFE3 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F14825841A9D77C0006EDFE3 /* iTunesArtwork@2x.png */; };
+		F14825951AA221B6006EDFE3 /* backButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F14825931AA221B6006EDFE3 /* backButton.png */; };
 		F1C0065C1A61F29800E264EC /* door.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C0065A1A61F29800E264EC /* door.png */; };
 		F1C006621A61F70F00E264EC /* closedhole.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C006601A61F70F00E264EC /* closedhole.png */; };
 		F1C006651A61F7FE00E264EC /* openhole.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C006631A61F7FE00E264EC /* openhole.png */; };
@@ -70,15 +84,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		F12BA58119F6040F00C6B1FF /* Pie Fight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pie Fight.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F12BA58119F6040F00C6B1FF /* Escape From Drury Lane.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Escape From Drury Lane.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F12BA58419F6040F00C6B1FF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F12BA58619F6040F00C6B1FF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		F12BA58819F6040F00C6B1FF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F12BA58A19F6040F00C6B1FF /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
-		F12BA58E19F6040F00C6B1FF /* Pie Fight-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Pie Fight-Info.plist"; sourceTree = "<group>"; };
+		F12BA58E19F6040F00C6B1FF /* Escape From Drury Lane-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Escape From Drury Lane-Info.plist"; sourceTree = "<group>"; };
 		F12BA59019F6040F00C6B1FF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F12BA59219F6040F00C6B1FF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		F12BA59419F6040F00C6B1FF /* Pie Fight-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pie Fight-Prefix.pch"; sourceTree = "<group>"; };
+		F12BA59419F6040F00C6B1FF /* Escape From Drury Lane-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Escape From Drury Lane-Prefix.pch"; sourceTree = "<group>"; };
 		F12BA59519F6040F00C6B1FF /* GEAAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GEAAppDelegate.h; sourceTree = "<group>"; };
 		F12BA59619F6040F00C6B1FF /* GEAAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GEAAppDelegate.m; sourceTree = "<group>"; };
 		F12BA59919F6040F00C6B1FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -87,11 +101,25 @@
 		F12BA59E19F6040F00C6B1FF /* GEAGameScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GEAGameScene.h; sourceTree = "<group>"; };
 		F12BA59F19F6040F00C6B1FF /* GEAGameScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GEAGameScene.m; sourceTree = "<group>"; };
 		F12BA5A319F6040F00C6B1FF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		F12BA5A919F6040F00C6B1FF /* Pie FightTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Pie FightTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F12BA5A919F6040F00C6B1FF /* Escape From Drury LaneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Escape From Drury LaneTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F12BA5AA19F6040F00C6B1FF /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		F12BA5B219F6040F00C6B1FF /* Pie FightTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Pie FightTests-Info.plist"; sourceTree = "<group>"; };
+		F12BA5B219F6040F00C6B1FF /* Escape From Drury LaneTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Escape From Drury LaneTests-Info.plist"; sourceTree = "<group>"; };
 		F12BA5B419F6040F00C6B1FF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F12BA5B619F6040F00C6B1FF /* Pie_FightTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Pie_FightTests.m; sourceTree = "<group>"; };
+		F14825711A9C1180006EDFE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/retryButton.png; sourceTree = "<group>"; };
+		F14825771A9D61C7006EDFE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/gingerBreadManWithMuffin.png; sourceTree = "<group>"; };
+		F148257A1A9D77C0006EDFE3 /* Icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-29.png"; path = "Icon Pics/Icon-29.png"; sourceTree = "<group>"; };
+		F148257B1A9D77C0006EDFE3 /* Icon-29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-29@2x.png"; path = "Icon Pics/Icon-29@2x.png"; sourceTree = "<group>"; };
+		F148257C1A9D77C0006EDFE3 /* Icon-29@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-29@3x.png"; path = "Icon Pics/Icon-29@3x.png"; sourceTree = "<group>"; };
+		F148257D1A9D77C0006EDFE3 /* Icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-40.png"; path = "Icon Pics/Icon-40.png"; sourceTree = "<group>"; };
+		F148257E1A9D77C0006EDFE3 /* Icon-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-40@2x.png"; path = "Icon Pics/Icon-40@2x.png"; sourceTree = "<group>"; };
+		F148257F1A9D77C0006EDFE3 /* Icon-40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-40@3x.png"; path = "Icon Pics/Icon-40@3x.png"; sourceTree = "<group>"; };
+		F14825801A9D77C0006EDFE3 /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-60@2x.png"; path = "Icon Pics/Icon-60@2x.png"; sourceTree = "<group>"; };
+		F14825811A9D77C0006EDFE3 /* Icon-60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-60@3x.png"; path = "Icon Pics/Icon-60@3x.png"; sourceTree = "<group>"; };
+		F14825821A9D77C0006EDFE3 /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-76.png"; path = "Icon Pics/Icon-76.png"; sourceTree = "<group>"; };
+		F14825831A9D77C0006EDFE3 /* Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-76@2x.png"; path = "Icon Pics/Icon-76@2x.png"; sourceTree = "<group>"; };
+		F14825841A9D77C0006EDFE3 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iTunesArtwork@2x.png"; path = "Icon Pics/iTunesArtwork@2x.png"; sourceTree = "<group>"; };
+		F14825941AA221B6006EDFE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/backButton.png; sourceTree = "<group>"; };
 		F1C0065B1A61F29800E264EC /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/door.png; sourceTree = "<group>"; };
 		F1C006611A61F70F00E264EC /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "Pie Fight/en.lproj/closedhole.png"; sourceTree = "<group>"; };
 		F1C006641A61F7FE00E264EC /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "Pie Fight/en.lproj/openhole.png"; sourceTree = "<group>"; };
@@ -180,8 +208,8 @@
 		F12BA58219F6040F00C6B1FF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F12BA58119F6040F00C6B1FF /* Pie Fight.app */,
-				F12BA5A919F6040F00C6B1FF /* Pie FightTests.xctest */,
+				F12BA58119F6040F00C6B1FF /* Escape From Drury Lane.app */,
+				F12BA5A919F6040F00C6B1FF /* Escape From Drury LaneTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -221,10 +249,10 @@
 		F12BA58D19F6040F00C6B1FF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				F12BA58E19F6040F00C6B1FF /* Pie Fight-Info.plist */,
+				F12BA58E19F6040F00C6B1FF /* Escape From Drury Lane-Info.plist */,
 				F12BA58F19F6040F00C6B1FF /* InfoPlist.strings */,
 				F12BA59219F6040F00C6B1FF /* main.m */,
-				F12BA59419F6040F00C6B1FF /* Pie Fight-Prefix.pch */,
+				F12BA59419F6040F00C6B1FF /* Escape From Drury Lane-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -241,15 +269,44 @@
 		F12BA5B119F6040F00C6B1FF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				F12BA5B219F6040F00C6B1FF /* Pie FightTests-Info.plist */,
+				F12BA5B219F6040F00C6B1FF /* Escape From Drury LaneTests-Info.plist */,
 				F12BA5B319F6040F00C6B1FF /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		F148256F1A9C0DA7006EDFE3 /* Controls Images */ = {
+			isa = PBXGroup;
+			children = (
+				F1C006761A6E137900E264EC /* throwButton.png */,
+				F1C006691A63726A00E264EC /* baseCenter.png */,
+				F1C0066B1A63726A00E264EC /* centerJoystick.png */,
+			);
+			name = "Controls Images";
+			sourceTree = "<group>";
+		};
+		F14825791A9D7791006EDFE3 /* Icon Images */ = {
+			isa = PBXGroup;
+			children = (
+				F148257A1A9D77C0006EDFE3 /* Icon-29.png */,
+				F148257B1A9D77C0006EDFE3 /* Icon-29@2x.png */,
+				F148257C1A9D77C0006EDFE3 /* Icon-29@3x.png */,
+				F148257D1A9D77C0006EDFE3 /* Icon-40.png */,
+				F148257E1A9D77C0006EDFE3 /* Icon-40@2x.png */,
+				F148257F1A9D77C0006EDFE3 /* Icon-40@3x.png */,
+				F14825801A9D77C0006EDFE3 /* Icon-60@2x.png */,
+				F14825811A9D77C0006EDFE3 /* Icon-60@3x.png */,
+				F14825821A9D77C0006EDFE3 /* Icon-76.png */,
+				F14825831A9D77C0006EDFE3 /* Icon-76@2x.png */,
+				F14825841A9D77C0006EDFE3 /* iTunesArtwork@2x.png */,
+			);
+			name = "Icon Images";
+			sourceTree = "<group>";
+		};
 		F1C006751A6E11D600E264EC /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				F14825791A9D7791006EDFE3 /* Icon Images */,
 				F1C006C81A91972700E264EC /* Menu Images */,
 				F1C006C71A91970A00E264EC /* Game Images */,
 			);
@@ -340,15 +397,14 @@
 			isa = PBXGroup;
 			children = (
 				F1C006AD1A869CC100E264EC /* muffinStacks */,
-				F1C0067C1A772A8F00E264EC /* muffin.png */,
+				F148256F1A9C0DA7006EDFE3 /* Controls Images */,
 				F1C006B51A89A6E500E264EC /* muffinMan.png */,
-				F1C006761A6E137900E264EC /* throwButton.png */,
+				F14825761A9D61C7006EDFE3 /* gingerBreadManWithMuffin.png */,
 				F1C006721A6E11CA00E264EC /* gingerBreadMan.png */,
 				F1C0065A1A61F29800E264EC /* door.png */,
-				F1C006691A63726A00E264EC /* baseCenter.png */,
 				F1C006601A61F70F00E264EC /* closedhole.png */,
-				F1C0066B1A63726A00E264EC /* centerJoystick.png */,
 				F1C006631A61F7FE00E264EC /* openhole.png */,
+				F1C0067C1A772A8F00E264EC /* muffin.png */,
 			);
 			name = "Game Images";
 			sourceTree = "<group>";
@@ -356,6 +412,8 @@
 		F1C006C81A91972700E264EC /* Menu Images */ = {
 			isa = PBXGroup;
 			children = (
+				F14825931AA221B6006EDFE3 /* backButton.png */,
+				F14825701A9C1180006EDFE3 /* retryButton.png */,
 				F1C006CF1A919E4E00E264EC /* highScoresButton.png */,
 				F1C006C91A91977100E264EC /* settingsButton.png */,
 				F1C006CB1A91977100E264EC /* startButton.png */,
@@ -366,9 +424,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F12BA58019F6040F00C6B1FF /* Pie Fight */ = {
+		F12BA58019F6040F00C6B1FF /* Escape From Drury Lane */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F12BA5BA19F6040F00C6B1FF /* Build configuration list for PBXNativeTarget "Pie Fight" */;
+			buildConfigurationList = F12BA5BA19F6040F00C6B1FF /* Build configuration list for PBXNativeTarget "Escape From Drury Lane" */;
 			buildPhases = (
 				F12BA57D19F6040F00C6B1FF /* Sources */,
 				F12BA57E19F6040F00C6B1FF /* Frameworks */,
@@ -378,14 +436,14 @@
 			);
 			dependencies = (
 			);
-			name = "Pie Fight";
+			name = "Escape From Drury Lane";
 			productName = "Pie Fight";
-			productReference = F12BA58119F6040F00C6B1FF /* Pie Fight.app */;
+			productReference = F12BA58119F6040F00C6B1FF /* Escape From Drury Lane.app */;
 			productType = "com.apple.product-type.application";
 		};
-		F12BA5A819F6040F00C6B1FF /* Pie FightTests */ = {
+		F12BA5A819F6040F00C6B1FF /* Escape From Drury LaneTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F12BA5BD19F6040F00C6B1FF /* Build configuration list for PBXNativeTarget "Pie FightTests" */;
+			buildConfigurationList = F12BA5BD19F6040F00C6B1FF /* Build configuration list for PBXNativeTarget "Escape From Drury LaneTests" */;
 			buildPhases = (
 				F12BA5A519F6040F00C6B1FF /* Sources */,
 				F12BA5A619F6040F00C6B1FF /* Frameworks */,
@@ -396,9 +454,9 @@
 			dependencies = (
 				F12BA5AF19F6040F00C6B1FF /* PBXTargetDependency */,
 			);
-			name = "Pie FightTests";
+			name = "Escape From Drury LaneTests";
 			productName = "Pie FightTests";
-			productReference = F12BA5A919F6040F00C6B1FF /* Pie FightTests.xctest */;
+			productReference = F12BA5A919F6040F00C6B1FF /* Escape From Drury LaneTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -411,12 +469,15 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Gregory Azuolas";
 				TargetAttributes = {
+					F12BA58019F6040F00C6B1FF = {
+						DevelopmentTeam = 3262ELB244;
+					};
 					F12BA5A819F6040F00C6B1FF = {
 						TestTargetID = F12BA58019F6040F00C6B1FF;
 					};
 				};
 			};
-			buildConfigurationList = F12BA57C19F6040E00C6B1FF /* Build configuration list for PBXProject "Pie Fight" */;
+			buildConfigurationList = F12BA57C19F6040E00C6B1FF /* Build configuration list for PBXProject "Escape From Drury Lane" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -429,8 +490,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F12BA58019F6040F00C6B1FF /* Pie Fight */,
-				F12BA5A819F6040F00C6B1FF /* Pie FightTests */,
+				F12BA58019F6040F00C6B1FF /* Escape From Drury Lane */,
+				F12BA5A819F6040F00C6B1FF /* Escape From Drury LaneTests */,
 			);
 		};
 /* End PBXProject section */
@@ -441,24 +502,38 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1C006AB1A869CBA00E264EC /* muffinStack7.png in Resources */,
+				F14825871A9D77C0006EDFE3 /* Icon-29@3x.png in Resources */,
 				F1C006651A61F7FE00E264EC /* openhole.png in Resources */,
 				F12BA59119F6040F00C6B1FF /* InfoPlist.strings in Resources */,
 				F1C006CD1A91977100E264EC /* settingsButton.png in Resources */,
+				F14825721A9C1180006EDFE3 /* retryButton.png in Resources */,
 				F1C006A81A869CBA00E264EC /* muffinStack4.png in Resources */,
+				F148258B1A9D77C0006EDFE3 /* Icon-60@2x.png in Resources */,
 				F1C006A61A869CBA00E264EC /* muffinStack2.png in Resources */,
 				F1C006781A6E137900E264EC /* throwButton.png in Resources */,
+				F14825891A9D77C0006EDFE3 /* Icon-40@2x.png in Resources */,
 				F12BA5A419F6040F00C6B1FF /* Images.xcassets in Resources */,
 				F1C006A51A869CBA00E264EC /* muffinStack1.png in Resources */,
 				F1C006741A6E11CA00E264EC /* gingerBreadMan.png in Resources */,
 				F1C006AA1A869CBA00E264EC /* muffinStack6.png in Resources */,
+				F14825781A9D61C7006EDFE3 /* gingerBreadManWithMuffin.png in Resources */,
 				F1C006621A61F70F00E264EC /* closedhole.png in Resources */,
 				F1C006CE1A91977100E264EC /* startButton.png in Resources */,
+				F148258E1A9D77C0006EDFE3 /* Icon-76@2x.png in Resources */,
+				F14825951AA221B6006EDFE3 /* backButton.png in Resources */,
 				F1C0066D1A63726A00E264EC /* baseCenter.png in Resources */,
+				F148258A1A9D77C0006EDFE3 /* Icon-40@3x.png in Resources */,
 				F12BA59A19F6040F00C6B1FF /* Main.storyboard in Resources */,
+				F148258C1A9D77C0006EDFE3 /* Icon-60@3x.png in Resources */,
+				F14825851A9D77C0006EDFE3 /* Icon-29.png in Resources */,
 				F1C006B71A89A6E500E264EC /* muffinMan.png in Resources */,
+				F14825861A9D77C0006EDFE3 /* Icon-29@2x.png in Resources */,
 				F1C006AC1A869CBA00E264EC /* muffinStack8.png in Resources */,
 				F1C0065C1A61F29800E264EC /* door.png in Resources */,
+				F14825881A9D77C0006EDFE3 /* Icon-40.png in Resources */,
 				F1C006D11A919E4E00E264EC /* highScoresButton.png in Resources */,
+				F148258D1A9D77C0006EDFE3 /* Icon-76.png in Resources */,
+				F148258F1A9D77C0006EDFE3 /* iTunesArtwork@2x.png in Resources */,
 				F1C0067E1A772A8F00E264EC /* muffin.png in Resources */,
 				F1C006A91A869CBA00E264EC /* muffinStack5.png in Resources */,
 				F1C0066E1A63726A00E264EC /* centerJoystick.png in Resources */,
@@ -515,7 +590,7 @@
 /* Begin PBXTargetDependency section */
 		F12BA5AF19F6040F00C6B1FF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F12BA58019F6040F00C6B1FF /* Pie Fight */;
+			target = F12BA58019F6040F00C6B1FF /* Escape From Drury Lane */;
 			targetProxy = F12BA5AE19F6040F00C6B1FF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -543,6 +618,30 @@
 				F12BA5B419F6040F00C6B1FF /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F14825701A9C1180006EDFE3 /* retryButton.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F14825711A9C1180006EDFE3 /* en */,
+			);
+			name = retryButton.png;
+			sourceTree = "<group>";
+		};
+		F14825761A9D61C7006EDFE3 /* gingerBreadManWithMuffin.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F14825771A9D61C7006EDFE3 /* en */,
+			);
+			name = gingerBreadManWithMuffin.png;
+			sourceTree = "<group>";
+		};
+		F14825931AA221B6006EDFE3 /* backButton.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F14825941AA221B6006EDFE3 /* en */,
+			);
+			name = backButton.png;
 			sourceTree = "<group>";
 		};
 		F1C0065A1A61F29800E264EC /* door.png */ = {
@@ -786,9 +885,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Pie Fight/Pie Fight-Prefix.pch";
-				INFOPLIST_FILE = "Pie Fight/Pie Fight-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "Pie Fight/Escape From Drury Lane-Prefix.pch";
+				INFOPLIST_FILE = "Pie Fight/Escape From Drury Lane-Info.plist";
+				PRODUCT_NAME = "Escape From Drury Lane";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -801,9 +900,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Pie Fight/Pie Fight-Prefix.pch";
-				INFOPLIST_FILE = "Pie Fight/Pie Fight-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "Pie Fight/Escape From Drury Lane-Prefix.pch";
+				INFOPLIST_FILE = "Pie Fight/Escape From Drury Lane-Info.plist";
+				PRODUCT_NAME = "Escape From Drury Lane";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -825,8 +924,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "Pie FightTests/Pie FightTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "Pie FightTests/Escape From Drury LaneTests-Info.plist";
+				PRODUCT_NAME = "Escape From Drury LaneTests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -843,8 +942,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Pie Fight/Pie Fight-Prefix.pch";
-				INFOPLIST_FILE = "Pie FightTests/Pie FightTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "Pie FightTests/Escape From Drury LaneTests-Info.plist";
+				PRODUCT_NAME = "Escape From Drury LaneTests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -853,7 +952,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F12BA57C19F6040E00C6B1FF /* Build configuration list for PBXProject "Pie Fight" */ = {
+		F12BA57C19F6040E00C6B1FF /* Build configuration list for PBXProject "Escape From Drury Lane" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F12BA5B819F6040F00C6B1FF /* Debug */,
@@ -862,7 +961,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F12BA5BA19F6040F00C6B1FF /* Build configuration list for PBXNativeTarget "Pie Fight" */ = {
+		F12BA5BA19F6040F00C6B1FF /* Build configuration list for PBXNativeTarget "Escape From Drury Lane" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F12BA5BB19F6040F00C6B1FF /* Debug */,
@@ -871,7 +970,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F12BA5BD19F6040F00C6B1FF /* Build configuration list for PBXNativeTarget "Pie FightTests" */ = {
+		F12BA5BD19F6040F00C6B1FF /* Build configuration list for PBXNativeTarget "Escape From Drury LaneTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F12BA5BE19F6040F00C6B1FF /* Debug */,

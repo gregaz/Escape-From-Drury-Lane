@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>19BF3780-4A1D-43CA-A3E1-DF4D1F7B3FF2</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Escape From Drury Lane</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>20A17142E41BCD24C83756615EEC15EF1FDA98CC</key>
+		<string>https://github.com/gregaz/Food-Fight.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Escape From Drury Lane.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>20A17142E41BCD24C83756615EEC15EF1FDA98CC</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/gregaz/Food-Fight.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>20A17142E41BCD24C83756615EEC15EF1FDA98CC</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>20A17142E41BCD24C83756615EEC15EF1FDA98CC</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Pie%20Fight</string>
+		</dict>
+	</array>
+</dict>
+</plist>

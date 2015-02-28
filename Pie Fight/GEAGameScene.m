@@ -6,18 +6,15 @@
 //  Copyright (c) 2014 Gregory Azuolas. All rights reserved.
 //
 // TODO:
-// Add muffins - implement throw muffin - done
-// Add enemies - done
-// Add collisions - door, enemies, muffins
-// Start screen
-// Death screen
+// High Scores
+// Settings screen - R/L handed
+// Fix hole/muffinstack placement bug
 // Add background/controls border
 // Ads between screens
 // Level progression screen
 // Improve drawings - dany?
 // Add animations - player, enemies, door, holes - dany??
 // Instant replay/closing door?
-// Settings R/L handed
 
 
 #import "GEAGameScene.h"
@@ -30,6 +27,7 @@
 #import "GEADoorNode.h"
 #import "GEAMuffinMan.h"
 #import "GEAConstants.h"
+#import "GEAStartMenuScene.h"
 #include <stdlib.h>
 
 static const int incAmount = 30;
@@ -46,11 +44,14 @@ static const int speedModifier = 2;
     bool didUpdateTrajectories;
     bool shouldGoToNextLevel;
     bool shouldEndGame;
+    bool wasRetryPressed;
+    bool hasGameEnded;
     NSMutableArray *holes;
     NSMutableArray *muffinStacks;
     NSMutableArray *muffinMen;
     GEAJoyStick *joystick;
     GEAButton *throwButton;
+    GEAButton *retryButton;
 }
 
 -(id)initWithSize:(CGSize)size {    
@@ -69,6 +70,8 @@ static const int speedModifier = 2;
         didUpdateTrajectories = false;
         shouldGoToNextLevel = false;
         shouldEndGame = false;
+        wasRetryPressed = false;
+        hasGameEnded = false;
         [self addScoreBoard];
         [self addControls];
         [self initializePlayer];
@@ -94,7 +97,46 @@ static const int speedModifier = 2;
 }
 
 -(void)endGame {
-    //Go to retry menu
+    hasGameEnded = true;
+    
+    SKLabelNode *gameOverLabel = [SKLabelNode labelNodeWithFontNamed: @"Arial"];
+    gameOverLabel.position = CGPointMake(self.frame.size.width*0.5, self.frame.size.height*0.75);
+    gameOverLabel.text = @"Game Over";
+    gameOverLabel.fontColor = [UIColor whiteColor];
+    gameOverLabel.fontSize = 50;
+    
+    [self addChild: gameOverLabel];
+
+    SKLabelNode *scoreLabel = [SKLabelNode labelNodeWithFontNamed: @"Arial"];
+    scoreLabel.position = CGPointMake(self.frame.size.width*0.5, self.frame.size.height*0.5);
+    scoreLabel.text = [NSString stringWithFormat: @"Final Score: %i", score];
+    scoreLabel.fontColor = [UIColor whiteColor];
+    scoreLabel.fontSize = 50;
+    
+    [self addChild:scoreLabel];
+    
+    retryButton = [[GEAButton alloc] initWithButtonImageNamed: @"retryButton.png"];
+    retryButton.position = CGPointMake(self.frame.size.width*0.5, self.frame.size.height*0.25);
+    
+    [self addChild: retryButton];
+    
+    [[self childNodeWithName: @"scoreLabel"] removeFromParent];
+    
+    NSDictionary* highScoreEntry = [[NSDictionary alloc]
+                                    initWithObjects: [NSArray arrayWithObjects: [NSNumber numberWithInt:score], [NSDate date], nil]
+                                    forKeys: [NSArray arrayWithObjects: @"score", @"date", nil]];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSMutableArray* highScores = [NSMutableArray arrayWithArray: [defaults arrayForKey:@"highScores"]];
+    [highScores addObject: highScoreEntry];
+    NSSortDescriptor* scoreSorter = [[NSSortDescriptor alloc] initWithKey: @"score" ascending:false];
+    NSArray* sortedHighScores = [highScores sortedArrayUsingDescriptors:[NSArray arrayWithObject:scoreSorter]];
+    
+
+    sortedHighScores = [sortedHighScores subarrayWithRange: NSMakeRange(0, MIN(10, sortedHighScores.count))];
+    [defaults setObject:sortedHighScores forKey:@"highScores"];
+    [defaults synchronize];
+    
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -272,56 +314,64 @@ static const int speedModifier = 2;
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
-    //i love chithra
    // SKLabelNode *label = (SKLabelNode *)[self childNodeWithName:@"joystickLabel"];
-    if (shouldEndGame) {
-        [self endGame];
+    if (hasGameEnded) {
+        if (!retryButton.isPressed && wasRetryPressed) {
+            GEAStartMenuScene *startScene = [GEAStartMenuScene sceneWithSize:self.view.bounds.size];
+            startScene.scaleMode = SKSceneScaleModeAspectFill;
+            [self.view presentScene: startScene];
+        }
+        wasRetryPressed = retryButton.isPressed;
     } else {
-        if(shouldGoToNextLevel) {
-            //this doesnt seem to work in didBeginContact: bad timing mayhaps?
-            shouldGoToNextLevel = false;
-            [self nextLevel];
+        if (shouldEndGame) {
+            [self endGame];
         } else {
-            if(((int)currentTime % 10) == 1 && !didFlipHolesOnce) {
-                for (GEAHoleNode *hole in holes) {
-                    [hole flipFlopHole];
-                    [self spawnMuffinMen];
-                    didFlipHolesOnce = true;
+            if(shouldGoToNextLevel) {
+                //this doesnt seem to work in didBeginContact: bad timing mayhaps?
+                shouldGoToNextLevel = false;
+                [self nextLevel];
+            } else {
+                if(((int)currentTime % 10) == 1 && !didFlipHolesOnce) {
+                    for (GEAHoleNode *hole in holes) {
+                        [hole flipFlopHole];
+                        [self spawnMuffinMen];
+                        didFlipHolesOnce = true;
+                    }
                 }
-            }
-            if(((int)currentTime % 10) == 2){
-                didFlipHolesOnce = false;
-            }
-            
-            if(((int)currentTime % 2) == 1 && !didUpdateTrajectories) {
-                for (GEAMuffinMan *muffinMan in muffinMen) {
-                    [muffinMan moveTowardsLocation:player.position];
-                    didUpdateTrajectories = true;
+                if(((int)currentTime % 10) == 2){
+                    didFlipHolesOnce = false;
                 }
+                
+                if(((int)currentTime % 2) == 1 && !didUpdateTrajectories) {
+                    for (GEAMuffinMan *muffinMan in muffinMen) {
+                        [muffinMan moveTowardsLocation:player.position];
+                        didUpdateTrajectories = true;
+                    }
+                }
+                if(((int)currentTime % 2) == 0){
+                    didUpdateTrajectories = false;
+                }
+                
+                
+                float newPlayerX = (float) player.position.x + joystick.x*speedModifier;
+                float newPlayerY = (float) player.position.y + joystick.y*speedModifier;
+                
+                if((newPlayerX > self.frame.size.width) || (newPlayerX < 0)) {
+                    newPlayerX = player.position.x;
+                }
+                if((newPlayerY > self.frame.size.height) || (newPlayerY < 0)) {
+                    newPlayerY = player.position.y;
+                }
+               // label.text = [NSString stringWithFormat: @"X: %i, X: %i J: %f", (int)currentTime, ((int)currentTime) % 10, joystick.x*speedModifier];
+                player.position = CGPointMake( newPlayerX, newPlayerY);
+                
+                if (!throwButton.isPressed && wasThrowPressed) {
+                    //To do once i can test on phone
+                    [player throwMuffinWithDirectionVectorX: joystick.x andY: joystick.y];
+                    //[player throwMuffinWithDirectionVectorX: 0.0 andY: 0.3];
+                }
+                wasThrowPressed = throwButton.isPressed;
             }
-            if(((int)currentTime % 2) == 0){
-                didUpdateTrajectories = false;
-            }
-            
-            
-            float newPlayerX = (float) player.position.x + joystick.x*speedModifier;
-            float newPlayerY = (float) player.position.y + joystick.y*speedModifier;
-            
-            if((newPlayerX > self.frame.size.width) || (newPlayerX < 0)) {
-                newPlayerX = player.position.x;
-            }
-            if((newPlayerY > self.frame.size.height) || (newPlayerY < 0)) {
-                newPlayerY = player.position.y;
-            }
-           // label.text = [NSString stringWithFormat: @"X: %i, X: %i J: %f", (int)currentTime, ((int)currentTime) % 10, joystick.x*speedModifier];
-            player.position = CGPointMake( newPlayerX, newPlayerY);
-            
-            if (!throwButton.isPressed && wasThrowPressed) {
-                //To do once i can test on phone
-                //[player throwMuffinWithDirectionVectorX: joystick.x andY: joystick.y];
-                [player throwMuffinWithDirectionVectorX: 0.0 andY: 0.3];
-            }
-            wasThrowPressed = throwButton.isPressed;
         }
     }
 }

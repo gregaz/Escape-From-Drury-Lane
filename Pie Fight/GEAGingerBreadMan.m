@@ -8,6 +8,9 @@
 
 #import "GEAGingerBreadMan.h"
 
+static const NSString* withoutMuffinImageName = @"gingerBreadMan.png";
+static const NSString* withMuffinImageName = @"gingerBreadManWithMuffin.png";
+
 @implementation GEAGingerBreadMan
 
 -(id) initGingerManWithMuffinOrNil: (GEAMuffinNode*) muffin andImageNamed: (NSString*) imageName {
@@ -37,7 +40,9 @@
         SKAction* moveAction = [SKAction moveTo:destination duration:duration];
         SKAction* moveDoneAction = [SKAction removeFromParent];
         [self.muffin runAction:[SKAction sequence:@[moveAction, moveDoneAction]]];
-    
+
+        [self runAction:[SKAction setTexture:[SKTexture textureWithImageNamed: withoutMuffinImageName] resize:true]];
+        [self setScale: 0.1];
     self.muffin = nil;
     //Check if there is a new muffin to pickup (didBeginContact won't be called again unless you leave the stack first
         for (SKPhysicsBody* physicsBody in self.physicsBody.allContactedBodies) {
@@ -51,7 +56,9 @@
 -(void) pickupMuffinFromMuffinStack: (GEAMuffinStackNode*) aMuffinStack {
     if(![self hasMuffin]) {
         self.muffin = [[GEAMuffinNode alloc] initWithImageNamed: @"muffin.png"];
+        [self runAction:[SKAction setTexture:[SKTexture textureWithImageNamed: withMuffinImageName] resize:true]];
         [aMuffinStack loseOneMuffin];
+        [self setScale: 0.1];
     }
 }
 

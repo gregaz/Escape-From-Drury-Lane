@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F12BA58019F6040F00C6B1FF"
-               BuildableName = "Pie Fight.app"
-               BlueprintName = "Pie Fight"
-               ReferencedContainer = "container:Pie Fight.xcodeproj">
+               BuildableName = "Escape From Drury Lane.app"
+               BlueprintName = "Escape From Drury Lane"
+               ReferencedContainer = "container:Escape From Drury Lane.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F12BA5A819F6040F00C6B1FF"
-               BuildableName = "Pie FightTests.xctest"
-               BlueprintName = "Pie FightTests"
-               ReferencedContainer = "container:Pie Fight.xcodeproj">
+               BuildableName = "Escape From Drury LaneTests.xctest"
+               BlueprintName = "Escape From Drury LaneTests"
+               ReferencedContainer = "container:Escape From Drury Lane.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F12BA58019F6040F00C6B1FF"
-            BuildableName = "Pie Fight.app"
-            BlueprintName = "Pie Fight"
-            ReferencedContainer = "container:Pie Fight.xcodeproj">
+            BuildableName = "Escape From Drury Lane.app"
+            BlueprintName = "Escape From Drury Lane"
+            ReferencedContainer = "container:Escape From Drury Lane.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F12BA58019F6040F00C6B1FF"
-            BuildableName = "Pie Fight.app"
-            BlueprintName = "Pie Fight"
-            ReferencedContainer = "container:Pie Fight.xcodeproj">
+            BuildableName = "Escape From Drury Lane.app"
+            BlueprintName = "Escape From Drury Lane"
+            ReferencedContainer = "container:Escape From Drury Lane.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -80,9 +80,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F12BA58019F6040F00C6B1FF"
-            BuildableName = "Pie Fight.app"
-            BlueprintName = "Pie Fight"
-            ReferencedContainer = "container:Pie Fight.xcodeproj">
+            BuildableName = "Escape From Drury Lane.app"
+            BlueprintName = "Escape From Drury Lane"
+            ReferencedContainer = "container:Escape From Drury Lane.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
