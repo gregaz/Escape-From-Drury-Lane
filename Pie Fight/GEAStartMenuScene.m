@@ -27,8 +27,31 @@
         [self initUserDefaults];
         [self initMenuButtons];
         [self initMenuLabels];
+        [self initGingerBreadMan];
     }
     return self;
+}
+
+-(void) initGingerBreadMan {
+    SKTextureAtlas *gingerBreadManAtlas = [SKTextureAtlas atlasNamed: @"gingerBreadMen"];
+    NSMutableArray *gingerBreadManRunArray = [NSMutableArray array];
+
+    for(int i = 10; i <= 16; i++) {
+        NSString* fileName = [NSString stringWithFormat: @"frame%i", i];
+        SKTexture *temp = [gingerBreadManAtlas textureNamed:fileName];
+        [gingerBreadManRunArray addObject:temp];
+    }
+    
+    SKSpriteNode* gingerBreadMan = [SKSpriteNode spriteNodeWithTexture: gingerBreadManRunArray[0]];
+    gingerBreadMan.position = CGPointMake(self.frame.size.width*0.5, self.frame.size.height*0.5);
+    [gingerBreadMan setScale: 0.2];
+    [self addChild:gingerBreadMan];
+    
+    [gingerBreadMan runAction:[SKAction repeatActionForever:
+                      [SKAction animateWithTextures:gingerBreadManRunArray
+                                       timePerFrame:0.1f
+                                             resize:YES
+                                            restore:YES]] withKey:@"gingerBreadManRunning"];
 }
 
 -(void) initUserDefaults {
@@ -47,7 +70,7 @@
 
 -(void)initStartButton {
     startButton = [[GEAButton alloc] initWithButtonImageNamed: @"startButton.png"];
-    startButton.position = CGPointMake(self.frame.size.width*0.2, self.frame.size.height*0.4);
+    startButton.position = CGPointMake(self.frame.size.width*0.2, self.frame.size.height*0.2);
     startButton.name = @"startButton";
     [self addChild:startButton];
     
@@ -55,7 +78,7 @@
 
 -(void)initSettingsButton {
     settingsButton = [[GEAButton alloc] initWithButtonImageNamed: @"settingsButton.png"];
-    settingsButton.position = CGPointMake(self.frame.size.width*0.8, self.frame.size.height*0.4);
+    settingsButton.position = CGPointMake(self.frame.size.width*0.8, self.frame.size.height*0.2);
     settingsButton.name = @"settingsButton";
     [self addChild:settingsButton];
 }
@@ -69,7 +92,7 @@
 
 -(void) initMenuLabels {
     SKLabelNode *titleLabel = [SKLabelNode labelNodeWithFontNamed: @"Arial"];
-    titleLabel.position = CGPointMake(self.frame.size.width*0.5,self.frame.size.height*0.75);
+    titleLabel.position = CGPointMake(self.frame.size.width*0.5,self.frame.size.height*0.85);
     titleLabel.fontSize = 50;
     titleLabel.fontColor = [UIColor whiteColor];
     titleLabel.text = @"Escape from Drury Lane";

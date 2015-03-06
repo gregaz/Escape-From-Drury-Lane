@@ -42,6 +42,7 @@
 		F148259E1AA24511006EDFE3 /* rightHandedButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F148259B1AA24511006EDFE3 /* rightHandedButton.png */; };
 		F14825A31AA24649006EDFE3 /* leftHandedSelectedButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F148259F1AA24649006EDFE3 /* leftHandedSelectedButton.png */; };
 		F14825A41AA24649006EDFE3 /* rightHandedSelectedButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F14825A11AA24649006EDFE3 /* rightHandedSelectedButton.png */; };
+		F14825DF1AA935A2006EDFE3 /* gingerBreadMen.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F14825DD1AA935A2006EDFE3 /* gingerBreadMen.atlas */; };
 		F1C0065C1A61F29800E264EC /* door.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C0065A1A61F29800E264EC /* door.png */; };
 		F1C006621A61F70F00E264EC /* closedhole.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C006601A61F70F00E264EC /* closedhole.png */; };
 		F1C006651A61F7FE00E264EC /* openhole.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C006631A61F7FE00E264EC /* openhole.png */; };
@@ -131,6 +132,7 @@
 		F148259C1AA24511006EDFE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/rightHandedButton.png; sourceTree = "<group>"; };
 		F14825A01AA24649006EDFE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/leftHandedSelectedButton.png; sourceTree = "<group>"; };
 		F14825A21AA24649006EDFE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/rightHandedSelectedButton.png; sourceTree = "<group>"; };
+		F14825DE1AA935A2006EDFE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = en; path = en.lproj/gingerBreadMen.atlas; sourceTree = "<group>"; };
 		F1C0065B1A61F29800E264EC /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/door.png; sourceTree = "<group>"; };
 		F1C006611A61F70F00E264EC /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "Pie Fight/en.lproj/closedhole.png"; sourceTree = "<group>"; };
 		F1C006641A61F7FE00E264EC /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "Pie Fight/en.lproj/openhole.png"; sourceTree = "<group>"; };
@@ -409,6 +411,7 @@
 		F1C006C71A91970A00E264EC /* Game Images */ = {
 			isa = PBXGroup;
 			children = (
+				F14825DD1AA935A2006EDFE3 /* gingerBreadMen.atlas */,
 				F1C006AD1A869CC100E264EC /* muffinStacks */,
 				F148256F1A9C0DA7006EDFE3 /* Controls Images */,
 				F1C006B51A89A6E500E264EC /* muffinMan.png */,
@@ -547,6 +550,7 @@
 				F14825861A9D77C0006EDFE3 /* Icon-29@2x.png in Resources */,
 				F14825A31AA24649006EDFE3 /* leftHandedSelectedButton.png in Resources */,
 				F1C006AC1A869CBA00E264EC /* muffinStack8.png in Resources */,
+				F14825DF1AA935A2006EDFE3 /* gingerBreadMen.atlas in Resources */,
 				F14825A41AA24649006EDFE3 /* rightHandedSelectedButton.png in Resources */,
 				F148259E1AA24511006EDFE3 /* rightHandedButton.png in Resources */,
 				F148259D1AA24511006EDFE3 /* leftHandedButton.png in Resources */,
@@ -696,6 +700,14 @@
 				F14825A21AA24649006EDFE3 /* en */,
 			);
 			name = rightHandedSelectedButton.png;
+			sourceTree = "<group>";
+		};
+		F14825DD1AA935A2006EDFE3 /* gingerBreadMen.atlas */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F14825DE1AA935A2006EDFE3 /* en */,
+			);
+			name = gingerBreadMen.atlas;
 			sourceTree = "<group>";
 		};
 		F1C0065A1A61F29800E264EC /* door.png */ = {
