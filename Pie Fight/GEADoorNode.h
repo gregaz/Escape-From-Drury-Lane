@@ -11,5 +11,7 @@
 @interface GEADoorNode : GEARandomizablePositionNode
 
 -(void)initializeCollisionConfig;
+-(void)animateDoorWalkThrough;
+-(id)initDoor;
 
 @end

@@ -28,7 +28,7 @@
 }
 
 -(void) initLabel {
-    SKLabelNode *titleLabel = [SKLabelNode labelNodeWithFontNamed: @"Arial"];
+    SKLabelNode *titleLabel = [SKLabelNode labelNodeWithFontNamed: @"AmericanTypewriter"];
     titleLabel.position = CGPointMake(self.frame.size.width*0.5,self.frame.size.height*0.8);
     titleLabel.fontSize = 50;
     titleLabel.fontColor = [UIColor whiteColor];
@@ -66,7 +66,7 @@
         leftButtonImageName = @"leftHandedSelectedButton.png";
     }
     
-    SKLabelNode *titleLabel = [SKLabelNode labelNodeWithFontNamed: @"Arial"];
+    SKLabelNode *titleLabel = [SKLabelNode labelNodeWithFontNamed: @"AmericanTypewriter"];
     titleLabel.position = CGPointMake(self.frame.size.width*0.2,self.frame.size.height*0.5);
     titleLabel.fontSize = 30;
     titleLabel.fontColor = [UIColor whiteColor];

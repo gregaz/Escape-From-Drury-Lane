@@ -14,10 +14,19 @@
 
 @interface GEAGingerBreadMan : GEARandomizablePositionNode
 
+-(id) initGingerManWithMuffinOrNil: (GEAMuffinNode*) muffin andAtlasImageNamed: (NSString*) imageName;
+-(id) initGingerBreadManWithDefaultImage;
+-(id) initGingerBreadManWithDefaultSideRunImage;
+
 -(void) throwMuffinWithDirectionVectorX: (double) x andY: (double) y;
--(id) initGingerManWithMuffinOrNil: (SKSpriteNode*) muffin andImageNamed: (NSString*) imageName;
--(id) initGingerManWithoutMuffinWithImageNamed: (NSString*) imageName;
 -(void) pickupMuffinFromMuffinStack: (GEAMuffinStackNode*) aMuffinStack;
+
+-(void) moveUsingVectorWithX: (double) x andY: (double) y;
+
+-(void) animateSideRunRight;
+-(void) animateSideRunLeft;
+-(void) animateDownRun;
+
 @property GEAMuffinNode* muffin;
 
 @end

@@ -121,22 +121,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Pie Fight/GEAGingerBreadMan.m"
-            timestampString = "446521714.997995"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
-            landmarkName = "-initGingerManWithMuffinOrNil:andImageNamed:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Pie Fight/GEAMyScene.m"
             timestampString = "445736699.038556"
             startingColumnNumber = "9223372036854775807"
@@ -186,28 +170,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pie Fight/GEAMuffinMan.m"
-            timestampString = "445486371.128585"
+            timestampString = "447534127.565601"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
             landmarkName = "-moveTowardsLocation:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Pie Fight/GEAGingerBreadMan.m"
-            timestampString = "446521714.997995"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "-throwMuffinWithDirectionVectorX:andY:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -276,11 +244,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pie Fight/GEAStartMenuScene.m"
-            timestampString = "447297294.477535"
+            timestampString = "447368432.696467"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
             landmarkName = "-initUserDefaults"
             landmarkType = "5">
          </BreakpointContent>
@@ -292,11 +260,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pie Fight/GEAStartMenuScene.m"
-            timestampString = "447297294.477535"
+            timestampString = "447368432.696467"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
             landmarkName = "-update:"
             landmarkType = "5">
          </BreakpointContent>
@@ -308,11 +276,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pie Fight/GEAStartMenuScene.m"
-            timestampString = "447297294.477535"
+            timestampString = "447368432.696467"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "-update:"
             landmarkType = "5">
          </BreakpointContent>
@@ -362,6 +330,22 @@
             startingLineNumber = "36"
             endingLineNumber = "36"
             landmarkName = "-initGingerBreadMan"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pie Fight/GEAGingerBreadMan.m"
+            timestampString = "447471096.868773"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
+            landmarkName = "-moveUsingVectorWithX:andY:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

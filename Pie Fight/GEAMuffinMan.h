@@ -11,7 +11,8 @@
 
 @interface GEAMuffinMan : GEARandomizablePositionNode
 
--(void) initializeCollisionConfig;
 -(void)moveTowardsLocation: (CGPoint) destination;
+-(id)initMuffinManWithPhysicsBody: (SKPhysicsBody*) physicsBody;
+-(void) animateEatGingerBreadMan;
 
 @end

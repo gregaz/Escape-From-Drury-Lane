@@ -8,12 +8,13 @@
 // TODO:
 // Fix hole/muffinstack placement bug
 // Add background/controls border
+// Improve Enemy AI
 // Ads between screens
 // Level progression screen
-// Improve drawings - dany?
-// Add animations - player, enemies, door, holes - dany??
-// Instant replay/closing door?
-
+// Story Screen
+// Enemy Animations - spawn, death
+// Sounds/Music
+// Medals for score thresholds (unlockable characters?)
 
 #import "GEAGameScene.h"
 #import "GEAJoyStick.h"
@@ -48,6 +49,9 @@ static const int speedModifier = 2;
     GEAJoyStick *joystick;
     GEAButton *throwButton;
     GEAButton *retryButton;
+    GEAButton *nextLevelButton;
+    SKPhysicsBody *muffinManPhysicsBody;
+    GEAMuffinMan *murderMan;
 }
 
 -(id)initWithSize:(CGSize)size {    
@@ -66,6 +70,7 @@ static const int speedModifier = 2;
         shouldGoToNextLevel = false;
         shouldEndGame = false;
         hasGameEnded = false;
+        [self initMuffinManPhysicsBody];
         [self addScoreBoard];
         [self addControls];
         [self initializePlayer];
@@ -91,9 +96,16 @@ static const int speedModifier = 2;
 }
 
 -(void)endGame {
+    for (SKSpriteNode* child in [self children]) {
+        [child removeAllActions];
+    }
+    
+    [player removeFromParent];
+    [murderMan animateEatGingerBreadMan];
+    
     hasGameEnded = true;
     
-    SKLabelNode *gameOverLabel = [SKLabelNode labelNodeWithFontNamed: @"Arial"];
+    SKLabelNode *gameOverLabel = [SKLabelNode labelNodeWithFontNamed: @"AmericanTypewriter"];
     gameOverLabel.position = CGPointMake(self.frame.size.width*0.5, self.frame.size.height*0.75);
     gameOverLabel.text = @"Game Over";
     gameOverLabel.fontColor = [UIColor whiteColor];
@@ -101,7 +113,7 @@ static const int speedModifier = 2;
     
     [self addChild: gameOverLabel];
 
-    SKLabelNode *scoreLabel = [SKLabelNode labelNodeWithFontNamed: @"Arial"];
+    SKLabelNode *scoreLabel = [SKLabelNode labelNodeWithFontNamed: @"AmericanTypewriter"];
     scoreLabel.position = CGPointMake(self.frame.size.width*0.5, self.frame.size.height*0.5);
     scoreLabel.text = [NSString stringWithFormat: @"Final Score: %i", score];
     scoreLabel.fontColor = [UIColor whiteColor];
@@ -191,15 +203,8 @@ static const int speedModifier = 2;
 }
 
 -(void)initializePlayer {
-    player = [[GEAGingerBreadMan alloc] initGingerManWithoutMuffinWithImageNamed: @"gingerBreadMan.png"];
+    player = [[GEAGingerBreadMan alloc] initGingerBreadManWithDefaultImage];
     [player setScale:0.1];
-    
-    //Adding SpriteKit physicsBody for collision detection TODO put this in gingerbreadman class
-    player.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:player.size];
-    player.physicsBody.categoryBitMask = playerCategory;
-    player.physicsBody.dynamic = YES;
-    player.physicsBody.contactTestBitMask = muffinStackCategory + holeCategory + doorCategory + enemyCategory;
-    player.physicsBody.collisionBitMask = 0;
     player.name = @"player";
     [self resetPlayer];
     
@@ -210,6 +215,7 @@ static const int speedModifier = 2;
 -(void)resetPlayer {
     [player setPosition: CGPointMake(self.frame.size.width * 0.9, 0.0)];
     [player randomizeYPositionForIncrements:incAmount andControlsHeight:controlsHeight andSceneHeight: self.frame.size.height];
+    player.hidden = false;
 }
 
 -(void)clearMuffinMen {
@@ -227,12 +233,16 @@ static const int speedModifier = 2;
     }
 }
 
+-(void)initMuffinManPhysicsBody {
+    SKTexture* tempTexture = [SKTexture textureWithImageNamed: @"muffinMan1"];
+    muffinManPhysicsBody = [SKPhysicsBody bodyWithTexture:tempTexture size:tempTexture.size];
+}
+
 -(void)spawnMuffinManFromHole: (GEAHoleNode*) aHole {
     //TODO animation
-    GEAMuffinMan* muffinMan = [[GEAMuffinMan alloc] initWithImageNamed: @"muffinMan.png"];
-    [muffinMan initializeCollisionConfig];
+    GEAMuffinMan* muffinMan = [[GEAMuffinMan alloc] initMuffinManWithPhysicsBody: [muffinManPhysicsBody copy]];
     [muffinMan setPosition: aHole.position];
-    [muffinMan setScale: 0.2];
+    [muffinMan setScale: 0.3];
     [self addChild:muffinMan];
     [muffinMen addObject: muffinMan];
     
@@ -283,16 +293,15 @@ static const int speedModifier = 2;
 }
 
 -(void)initializeDoor {
-    door = [GEADoorNode spriteNodeWithImageNamed: @"door.png"];
-    [door initializeCollisionConfig];
+    door = [[GEADoorNode alloc] initDoor];
     [self resetDoorPosition];
-    [door setScale: 0.1];
+    [door setScale: 0.2];
     [self addChild: door];
 }
 
 -(void)resetDoorPosition {
     [door setPosition: CGPointMake(self.frame.size.width * 0.05, 0.0)];
-    [door randomizeYPositionForIncrements:incAmount andControlsHeight:controlsHeight andSceneHeight:self.frame.size.height];
+    [door randomizeYPositionForIncrements:incAmount andControlsHeight:controlsHeight andSceneHeight:self.frame.size.height-20.0];
 }
 
 -(void)addHole {
@@ -313,7 +322,7 @@ static const int speedModifier = 2;
     [holesAndMuffins addObjectsFromArray: muffinStacks];
     
     for (SKSpriteNode *existingHoleOrMuffin in holesAndMuffins) {
-        if ( CGPointEqualToPoint(existingHoleOrMuffin.position, aPotentialSprite.position )) {
+        if ( [existingHoleOrMuffin containsPoint: aPotentialSprite.position]) {
             return true;
         }
     }
@@ -335,8 +344,34 @@ static const int speedModifier = 2;
         } else {
             if(shouldGoToNextLevel) {
                 //this doesnt seem to work in didBeginContact: bad timing mayhaps?
-                shouldGoToNextLevel = false;
-                [self nextLevel];
+                if( ![player isHidden] ){
+                    [door animateDoorWalkThrough];
+                    player.hidden = true;
+                    for (GEAMuffinMan *muffinMan in muffinMen) {
+                        [muffinMan removeAllActions];
+                    }
+                    
+                }
+                if( ![door hasActions]) {
+                    if (nextLevelButton == nil) {
+                        nextLevelButton = [[GEAButton alloc] initWithButtonImageNamed: @"nextLevelButton.png"];
+                        [nextLevelButton setPosition: CGPointMake(self.frame.size.width * 0.5, self.frame.size.height * 0.5)];
+                        [nextLevelButton setZPosition: 10.0];
+                        [self addChild:nextLevelButton];
+
+                    } else if ([nextLevelButton isHidden]) {
+                        [nextLevelButton setHidden:false];
+                        [nextLevelButton setZPosition: 10.0];
+                    }
+                    
+                    if ([nextLevelButton shouldActionPress]) {
+                        [nextLevelButton setHidden:true];
+                        shouldGoToNextLevel = false;
+                        [self nextLevel];
+                    }
+                    
+                }
+
             } else {
                 if(((int)currentTime % 10) == 1 && !didFlipHolesOnce) {
                     for (GEAHoleNode *hole in holes) {
@@ -359,18 +394,7 @@ static const int speedModifier = 2;
                     didUpdateTrajectories = false;
                 }
                 
-                
-                float newPlayerX = (float) player.position.x + joystick.x*speedModifier;
-                float newPlayerY = (float) player.position.y + joystick.y*speedModifier;
-                
-                if((newPlayerX > self.frame.size.width) || (newPlayerX < 0)) {
-                    newPlayerX = player.position.x;
-                }
-                if((newPlayerY > self.frame.size.height) || (newPlayerY < 0)) {
-                    newPlayerY = player.position.y;
-                }
-               // label.text = [NSString stringWithFormat: @"X: %i, X: %i J: %f", (int)currentTime, ((int)currentTime) % 10, joystick.x*speedModifier];
-                player.position = CGPointMake( newPlayerX, newPlayerY);
+                [player moveUsingVectorWithX:joystick.x andY:joystick.y];
                 
                 if ([throwButton shouldActionPress]) {
                     [player throwMuffinWithDirectionVectorX: joystick.x andY: joystick.y];
@@ -406,6 +430,13 @@ static const int speedModifier = 2;
     
     if ( (contact.bodyA.categoryBitMask == enemyCategory && contact.bodyB.categoryBitMask == playerCategory) || (contact.bodyB.categoryBitMask == enemyCategory && contact.bodyA.categoryBitMask == playerCategory)) {
         shouldEndGame = true;
+        
+        if( [contact.bodyA.node isKindOfClass: [GEAMuffinMan class]]) {
+            murderMan = (GEAMuffinMan*) contact.bodyA.node;
+        } else {
+            murderMan = (GEAMuffinMan*) contact.bodyB.node;
+        }
+        
     }
     
     

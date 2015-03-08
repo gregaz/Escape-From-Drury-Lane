@@ -35,7 +35,7 @@
 }
 
 -(void)initHighScoreTitleLabel {
-    SKLabelNode *titleLabel = [SKLabelNode labelNodeWithFontNamed: @"Arial"];
+    SKLabelNode *titleLabel = [SKLabelNode labelNodeWithFontNamed: @"AmericanTypewriter"];
     titleLabel.position = CGPointMake(self.frame.size.width*0.5,self.frame.size.height*0.8);
     titleLabel.fontSize = 50;
     titleLabel.fontColor = [UIColor whiteColor];
@@ -55,7 +55,7 @@
         NSString* scoreDateString = [NSDateFormatter localizedStringFromDate:scoreDate dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
         NSNumber* highScore =[highScoreDict objectForKey: @"score"];
         
-        SKLabelNode* highScoreLabel = [SKLabelNode labelNodeWithFontNamed: @"Arial"];
+        SKLabelNode* highScoreLabel = [SKLabelNode labelNodeWithFontNamed: @"AmericanTypewriter"];
         highScoreLabel.fontSize = 25;
         highScoreLabel.fontColor = [UIColor whiteColor];
         highScoreLabel.text = [NSString stringWithFormat: @"%@: %i",scoreDateString, [highScore intValue]];

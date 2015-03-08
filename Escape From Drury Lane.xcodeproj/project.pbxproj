@@ -43,6 +43,11 @@
 		F14825A31AA24649006EDFE3 /* leftHandedSelectedButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F148259F1AA24649006EDFE3 /* leftHandedSelectedButton.png */; };
 		F14825A41AA24649006EDFE3 /* rightHandedSelectedButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F14825A11AA24649006EDFE3 /* rightHandedSelectedButton.png */; };
 		F14825DF1AA935A2006EDFE3 /* gingerBreadMen.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F14825DD1AA935A2006EDFE3 /* gingerBreadMen.atlas */; };
+		F14825E51AAA43A9006EDFE3 /* frame10.png in Resources */ = {isa = PBXBuildFile; fileRef = F14825E31AAA43A9006EDFE3 /* frame10.png */; };
+		F14825E81AABC571006EDFE3 /* muffinMen.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F14825E61AABC571006EDFE3 /* muffinMen.atlas */; };
+		F14825EB1AACCCF1006EDFE3 /* deathAnimation.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F14825E91AACCCF1006EDFE3 /* deathAnimation.atlas */; };
+		F14825EE1AACE167006EDFE3 /* enterDoor.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F14825EC1AACE167006EDFE3 /* enterDoor.atlas */; };
+		F14825F11AACF137006EDFE3 /* nextLevelButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F14825EF1AACF137006EDFE3 /* nextLevelButton.png */; };
 		F1C0065C1A61F29800E264EC /* door.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C0065A1A61F29800E264EC /* door.png */; };
 		F1C006621A61F70F00E264EC /* closedhole.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C006601A61F70F00E264EC /* closedhole.png */; };
 		F1C006651A61F7FE00E264EC /* openhole.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C006631A61F7FE00E264EC /* openhole.png */; };
@@ -133,6 +138,11 @@
 		F14825A01AA24649006EDFE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/leftHandedSelectedButton.png; sourceTree = "<group>"; };
 		F14825A21AA24649006EDFE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/rightHandedSelectedButton.png; sourceTree = "<group>"; };
 		F14825DE1AA935A2006EDFE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = en; path = en.lproj/gingerBreadMen.atlas; sourceTree = "<group>"; };
+		F14825E41AAA43A9006EDFE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/frame10.png; sourceTree = "<group>"; };
+		F14825E71AABC571006EDFE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = en; path = en.lproj/muffinMen.atlas; sourceTree = "<group>"; };
+		F14825EA1AACCCF1006EDFE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = en; path = en.lproj/deathAnimation.atlas; sourceTree = "<group>"; };
+		F14825ED1AACE167006EDFE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = en; path = en.lproj/enterDoor.atlas; sourceTree = "<group>"; };
+		F14825F01AACF137006EDFE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/nextLevelButton.png; sourceTree = "<group>"; };
 		F1C0065B1A61F29800E264EC /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/door.png; sourceTree = "<group>"; };
 		F1C006611A61F70F00E264EC /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "Pie Fight/en.lproj/closedhole.png"; sourceTree = "<group>"; };
 		F1C006641A61F7FE00E264EC /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "Pie Fight/en.lproj/openhole.png"; sourceTree = "<group>"; };
@@ -411,6 +421,9 @@
 		F1C006C71A91970A00E264EC /* Game Images */ = {
 			isa = PBXGroup;
 			children = (
+				F14825EC1AACE167006EDFE3 /* enterDoor.atlas */,
+				F14825E91AACCCF1006EDFE3 /* deathAnimation.atlas */,
+				F14825E61AABC571006EDFE3 /* muffinMen.atlas */,
 				F14825DD1AA935A2006EDFE3 /* gingerBreadMen.atlas */,
 				F1C006AD1A869CC100E264EC /* muffinStacks */,
 				F148256F1A9C0DA7006EDFE3 /* Controls Images */,
@@ -419,6 +432,7 @@
 				F1C006721A6E11CA00E264EC /* gingerBreadMan.png */,
 				F1C0065A1A61F29800E264EC /* door.png */,
 				F1C006601A61F70F00E264EC /* closedhole.png */,
+				F14825E31AAA43A9006EDFE3 /* frame10.png */,
 				F1C006631A61F7FE00E264EC /* openhole.png */,
 				F1C0067C1A772A8F00E264EC /* muffin.png */,
 			);
@@ -428,6 +442,7 @@
 		F1C006C81A91972700E264EC /* Menu Images */ = {
 			isa = PBXGroup;
 			children = (
+				F14825EF1AACF137006EDFE3 /* nextLevelButton.png */,
 				F148259F1AA24649006EDFE3 /* leftHandedSelectedButton.png */,
 				F14825A11AA24649006EDFE3 /* rightHandedSelectedButton.png */,
 				F14825991AA24511006EDFE3 /* leftHandedButton.png */,
@@ -529,11 +544,14 @@
 				F14825721A9C1180006EDFE3 /* retryButton.png in Resources */,
 				F1C006A81A869CBA00E264EC /* muffinStack4.png in Resources */,
 				F148258B1A9D77C0006EDFE3 /* Icon-60@2x.png in Resources */,
+				F14825F11AACF137006EDFE3 /* nextLevelButton.png in Resources */,
 				F1C006A61A869CBA00E264EC /* muffinStack2.png in Resources */,
 				F1C006781A6E137900E264EC /* throwButton.png in Resources */,
 				F14825891A9D77C0006EDFE3 /* Icon-40@2x.png in Resources */,
+				F14825E51AAA43A9006EDFE3 /* frame10.png in Resources */,
 				F12BA5A419F6040F00C6B1FF /* Images.xcassets in Resources */,
 				F1C006A51A869CBA00E264EC /* muffinStack1.png in Resources */,
+				F14825EE1AACE167006EDFE3 /* enterDoor.atlas in Resources */,
 				F1C006741A6E11CA00E264EC /* gingerBreadMan.png in Resources */,
 				F1C006AA1A869CBA00E264EC /* muffinStack6.png in Resources */,
 				F14825781A9D61C7006EDFE3 /* gingerBreadManWithMuffin.png in Resources */,
@@ -551,6 +569,7 @@
 				F14825A31AA24649006EDFE3 /* leftHandedSelectedButton.png in Resources */,
 				F1C006AC1A869CBA00E264EC /* muffinStack8.png in Resources */,
 				F14825DF1AA935A2006EDFE3 /* gingerBreadMen.atlas in Resources */,
+				F14825E81AABC571006EDFE3 /* muffinMen.atlas in Resources */,
 				F14825A41AA24649006EDFE3 /* rightHandedSelectedButton.png in Resources */,
 				F148259E1AA24511006EDFE3 /* rightHandedButton.png in Resources */,
 				F148259D1AA24511006EDFE3 /* leftHandedButton.png in Resources */,
@@ -562,6 +581,7 @@
 				F1C0067E1A772A8F00E264EC /* muffin.png in Resources */,
 				F1C006A91A869CBA00E264EC /* muffinStack5.png in Resources */,
 				F1C0066E1A63726A00E264EC /* centerJoystick.png in Resources */,
+				F14825EB1AACCCF1006EDFE3 /* deathAnimation.atlas in Resources */,
 				F1C006A71A869CBA00E264EC /* muffinStack3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -708,6 +728,46 @@
 				F14825DE1AA935A2006EDFE3 /* en */,
 			);
 			name = gingerBreadMen.atlas;
+			sourceTree = "<group>";
+		};
+		F14825E31AAA43A9006EDFE3 /* frame10.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F14825E41AAA43A9006EDFE3 /* en */,
+			);
+			name = frame10.png;
+			sourceTree = "<group>";
+		};
+		F14825E61AABC571006EDFE3 /* muffinMen.atlas */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F14825E71AABC571006EDFE3 /* en */,
+			);
+			name = muffinMen.atlas;
+			sourceTree = "<group>";
+		};
+		F14825E91AACCCF1006EDFE3 /* deathAnimation.atlas */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F14825EA1AACCCF1006EDFE3 /* en */,
+			);
+			name = deathAnimation.atlas;
+			sourceTree = "<group>";
+		};
+		F14825EC1AACE167006EDFE3 /* enterDoor.atlas */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F14825ED1AACE167006EDFE3 /* en */,
+			);
+			name = enterDoor.atlas;
+			sourceTree = "<group>";
+		};
+		F14825EF1AACF137006EDFE3 /* nextLevelButton.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F14825F01AACF137006EDFE3 /* en */,
+			);
+			name = nextLevelButton.png;
 			sourceTree = "<group>";
 		};
 		F1C0065A1A61F29800E264EC /* door.png */ = {

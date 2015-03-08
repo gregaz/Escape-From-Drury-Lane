@@ -11,6 +11,7 @@
 #import "GEAGameScene.h"
 #import "GEAHighScoreScene.h"
 #import "GEASettingsScene.h"
+#import "GEAGingerBreadMan.h"
 
 @implementation GEAStartMenuScene {
     GEAButton *startButton;
@@ -33,25 +34,12 @@
 }
 
 -(void) initGingerBreadMan {
-    SKTextureAtlas *gingerBreadManAtlas = [SKTextureAtlas atlasNamed: @"gingerBreadMen"];
-    NSMutableArray *gingerBreadManRunArray = [NSMutableArray array];
-
-    for(int i = 10; i <= 16; i++) {
-        NSString* fileName = [NSString stringWithFormat: @"frame%i", i];
-        SKTexture *temp = [gingerBreadManAtlas textureNamed:fileName];
-        [gingerBreadManRunArray addObject:temp];
-    }
-    
-    SKSpriteNode* gingerBreadMan = [SKSpriteNode spriteNodeWithTexture: gingerBreadManRunArray[0]];
+    GEAGingerBreadMan* gingerBreadMan = [[GEAGingerBreadMan alloc ] initGingerBreadManWithDefaultSideRunImage];
     gingerBreadMan.position = CGPointMake(self.frame.size.width*0.5, self.frame.size.height*0.5);
-    [gingerBreadMan setScale: 0.2];
+    [gingerBreadMan setScale: 0.5];
     [self addChild:gingerBreadMan];
+    [gingerBreadMan animateSideRunRight];
     
-    [gingerBreadMan runAction:[SKAction repeatActionForever:
-                      [SKAction animateWithTextures:gingerBreadManRunArray
-                                       timePerFrame:0.1f
-                                             resize:YES
-                                            restore:YES]] withKey:@"gingerBreadManRunning"];
 }
 
 -(void) initUserDefaults {
@@ -91,9 +79,9 @@
 }
 
 -(void) initMenuLabels {
-    SKLabelNode *titleLabel = [SKLabelNode labelNodeWithFontNamed: @"Arial"];
+    SKLabelNode *titleLabel = [SKLabelNode labelNodeWithFontNamed: @"AmericanTypewriter"];
     titleLabel.position = CGPointMake(self.frame.size.width*0.5,self.frame.size.height*0.85);
-    titleLabel.fontSize = 50;
+    titleLabel.fontSize = 48;
     titleLabel.fontColor = [UIColor whiteColor];
     titleLabel.text = @"Escape from Drury Lane";
     titleLabel.name = @"Title";
