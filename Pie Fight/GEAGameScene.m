@@ -51,7 +51,13 @@ static const int speedModifier = 2;
     GEAButton *retryButton;
     GEAButton *nextLevelButton;
     SKPhysicsBody *muffinManPhysicsBody;
+    NSMutableArray *muffinManAnimationArray;
+    SKTextureAtlas *muffinManTextureAtlas;
     GEAMuffinMan *murderMan;
+    SKTextureAtlas *holeSpawnAtlas;
+    
+    NSMutableArray *holeOpeningArray;
+    NSMutableArray *holeClosingArray;
 }
 
 -(id)initWithSize:(CGSize)size {    
@@ -70,6 +76,7 @@ static const int speedModifier = 2;
         shouldGoToNextLevel = false;
         shouldEndGame = false;
         hasGameEnded = false;
+        [self initAnimationAtlasAndArrays];
         [self initMuffinManPhysicsBody];
         [self addScoreBoard];
         [self addControls];
@@ -238,14 +245,51 @@ static const int speedModifier = 2;
     muffinManPhysicsBody = [SKPhysicsBody bodyWithTexture:tempTexture size:tempTexture.size];
 }
 
+-(void)initAnimationAtlasAndArrays {
+    holeSpawnAtlas = [SKTextureAtlas atlasNamed: @"holeOpening"];
+    holeOpeningArray = [NSMutableArray array];
+    holeClosingArray = [NSMutableArray array];
+    muffinManAnimationArray = [NSMutableArray array];
+    muffinManTextureAtlas = [SKTextureAtlas atlasNamed: @"muffinMen"];
+    
+    for(int i = 1; i <= 9; i++) {
+        NSString* fileName = [NSString stringWithFormat: @"hole%i", i];
+        SKTexture *temp = [holeSpawnAtlas textureNamed:fileName];
+        [holeOpeningArray addObject:temp];
+    }
+    
+    for(int i = 19; i <= 21; i++) {
+        NSString* fileName = [NSString stringWithFormat: @"hole%i", i];
+        SKTexture *temp = [holeSpawnAtlas textureNamed:fileName];
+        [holeClosingArray addObject:temp];
+    }
+    
+    for(int i = 1; i <= muffinManTextureAtlas.textureNames.count; i++) {
+        NSString* fileName = [NSString stringWithFormat: @"muffinMan%i", i];
+        SKTexture *temp = [muffinManTextureAtlas textureNamed:fileName];
+        [muffinManAnimationArray addObject:temp];
+    }
+    
+}
+
 -(void)spawnMuffinManFromHole: (GEAHoleNode*) aHole {
-    //TODO animation
-    GEAMuffinMan* muffinMan = [[GEAMuffinMan alloc] initMuffinManWithPhysicsBody: [muffinManPhysicsBody copy]];
+    GEAMuffinMan* muffinMan = [[GEAMuffinMan alloc] initMuffinManWithPhysicsBody: [muffinManPhysicsBody copy] andAnimationArray: muffinManAnimationArray];
     [muffinMan setPosition: aHole.position];
     [muffinMan setScale: 0.3];
     [self addChild:muffinMan];
     [muffinMen addObject: muffinMan];
     
+}
+
+-(void)spawnMuffinManWithAnimationFromHole: (GEAHoleNode *) aHole {
+    GEAMuffinMan* muffinMan = [[GEAMuffinMan alloc] initMuffinManWithPhysicsBody: [muffinManPhysicsBody copy] andAnimationArray: muffinManAnimationArray];
+    [muffinMan setPosition: aHole.position];
+    [muffinMan setAnchorPoint: CGPointMake(0.5, 0.0)];
+    [muffinMan setXScale: 0.3];
+    [muffinMan setYScale:0.01];
+    [muffinMan runAction:[SKAction scaleYTo:0.3 duration:1]];
+    [self addChild:muffinMan];
+    [muffinMen addObject: muffinMan];
 }
 
 -(void)spawnMuffinStacks {
@@ -304,16 +348,45 @@ static const int speedModifier = 2;
     [door randomizeYPositionForIncrements:incAmount andControlsHeight:controlsHeight andSceneHeight:self.frame.size.height-20.0];
 }
 
+
 -(void)addHole {
-    GEAHoleNode *hole = [[GEAHoleNode alloc] initWithRandomState];
+    
+    //Test on phone and improve FPS?
+    GEAHoleNode *hole = [[GEAHoleNode alloc] init];
     [hole initializeCollisionConfig];
     do {
         [hole randomizePositionForIncrements: incAmount andControlsHeight:controlsHeight andSceneHeight:self.frame.size.height andSceneWidth:self.frame.size.width];
     } while ( [self anyHolesOrMuffinStacksLieOnSprite: hole] );
     
-    [hole setScale: 0.1];
+
     [self addChild: hole];
     [holes addObject: hole];
+    
+    [hole setTexture: (SKTexture *) holeOpeningArray[0]];
+    [hole setSize: [(SKTexture*) holeOpeningArray[0] size]];
+    [hole setScale: 0.6];
+    
+    int randomWaitTime = arc4random_uniform(7)+1;
+    if(randomWaitTime > 4.5) {
+        [self spawnMuffinManFromHole:hole];
+    }
+    SKAction *waitTimeBetweenSpawns = [SKAction waitForDuration: (NSTimeInterval) randomWaitTime];
+    SKAction *holeOpening = [SKAction animateWithTextures: holeOpeningArray
+                                             timePerFrame:0.1f
+                                                   resize:YES
+                                                  restore:NO];
+    SKAction *waitForMuffinManToEmerge = [SKAction waitForDuration: (NSTimeInterval) 1];
+    
+    SKAction *holeClosing = [SKAction animateWithTextures: holeClosingArray
+                                            timePerFrame:0.1f
+                                                  resize:YES
+                                                 restore:NO];
+    SKAction *spawnMuffinManAction = [SKAction runBlock: ^{[self spawnMuffinManWithAnimationFromHole: hole ];}];
+    
+
+    
+    [hole runAction: [SKAction repeatActionForever: [SKAction sequence: @[waitTimeBetweenSpawns, holeOpening, waitForMuffinManToEmerge, holeClosing, spawnMuffinManAction]]]];
+    
 }
 
 -(bool)anyHolesOrMuffinStacksLieOnSprite:(SKSpriteNode *)aPotentialSprite {
@@ -373,22 +446,14 @@ static const int speedModifier = 2;
                 }
 
             } else {
-                if(((int)currentTime % 10) == 1 && !didFlipHolesOnce) {
-                    for (GEAHoleNode *hole in holes) {
-                        [hole flipFlopHole];
-                        [self spawnMuffinMen];
-                        didFlipHolesOnce = true;
-                    }
-                }
-                if(((int)currentTime % 10) == 2){
-                    didFlipHolesOnce = false;
-                }
                 
                 if(((int)currentTime % 2) == 1 && !didUpdateTrajectories) {
                     for (GEAMuffinMan *muffinMan in muffinMen) {
+                        if([muffinMan yScale] > 0.29) {
                         [muffinMan moveTowardsLocation:player.position];
-                        didUpdateTrajectories = true;
+                        }
                     }
+                    didUpdateTrajectories = true;
                 }
                 if(((int)currentTime % 2) == 0){
                     didUpdateTrajectories = false;

@@ -11,7 +11,17 @@
 
 @implementation GEAHoleNode {
     bool isOpen;
+    bool isKillable;
 }
+
+-(bool)isHoleKillable {
+    return isKillable;
+}
+
+-(void) setKillable: (bool) isHoleKillable {
+    isKillable = isHoleKillable;
+}
+
 
 -(bool)isHoleOpen {
     return isOpen;

@@ -48,6 +48,7 @@
 		F14825EB1AACCCF1006EDFE3 /* deathAnimation.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F14825E91AACCCF1006EDFE3 /* deathAnimation.atlas */; };
 		F14825EE1AACE167006EDFE3 /* enterDoor.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F14825EC1AACE167006EDFE3 /* enterDoor.atlas */; };
 		F14825F11AACF137006EDFE3 /* nextLevelButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F14825EF1AACF137006EDFE3 /* nextLevelButton.png */; };
+		F14825F71AAFD8C3006EDFE3 /* holeOpening.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F14825F51AAFD8C3006EDFE3 /* holeOpening.atlas */; };
 		F1C0065C1A61F29800E264EC /* door.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C0065A1A61F29800E264EC /* door.png */; };
 		F1C006621A61F70F00E264EC /* closedhole.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C006601A61F70F00E264EC /* closedhole.png */; };
 		F1C006651A61F7FE00E264EC /* openhole.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C006631A61F7FE00E264EC /* openhole.png */; };
@@ -143,6 +144,7 @@
 		F14825EA1AACCCF1006EDFE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = en; path = en.lproj/deathAnimation.atlas; sourceTree = "<group>"; };
 		F14825ED1AACE167006EDFE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = en; path = en.lproj/enterDoor.atlas; sourceTree = "<group>"; };
 		F14825F01AACF137006EDFE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/nextLevelButton.png; sourceTree = "<group>"; };
+		F14825F61AAFD8C3006EDFE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = en; path = en.lproj/holeOpening.atlas; sourceTree = "<group>"; };
 		F1C0065B1A61F29800E264EC /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/door.png; sourceTree = "<group>"; };
 		F1C006611A61F70F00E264EC /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "Pie Fight/en.lproj/closedhole.png"; sourceTree = "<group>"; };
 		F1C006641A61F7FE00E264EC /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "Pie Fight/en.lproj/openhole.png"; sourceTree = "<group>"; };
@@ -421,6 +423,7 @@
 		F1C006C71A91970A00E264EC /* Game Images */ = {
 			isa = PBXGroup;
 			children = (
+				F14825F51AAFD8C3006EDFE3 /* holeOpening.atlas */,
 				F14825EC1AACE167006EDFE3 /* enterDoor.atlas */,
 				F14825E91AACCCF1006EDFE3 /* deathAnimation.atlas */,
 				F14825E61AABC571006EDFE3 /* muffinMen.atlas */,
@@ -558,6 +561,7 @@
 				F1C006621A61F70F00E264EC /* closedhole.png in Resources */,
 				F1C006CE1A91977100E264EC /* startButton.png in Resources */,
 				F148258E1A9D77C0006EDFE3 /* Icon-76@2x.png in Resources */,
+				F14825F71AAFD8C3006EDFE3 /* holeOpening.atlas in Resources */,
 				F14825951AA221B6006EDFE3 /* backButton.png in Resources */,
 				F1C0066D1A63726A00E264EC /* baseCenter.png in Resources */,
 				F148258A1A9D77C0006EDFE3 /* Icon-40@3x.png in Resources */,
@@ -768,6 +772,14 @@
 				F14825F01AACF137006EDFE3 /* en */,
 			);
 			name = nextLevelButton.png;
+			sourceTree = "<group>";
+		};
+		F14825F51AAFD8C3006EDFE3 /* holeOpening.atlas */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F14825F61AAFD8C3006EDFE3 /* en */,
+			);
+			name = holeOpening.atlas;
 			sourceTree = "<group>";
 		};
 		F1C0065A1A61F29800E264EC /* door.png */ = {

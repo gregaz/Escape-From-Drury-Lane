@@ -18,9 +18,9 @@ static const int speed = 100;
     NSMutableArray *eatAnimationArray;
 }
 
--(id) initMuffinManWithPhysicsBody: (SKPhysicsBody*) physicsBody {
+-(id) initMuffinManWithPhysicsBody: (SKPhysicsBody*) physicsBody andAnimationArray: (NSMutableArray*) animationArray {
     self = [self init];
-    [self initAtlasAndAnimationArray];
+    muffinManAnimationArray = animationArray;
     [self setTexture: muffinManAnimationArray[0]];
     [self setSize: [((SKTexture*)muffinManAnimationArray[0]) size]];
     [self initializeCollisionConfigWithPhysicsBody: physicsBody];

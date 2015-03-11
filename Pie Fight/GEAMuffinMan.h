@@ -12,7 +12,7 @@
 @interface GEAMuffinMan : GEARandomizablePositionNode
 
 -(void)moveTowardsLocation: (CGPoint) destination;
--(id)initMuffinManWithPhysicsBody: (SKPhysicsBody*) physicsBody;
+-(id)initMuffinManWithPhysicsBody: (SKPhysicsBody*) physicsBody andAnimationArray: (NSMutableArray*) animationArray;
 -(void) animateEatGingerBreadMan;
 
 @end

@@ -15,5 +15,6 @@
 -(id)initWithRandomState;
 -(bool)isHoleOpen;
 -(void)initializeCollisionConfig;
+-(void) setKillable: (bool) isHoleKillable;
 
 @end
