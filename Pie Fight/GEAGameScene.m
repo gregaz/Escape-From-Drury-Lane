@@ -55,6 +55,7 @@ static const int speedModifier = 2;
     SKTextureAtlas *muffinManTextureAtlas;
     GEAMuffinMan *murderMan;
     SKTextureAtlas *holeSpawnAtlas;
+    SKTexture *closedHoleTexture;
     
     NSMutableArray *holeOpeningArray;
     NSMutableArray *holeClosingArray;
@@ -246,22 +247,16 @@ static const int speedModifier = 2;
 }
 
 -(void)initAnimationAtlasAndArrays {
-    holeSpawnAtlas = [SKTextureAtlas atlasNamed: @"holeOpening"];
+    holeSpawnAtlas = [SKTextureAtlas atlasNamed: @"holeSpawn"];
     holeOpeningArray = [NSMutableArray array];
     holeClosingArray = [NSMutableArray array];
     muffinManAnimationArray = [NSMutableArray array];
     muffinManTextureAtlas = [SKTextureAtlas atlasNamed: @"muffinMen"];
     
-    for(int i = 1; i <= 9; i++) {
-        NSString* fileName = [NSString stringWithFormat: @"hole%i", i];
+    for(int i = 1; i <= 11; i++) {
+        NSString* fileName = [NSString stringWithFormat: @"holeSpawn%i", i];
         SKTexture *temp = [holeSpawnAtlas textureNamed:fileName];
         [holeOpeningArray addObject:temp];
-    }
-    
-    for(int i = 19; i <= 21; i++) {
-        NSString* fileName = [NSString stringWithFormat: @"hole%i", i];
-        SKTexture *temp = [holeSpawnAtlas textureNamed:fileName];
-        [holeClosingArray addObject:temp];
     }
     
     for(int i = 1; i <= muffinManTextureAtlas.textureNames.count; i++) {
@@ -269,6 +264,8 @@ static const int speedModifier = 2;
         SKTexture *temp = [muffinManTextureAtlas textureNamed:fileName];
         [muffinManAnimationArray addObject:temp];
     }
+    
+    closedHoleTexture = [holeSpawnAtlas textureNamed: @"holeClosed"];
     
 }
 
@@ -283,11 +280,26 @@ static const int speedModifier = 2;
 
 -(void)spawnMuffinManWithAnimationFromHole: (GEAHoleNode *) aHole {
     GEAMuffinMan* muffinMan = [[GEAMuffinMan alloc] initMuffinManWithPhysicsBody: [muffinManPhysicsBody copy] andAnimationArray: muffinManAnimationArray];
+    
     [muffinMan setPosition: aHole.position];
-    [muffinMan setAnchorPoint: CGPointMake(0.5, 0.0)];
-    [muffinMan setXScale: 0.3];
-    [muffinMan setYScale:0.01];
-    [muffinMan runAction:[SKAction scaleYTo:0.3 duration:1]];
+//    [muffinMan setAnchorPoint: CGPointMake(0.5, 0.0)];
+//    [muffinMan setXScale: 0.01];
+//    [muffinMan setYScale:0.01];
+    [muffinMan setScale:0.01];
+
+    //TODO fix spawn of these guys
+    //[muffinMan initializeCollisionConfigWithPhysicsBody:     [SKPhysicsBody bodyWithRectangleOfSize:[muffinMan size] center:muffinMan.anchorPoint]];
+//    SKAction *scaleYAction = [SKAction scaleYTo:0.3 duration:1];
+//    SKAction *setAnchorPointAction = [SKAction runBlock: ^{
+//        [muffinMan setAnchorPoint:CGPointMake(0.5, 0.5)];
+//        [muffinMan setPosition: CGPointMake(muffinMan.position.x, muffinMan.position.y + muffinMan.size.height * 0.5)]; //offset the anchore point change
+//    }];
+//    SKAction *setPhysicsConfig = [SKAction runBlock: ^{[muffinMan initializeCollisionConfigWithPhysicsBody:[muffinManPhysicsBody copy]];}];
+//    
+//    [muffinMan runAction: [SKAction sequence: @[scaleYAction, setAnchorPointAction, setPhysicsConfig]]];
+    
+    [muffinMan runAction: [SKAction scaleTo:0.3 duration:1]];
+    
     [self addChild:muffinMan];
     [muffinMen addObject: muffinMan];
 }
@@ -375,17 +387,10 @@ static const int speedModifier = 2;
                                              timePerFrame:0.1f
                                                    resize:YES
                                                   restore:NO];
-    SKAction *waitForMuffinManToEmerge = [SKAction waitForDuration: (NSTimeInterval) 1];
+    SKAction *spawnMuffinManAction = [SKAction runBlock: ^{[self spawnMuffinManFromHole: hole ];}];
+    SKAction *setClosedHoleAction = [SKAction setTexture: closedHoleTexture];
     
-    SKAction *holeClosing = [SKAction animateWithTextures: holeClosingArray
-                                            timePerFrame:0.1f
-                                                  resize:YES
-                                                 restore:NO];
-    SKAction *spawnMuffinManAction = [SKAction runBlock: ^{[self spawnMuffinManWithAnimationFromHole: hole ];}];
-    
-
-    
-    [hole runAction: [SKAction repeatActionForever: [SKAction sequence: @[waitTimeBetweenSpawns, holeOpening, waitForMuffinManToEmerge, holeClosing, spawnMuffinManAction]]]];
+    [hole runAction: [SKAction repeatActionForever: [SKAction sequence: @[waitTimeBetweenSpawns, holeOpening, spawnMuffinManAction, setClosedHoleAction]]]];
     
 }
 

@@ -14,5 +14,6 @@
 -(void)moveTowardsLocation: (CGPoint) destination;
 -(id)initMuffinManWithPhysicsBody: (SKPhysicsBody*) physicsBody andAnimationArray: (NSMutableArray*) animationArray;
 -(void) animateEatGingerBreadMan;
+-(void) initializeCollisionConfigWithPhysicsBody: (SKPhysicsBody*) physicsBody ;
 
 @end
