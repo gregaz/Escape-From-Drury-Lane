@@ -8,6 +8,7 @@
 
 #import "GEAMuffinMan.h"
 #import "GEAConstants.h"
+#import "GEAMuffinNode.h"
 
 static const int speed = 100;
 
@@ -16,6 +17,7 @@ static const int speed = 100;
     NSMutableArray *muffinManAnimationArray;
     SKTextureAtlas *eatAnimationAtlas;
     NSMutableArray *eatAnimationArray;
+    bool isDead;
 }
 
 -(id) initMuffinManWithPhysicsBody: (SKPhysicsBody*) physicsBody andAnimationArray: (NSMutableArray*) animationArray {
@@ -24,6 +26,7 @@ static const int speed = 100;
     [self setTexture: muffinManAnimationArray[0]];
     [self setSize: [((SKTexture*)muffinManAnimationArray[0]) size]];
     [self initializeCollisionConfigWithPhysicsBody: physicsBody];
+    isDead = false;
     return self;
 }
 
@@ -85,6 +88,22 @@ static const int speed = 100;
     }
     
     [self runAction:moveAction];
+}
+
+-(bool) isDead {
+    return isDead;
+}
+
+-(void) wasHitByMuffin: (GEAMuffinNode*) aMuffin {
+    [self removeAllActions];
+    aMuffin.physicsBody = nil;
+    isDead = true;
+    self.physicsBody = nil;
+    CGPoint destination = [aMuffin launchDestination];
+    float duration = [GEAPointMath distanceBetween:self.position and: destination] / muffinVelocity;
+    SKAction* moveAction = [SKAction moveTo: destination duration: duration];
+    SKAction* moveDoneAction = [SKAction removeFromParent];
+    [self runAction:[SKAction sequence:@[moveAction, moveDoneAction]]];
 }
 
 @end

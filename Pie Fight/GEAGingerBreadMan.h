@@ -21,7 +21,7 @@
 -(void) throwMuffinWithDirectionVectorX: (double) x andY: (double) y;
 -(void) pickupMuffinFromMuffinStack: (GEAMuffinStackNode*) aMuffinStack;
 
--(void) moveUsingVectorWithX: (double) x andY: (double) y;
+-(void) moveUsingVectorWithX: (double) x andY: (double) y andTimeDelta: (CFTimeInterval) timeDelta;
 
 -(void) animateSideRunRight;
 -(void) animateSideRunLeft;

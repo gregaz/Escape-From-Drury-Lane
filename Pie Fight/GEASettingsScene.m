@@ -66,12 +66,12 @@
         leftButtonImageName = @"leftHandedSelectedButton.png";
     }
     
-    SKLabelNode *titleLabel = [SKLabelNode labelNodeWithFontNamed: @"AmericanTypewriter"];
-    titleLabel.position = CGPointMake(self.frame.size.width*0.2,self.frame.size.height*0.5);
-    titleLabel.fontSize = 30;
-    titleLabel.fontColor = [UIColor whiteColor];
-    titleLabel.text = @"Are you ";
-    [self addChild: titleLabel];
+//    SKLabelNode *titleLabel = [SKLabelNode labelNodeWithFontNamed: @"AmericanTypewriter"];
+//    titleLabel.position = CGPointMake(self.frame.size.width*0.2,self.frame.size.height*0.5);
+//    titleLabel.fontSize = 30;
+//    titleLabel.fontColor = [UIColor whiteColor];
+//    titleLabel.text = @"Are you ";
+//    [self addChild: titleLabel];
     
     leftHandButton = [[GEAButton alloc] initWithButtonImageNamed: leftButtonImageName];
     leftHandButton.position = CGPointMake(self.frame.size.width*0.4, self.frame.size.height*0.5);

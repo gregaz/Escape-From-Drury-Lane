@@ -6,15 +6,13 @@
 //  Copyright (c) 2014 Gregory Azuolas. All rights reserved.
 //
 // TODO:
-// Fix hole/muffinstack placement bug
-// Add background/controls border
 // Improve Enemy AI
-// Ads between screens
+// Improve buttons/joystick?
+// Ads between screens/banner ads
+// Sounds/Music
 // Level progression screen
 // Story Screen
-// Enemy Animations - spawn, death
-// Sounds/Music
-// Medals for score thresholds (unlockable characters?)
+// Clean up code
 
 #import "GEAGameScene.h"
 #import "GEAJoyStick.h"
@@ -30,8 +28,7 @@
 #include <stdlib.h>
 
 static const int incAmount = 30;
-static const int controlsHeight = 45;
-static const int speedModifier = 2;
+static const int controlsHeight = 100;
 
 @implementation GEAGameScene{
     GEAGingerBreadMan *player;
@@ -47,9 +44,9 @@ static const int speedModifier = 2;
     NSMutableArray *muffinStacks;
     NSMutableArray *muffinMen;
     GEAJoyStick *joystick;
-    GEAButton *throwButton;
     GEAButton *retryButton;
     GEAButton *nextLevelButton;
+    SKSpriteNode *nextLevelBackground;
     SKPhysicsBody *muffinManPhysicsBody;
     NSMutableArray *muffinManAnimationArray;
     SKTextureAtlas *muffinManTextureAtlas;
@@ -59,6 +56,8 @@ static const int speedModifier = 2;
     
     NSMutableArray *holeOpeningArray;
     NSMutableArray *holeClosingArray;
+    
+    CFTimeInterval lastUpdateTime;
 }
 
 -(id)initWithSize:(CGSize)size {    
@@ -77,6 +76,8 @@ static const int speedModifier = 2;
         shouldGoToNextLevel = false;
         shouldEndGame = false;
         hasGameEnded = false;
+        lastUpdateTime = 0;
+        retryButton = nil;
         [self initAnimationAtlasAndArrays];
         [self initMuffinManPhysicsBody];
         [self addScoreBoard];
@@ -84,7 +85,6 @@ static const int speedModifier = 2;
         [self initializePlayer];
         [self initializeDoor];
         [self nextLevel];
-       // [self addDebugLabels];
         
     }
     return self;
@@ -98,39 +98,45 @@ static const int speedModifier = 2;
     [self clearMuffinMen];
     [self resetPlayer];
     [self spawnHoles];
-    [self spawnMuffinMen];
     [self spawnMuffinStacks];
     [self resetDoorPosition];
 }
 
--(void)endGame {
-    for (SKSpriteNode* child in [self children]) {
-        [child removeAllActions];
-    }
+-(void)drawGameOverOverlay {
     
-    [player removeFromParent];
-    [murderMan animateEatGingerBreadMan];
+    SKSpriteNode *background = [[SKSpriteNode alloc] initWithImageNamed: @"finalScoreBackGround.png"];
+    background.position = CGPointMake(0, self.frame.size.height*0.55);
+    background.size = CGSizeMake(self.frame.size.width*2.0, self.frame.size.height*0.5);
+    [background setZPosition: 50];
+    [self addChild:background];
     
-    hasGameEnded = true;
+    SKSpriteNode *medalNode = [[SKSpriteNode alloc] initWithImageNamed: [GEAConstants medalImageNameForScore: score]];
+    medalNode.position = CGPointMake(self.frame.size.width*0.2, self.frame.size.height * 0.55);
+    [medalNode setZPosition:100];
+    [medalNode setScale: 0.2];
+    [self addChild:medalNode];
     
     SKLabelNode *gameOverLabel = [SKLabelNode labelNodeWithFontNamed: @"AmericanTypewriter"];
-    gameOverLabel.position = CGPointMake(self.frame.size.width*0.5, self.frame.size.height*0.75);
+    gameOverLabel.position = CGPointMake(self.frame.size.width*0.65, self.frame.size.height*0.65);
     gameOverLabel.text = @"Game Over";
     gameOverLabel.fontColor = [UIColor whiteColor];
     gameOverLabel.fontSize = 50;
+    [gameOverLabel setZPosition:100];
     
     [self addChild: gameOverLabel];
 
     SKLabelNode *scoreLabel = [SKLabelNode labelNodeWithFontNamed: @"AmericanTypewriter"];
-    scoreLabel.position = CGPointMake(self.frame.size.width*0.5, self.frame.size.height*0.5);
+    scoreLabel.position = CGPointMake(self.frame.size.width*0.65, self.frame.size.height*0.5);
     scoreLabel.text = [NSString stringWithFormat: @"Final Score: %i", score];
     scoreLabel.fontColor = [UIColor whiteColor];
     scoreLabel.fontSize = 50;
+    [scoreLabel setZPosition:100];
     
     [self addChild:scoreLabel];
     
     retryButton = [[GEAButton alloc] initWithButtonImageNamed: @"retryButton.png"];
-    retryButton.position = CGPointMake(self.frame.size.width*0.5, self.frame.size.height*0.25);
+    retryButton.position = CGPointMake(self.frame.size.width*0.65, self.frame.size.height*0.4);
+    [retryButton setZPosition: 100];
     
     [self addChild: retryButton];
     
@@ -147,16 +153,13 @@ static const int speedModifier = 2;
     NSArray* sortedHighScores = [highScores sortedArrayUsingDescriptors:[NSArray arrayWithObject:scoreSorter]];
     
 
-    sortedHighScores = [sortedHighScores subarrayWithRange: NSMakeRange(0, MIN(10, sortedHighScores.count))];
+    sortedHighScores = [sortedHighScores subarrayWithRange: NSMakeRange(0, MIN(3, sortedHighScores.count))];
     [defaults setObject:sortedHighScores forKey:@"highScores"];
     [defaults synchronize];
     
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    UITouch *touch = [touches anyObject];
-    CGPoint touchLocation = [touch locationInNode:self.scene];
-}
+
 
 -(void)addScoreBoard {
     SKLabelNode *scoreLabel = [SKLabelNode labelNodeWithFontNamed: @"Arial"];
@@ -186,28 +189,20 @@ static const int speedModifier = 2;
 
 -(void)addControls {
     float joystickX;
-    float throwButtonX;
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString* handedness = [defaults stringForKey:@"handedness"];
     
     if([handedness isEqualToString: @"right" ]) {
         joystickX = 0.8;
-        throwButtonX = 0.2;
     } else {
         joystickX = 0.2;
-        throwButtonX = 0.8;
     }
     
     joystick = [[GEAJoyStick alloc] initWithJoystickImage: @"centerJoystick.png" baseImage: @"baseCenter.png"];
     [joystick setPosition:CGPointMake(self.frame.size.width*joystickX,self.frame.size.height*0.1)];
+    [joystick setZPosition: -100.0];
     [self addChild: joystick];
-    
-    throwButton = [[GEAButton alloc] initWithButtonImageNamed:@"throwButton.png"];
-    [throwButton setName: @"throwButton"];
-    [throwButton setScale: .6];
-    [throwButton setPosition: CGPointMake(self.frame.size.width*throwButtonX,self.frame.size.height*0.1)];
-    [self addChild:throwButton];
 }
 
 -(void)initializePlayer {
@@ -231,14 +226,6 @@ static const int speedModifier = 2;
         [muffinMan runAction: [SKAction removeFromParent]];
     }
     [muffinMen removeAllObjects];
-}
-
--(void)spawnMuffinMen {
-    for (GEAHoleNode *hole in holes) {
-        if([hole isHoleOpen]) {
-            [self spawnMuffinManFromHole: hole];
-        }
-    }
 }
 
 -(void)initMuffinManPhysicsBody {
@@ -276,32 +263,6 @@ static const int speedModifier = 2;
     [self addChild:muffinMan];
     [muffinMen addObject: muffinMan];
     
-}
-
--(void)spawnMuffinManWithAnimationFromHole: (GEAHoleNode *) aHole {
-    GEAMuffinMan* muffinMan = [[GEAMuffinMan alloc] initMuffinManWithPhysicsBody: [muffinManPhysicsBody copy] andAnimationArray: muffinManAnimationArray];
-    
-    [muffinMan setPosition: aHole.position];
-//    [muffinMan setAnchorPoint: CGPointMake(0.5, 0.0)];
-//    [muffinMan setXScale: 0.01];
-//    [muffinMan setYScale:0.01];
-    [muffinMan setScale:0.01];
-
-    //TODO fix spawn of these guys
-    //[muffinMan initializeCollisionConfigWithPhysicsBody:     [SKPhysicsBody bodyWithRectangleOfSize:[muffinMan size] center:muffinMan.anchorPoint]];
-//    SKAction *scaleYAction = [SKAction scaleYTo:0.3 duration:1];
-//    SKAction *setAnchorPointAction = [SKAction runBlock: ^{
-//        [muffinMan setAnchorPoint:CGPointMake(0.5, 0.5)];
-//        [muffinMan setPosition: CGPointMake(muffinMan.position.x, muffinMan.position.y + muffinMan.size.height * 0.5)]; //offset the anchore point change
-//    }];
-//    SKAction *setPhysicsConfig = [SKAction runBlock: ^{[muffinMan initializeCollisionConfigWithPhysicsBody:[muffinManPhysicsBody copy]];}];
-//    
-//    [muffinMan runAction: [SKAction sequence: @[scaleYAction, setAnchorPointAction, setPhysicsConfig]]];
-    
-    [muffinMan runAction: [SKAction scaleTo:0.3 duration:1]];
-    
-    [self addChild:muffinMan];
-    [muffinMen addObject: muffinMan];
 }
 
 -(void)spawnMuffinStacks {
@@ -362,46 +323,50 @@ static const int speedModifier = 2;
 
 
 -(void)addHole {
-    
-    //Test on phone and improve FPS?
-    GEAHoleNode *hole = [[GEAHoleNode alloc] init];
-    [hole initializeCollisionConfig];
+    GEAHoleNode *hole = [[GEAHoleNode alloc] initHoleWithOpeningArray:holeOpeningArray andCloseTexture:closedHoleTexture];
+    int numberOfTries = 0;
     do {
         [hole randomizePositionForIncrements: incAmount andControlsHeight:controlsHeight andSceneHeight:self.frame.size.height andSceneWidth:self.frame.size.width];
-    } while ( [self anyHolesOrMuffinStacksLieOnSprite: hole] );
+        numberOfTries++;
+    } while ( [self anyHolesOrMuffinStacksLieOnSprite: hole] && numberOfTries != 11 );
     
-
-    [self addChild: hole];
-    [holes addObject: hole];
-    
-    [hole setTexture: (SKTexture *) holeOpeningArray[0]];
-    [hole setSize: [(SKTexture*) holeOpeningArray[0] size]];
-    [hole setScale: 0.6];
-    
-    int randomWaitTime = arc4random_uniform(7)+1;
-    if(randomWaitTime > 4.5) {
-        [self spawnMuffinManFromHole:hole];
+    if (numberOfTries != 11) {
+        [self addChild: hole];
+        [holes addObject: hole];
+        [hole spawnInitialMuffinManIfRequired];
+        
     }
-    SKAction *waitTimeBetweenSpawns = [SKAction waitForDuration: (NSTimeInterval) randomWaitTime];
-    SKAction *holeOpening = [SKAction animateWithTextures: holeOpeningArray
-                                             timePerFrame:0.1f
-                                                   resize:YES
-                                                  restore:NO];
-    SKAction *spawnMuffinManAction = [SKAction runBlock: ^{[self spawnMuffinManFromHole: hole ];}];
-    SKAction *setClosedHoleAction = [SKAction setTexture: closedHoleTexture];
-    
-    [hole runAction: [SKAction repeatActionForever: [SKAction sequence: @[waitTimeBetweenSpawns, holeOpening, spawnMuffinManAction, setClosedHoleAction]]]];
-    
 }
 
--(bool)anyHolesOrMuffinStacksLieOnSprite:(SKSpriteNode *)aPotentialSprite {
-    NSMutableArray *holesAndMuffins;
+-(NSMutableArray*) holesAndMuffinStacks {
+    NSMutableArray *holesAndMuffins = [NSMutableArray array];
     [holesAndMuffins addObjectsFromArray: holes ];
     [holesAndMuffins addObjectsFromArray: muffinStacks];
+    return holesAndMuffins;
+}
+
+-(NSMutableArray*) holesAndMuffinMen {
+    NSMutableArray *holesAndMuffinMen = [NSMutableArray array];
+    [holesAndMuffinMen addObjectsFromArray: holes ];
+    [holesAndMuffinMen addObjectsFromArray: muffinMen];
+    return holesAndMuffinMen;
+}
+
+
+-(bool)anyHolesOrMuffinStacksLieOnSprite:(SKSpriteNode *)aPotentialSprite {
+    NSMutableArray *pointsToCheck = [NSMutableArray array];
+    [pointsToCheck addObject: [NSValue valueWithCGPoint:CGPointMake(aPotentialSprite.position.x + aPotentialSprite.size.width/2.0, aPotentialSprite.position.y + aPotentialSprite.size.height/2.0+1)]];
+    [pointsToCheck addObject: [NSValue valueWithCGPoint:CGPointMake(aPotentialSprite.position.x + aPotentialSprite.size.width/2.0, aPotentialSprite.position.y - aPotentialSprite.size.height/2.0+1)]];
+    [pointsToCheck addObject: [NSValue valueWithCGPoint:CGPointMake(aPotentialSprite.position.x - aPotentialSprite.size.width/2.0, aPotentialSprite.position.y + aPotentialSprite.size.height/2.0+1)]];
+    [pointsToCheck addObject: [NSValue valueWithCGPoint:CGPointMake(aPotentialSprite.position.x - aPotentialSprite.size.width/2.0, aPotentialSprite.position.y - aPotentialSprite.size.height/2.0+1)]];
+    [pointsToCheck addObject: [NSValue valueWithCGPoint:aPotentialSprite.position]];
     
-    for (SKSpriteNode *existingHoleOrMuffin in holesAndMuffins) {
-        if ( [existingHoleOrMuffin containsPoint: aPotentialSprite.position]) {
-            return true;
+    for (SKSpriteNode *existingHoleOrMuffin in [self holesAndMuffinStacks]) {
+        for (NSValue *valueToCheck in pointsToCheck) {
+            CGPoint pointToCheck = valueToCheck.CGPointValue;
+            if ( [existingHoleOrMuffin containsPoint: pointToCheck]) {
+                return true;
+            }
         }
     }
     return false;
@@ -409,8 +374,12 @@ static const int speedModifier = 2;
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
-   // SKLabelNode *label = (SKLabelNode *)[self childNodeWithName:@"joystickLabel"];
     if (hasGameEnded) {
+        if (![murderMan hasActions]) {
+            if(retryButton == nil) {
+                [self drawGameOverOverlay];
+            }
+        }
         if ([retryButton shouldActionPress]) {
             GEAStartMenuScene *startScene = [GEAStartMenuScene sceneWithSize:self.view.bounds.size];
             startScene.scaleMode = SKSceneScaleModeAspectFill;
@@ -418,17 +387,23 @@ static const int speedModifier = 2;
         }
     } else {
         if (shouldEndGame) {
-            [self endGame];
+            for (SKSpriteNode* child in [self children]) {
+                [child removeAllActions];
+            }
+            
+            [player removeFromParent];
+            [murderMan animateEatGingerBreadMan];
+            hasGameEnded = true;
+            
         } else {
             if(shouldGoToNextLevel) {
+                for (SKNode *holeOrMuffinMan in [self holesAndMuffinMen]) {
+                    [holeOrMuffinMan removeAllActions];
+                }
                 //this doesnt seem to work in didBeginContact: bad timing mayhaps?
                 if( ![player isHidden] ){
                     [door animateDoorWalkThrough];
                     player.hidden = true;
-                    for (GEAMuffinMan *muffinMan in muffinMen) {
-                        [muffinMan removeAllActions];
-                    }
-                    
                 }
                 if( ![door hasActions]) {
                     if (nextLevelButton == nil) {
@@ -436,14 +411,23 @@ static const int speedModifier = 2;
                         [nextLevelButton setPosition: CGPointMake(self.frame.size.width * 0.5, self.frame.size.height * 0.5)];
                         [nextLevelButton setZPosition: 10.0];
                         [self addChild:nextLevelButton];
+                        
+                        nextLevelBackground = [[SKSpriteNode alloc] initWithImageNamed:@"finalScoreBackGround.png"];
+                        [nextLevelBackground setPosition: CGPointMake(0, self.frame.size.height*0.5)];
+                        [nextLevelBackground setSize: CGSizeMake(self.frame.size.width*2.0, self.frame.size.height*0.2)];
+                        [nextLevelBackground setZPosition: 9.0];
+                        [self addChild: nextLevelBackground];
 
                     } else if ([nextLevelButton isHidden]) {
                         [nextLevelButton setHidden:false];
                         [nextLevelButton setZPosition: 10.0];
+                        [nextLevelBackground setHidden:false];
+                        [nextLevelBackground setZPosition:9.0];
                     }
                     
                     if ([nextLevelButton shouldActionPress]) {
                         [nextLevelButton setHidden:true];
+                        [nextLevelBackground setHidden:true];
                         shouldGoToNextLevel = false;
                         [self nextLevel];
                     }
@@ -454,8 +438,8 @@ static const int speedModifier = 2;
                 
                 if(((int)currentTime % 2) == 1 && !didUpdateTrajectories) {
                     for (GEAMuffinMan *muffinMan in muffinMen) {
-                        if([muffinMan yScale] > 0.29) {
-                        [muffinMan moveTowardsLocation:player.position];
+                        if([muffinMan yScale] > 0.29 && ![muffinMan isDead]) {
+                            [muffinMan moveTowardsLocation:player.position];
                         }
                     }
                     didUpdateTrajectories = true;
@@ -464,51 +448,74 @@ static const int speedModifier = 2;
                     didUpdateTrajectories = false;
                 }
                 
-                [player moveUsingVectorWithX:joystick.x andY:joystick.y];
-                
-                if ([throwButton shouldActionPress]) {
-                    [player throwMuffinWithDirectionVectorX: joystick.x andY: joystick.y];
-                    //[player throwMuffinWithDirectionVectorX: 0.0 andY: 0.3];
-                }
+                [player moveUsingVectorWithX:joystick.x andY:joystick.y andTimeDelta: currentTime -lastUpdateTime];
             }
         }
     }
+    lastUpdateTime = currentTime;
     [super update:currentTime];
 }
 
-- (void)didBeginContact:(SKPhysicsContact *)contact {
-    if( contact.bodyA.categoryBitMask == playerCategory && contact.bodyB.categoryBitMask == muffinStackCategory) {
-        [(GEAGingerBreadMan*) contact.bodyA.node pickupMuffinFromMuffinStack: (GEAMuffinStackNode*) contact.bodyB.node ];
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [super touchesBegan:touches withEvent:event];
+    UITouch *touch = [touches anyObject];
+    CGPoint touchLocation = [touch locationInNode:self.scene];
+    if (![joystick containsPoint:touchLocation]) {
+        [player throwMuffinWithDirectionVectorX: joystick.x andY: joystick.y];
     }
     
-    if(contact.bodyB.categoryBitMask == playerCategory && contact.bodyA.categoryBitMask == muffinStackCategory) {
-        [(GEAGingerBreadMan*) contact.bodyB.node pickupMuffinFromMuffinStack: (GEAMuffinStackNode*) contact.bodyA.node ];
+}
 
-    }
-    
-    if((contact.bodyA.categoryBitMask == muffinCategory && contact.bodyB.categoryBitMask == enemyCategory)||
-       (contact.bodyB.categoryBitMask == muffinCategory && contact.bodyA.categoryBitMask == enemyCategory))
-    {
-        //add enemy kill animation here
-        [contact.bodyA.node removeFromParent];
-        [contact.bodyB.node removeFromParent];
-    }
-    
-    if( (contact.bodyA.categoryBitMask == playerCategory && contact.bodyB.categoryBitMask == doorCategory) || (contact.bodyA.categoryBitMask == doorCategory && contact.bodyB.categoryBitMask == playerCategory)) {
-        shouldGoToNextLevel = true;
-    }
-    
-    if ( (contact.bodyA.categoryBitMask == enemyCategory && contact.bodyB.categoryBitMask == playerCategory) || (contact.bodyB.categoryBitMask == enemyCategory && contact.bodyA.categoryBitMask == playerCategory)) {
-        shouldEndGame = true;
-        
-        if( [contact.bodyA.node isKindOfClass: [GEAMuffinMan class]]) {
-            murderMan = (GEAMuffinMan*) contact.bodyA.node;
-        } else {
-            murderMan = (GEAMuffinMan*) contact.bodyB.node;
+- (void)didBeginContact:(SKPhysicsContact *)contact {
+    if (!hasGameEnded) {
+        if( contact.bodyA.categoryBitMask == playerCategory && contact.bodyB.categoryBitMask == muffinStackCategory) {
+            [(GEAGingerBreadMan*) contact.bodyA.node pickupMuffinFromMuffinStack: (GEAMuffinStackNode*) contact.bodyB.node ];
         }
         
+        if(contact.bodyB.categoryBitMask == playerCategory && contact.bodyA.categoryBitMask == muffinStackCategory) {
+            [(GEAGingerBreadMan*) contact.bodyB.node pickupMuffinFromMuffinStack: (GEAMuffinStackNode*) contact.bodyA.node ];
+            
+        }
+        
+        if((contact.bodyA.categoryBitMask == muffinCategory && contact.bodyB.categoryBitMask == enemyCategory)||
+           (contact.bodyB.categoryBitMask == muffinCategory && contact.bodyA.categoryBitMask == enemyCategory))
+        {
+            if( [contact.bodyA.node isKindOfClass: [GEAMuffinMan class]]) {
+                [(GEAMuffinMan*) contact.bodyA.node wasHitByMuffin: (GEAMuffinNode*) contact.bodyB.node];
+            } else if ([contact.bodyB.node isKindOfClass: [GEAMuffinMan class]]) {
+                [(GEAMuffinMan*) contact.bodyB.node wasHitByMuffin: (GEAMuffinNode*) contact.bodyA.node];
+            }
+        }
+        
+        if((contact.bodyA.categoryBitMask == muffinCategory && contact.bodyB.categoryBitMask == holeCategory)||
+           (contact.bodyB.categoryBitMask == muffinCategory && contact.bodyA.categoryBitMask == holeCategory))
+        {
+            if ([contact.bodyA.node isKindOfClass: [GEAHoleNode class]]) {
+                if([(GEAHoleNode *) contact.bodyA.node isHoleKillable]) {
+                    [(GEAHoleNode *) contact.bodyA.node resetSpawnSequenceFromStart];
+                }
+            } else if ([contact.bodyB.node isKindOfClass: [GEAHoleNode class]]) {
+                if([(GEAHoleNode *) contact.bodyB.node isHoleKillable]) {
+                    [(GEAHoleNode *) contact.bodyB.node resetSpawnSequenceFromStart];
+                }
+            }
+        }
+        
+        if( (contact.bodyA.categoryBitMask == playerCategory && contact.bodyB.categoryBitMask == doorCategory) || (contact.bodyA.categoryBitMask == doorCategory && contact.bodyB.categoryBitMask == playerCategory)) {
+            shouldGoToNextLevel = true;
+        }
+        
+        if ( (contact.bodyA.categoryBitMask == enemyCategory && contact.bodyB.categoryBitMask == playerCategory) || (contact.bodyB.categoryBitMask == enemyCategory && contact.bodyA.categoryBitMask == playerCategory)) {
+            shouldEndGame = true;
+            
+            if( [contact.bodyA.node isKindOfClass: [GEAMuffinMan class]]) {
+                murderMan = (GEAMuffinMan*) contact.bodyA.node;
+            } else {
+                murderMan = (GEAMuffinMan*) contact.bodyB.node;
+            }
+            
+        }
     }
-    
     
 }
 

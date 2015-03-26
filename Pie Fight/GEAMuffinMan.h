@@ -8,6 +8,7 @@
 
 #import "GEARandomizablePositionNode.h"
 #import "GEAPointMath.h"
+#import "GEAMuffinNode.h"
 
 @interface GEAMuffinMan : GEARandomizablePositionNode
 
@@ -15,5 +16,7 @@
 -(id)initMuffinManWithPhysicsBody: (SKPhysicsBody*) physicsBody andAnimationArray: (NSMutableArray*) animationArray;
 -(void) animateEatGingerBreadMan;
 -(void) initializeCollisionConfigWithPhysicsBody: (SKPhysicsBody*) physicsBody ;
+-(void) wasHitByMuffin: (GEAMuffinNode*) aMuffin;
+-(bool) isDead;
 
 @end

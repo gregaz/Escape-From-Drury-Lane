@@ -14,6 +14,7 @@
 
 -(id) initWithButtonImageNamed: (NSString *) buttonImage {
     self = [super initWithImageNamed: buttonImage];
+    [self setScale:0.5];
     self.isPressed = false;
     [self setUserInteractionEnabled:YES];
     return self;

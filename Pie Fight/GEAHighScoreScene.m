@@ -9,6 +9,7 @@
 #import "GEAHighScoreScene.h"
 #import "GEAButton.h"
 #import "GEAStartMenuScene.h"
+#import "GEAConstants.h"
 
 @implementation GEAHighScoreScene {
     GEAButton *backButton;
@@ -52,19 +53,34 @@
     
     for(NSDictionary* highScoreDict in highScores) {
         NSDate* scoreDate = [highScoreDict objectForKey: @"date"];
-        NSString* scoreDateString = [NSDateFormatter localizedStringFromDate:scoreDate dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
+        NSString* scoreDateString = [NSDateFormatter localizedStringFromDate:scoreDate dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterNoStyle];
         NSNumber* highScore =[highScoreDict objectForKey: @"score"];
         
         SKLabelNode* highScoreLabel = [SKLabelNode labelNodeWithFontNamed: @"AmericanTypewriter"];
         highScoreLabel.fontSize = 25;
         highScoreLabel.fontColor = [UIColor whiteColor];
         highScoreLabel.text = [NSString stringWithFormat: @"%@: %i",scoreDateString, [highScore intValue]];
+        highScoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
+        highScoreLabel.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
         
-        double yPosition = 0.6 - (((double)(i % 5)) / 10.0);
-        double xPosition = ((double)((int)(i/5)))/2.0 + 0.25;
+        double yPosition = 0.65 - (((double)(i % 3)) / 6.0);
+        double xPosition = 0.45;
+        //double xPosition = ((double)((int)(i/5)))/2.0 + 0.25;
         highScoreLabel.position = CGPointMake(self.frame.size.width*xPosition,self.frame.size.height*yPosition);
         
         [self addChild:highScoreLabel];
+        
+        NSString *medalImageName = [GEAConstants medalImageNameForScore: [highScore intValue]];
+
+        SKSpriteNode* medalNode = [[SKSpriteNode alloc] initWithImageNamed: medalImageName ];
+        [medalNode setScale: 0.075];
+        [medalNode setPosition: CGPointMake(highScoreLabel.position.x - medalNode.size
+                                            .width/2.0 - 5.0, highScoreLabel.position.y)];
+        
+        [self addChild: medalNode];
+        
+        
+        
         i++;
     }
 }

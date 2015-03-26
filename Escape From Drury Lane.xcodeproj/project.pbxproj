@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F114BFD21AB632E900CBC1D5 /* copperMedal.png in Resources */ = {isa = PBXBuildFile; fileRef = F114BFCA1AB632E900CBC1D5 /* copperMedal.png */; };
+		F114BFD31AB632E900CBC1D5 /* emeraldMedal.png in Resources */ = {isa = PBXBuildFile; fileRef = F114BFCB1AB632E900CBC1D5 /* emeraldMedal.png */; };
+		F114BFD41AB632E900CBC1D5 /* goldMedal.png in Resources */ = {isa = PBXBuildFile; fileRef = F114BFCC1AB632E900CBC1D5 /* goldMedal.png */; };
+		F114BFD51AB632E900CBC1D5 /* platinumMedal.png in Resources */ = {isa = PBXBuildFile; fileRef = F114BFCD1AB632E900CBC1D5 /* platinumMedal.png */; };
+		F114BFD61AB632E900CBC1D5 /* rainbowMedal.png in Resources */ = {isa = PBXBuildFile; fileRef = F114BFCE1AB632E900CBC1D5 /* rainbowMedal.png */; };
+		F114BFD71AB632E900CBC1D5 /* rubyMedal.png in Resources */ = {isa = PBXBuildFile; fileRef = F114BFCF1AB632E900CBC1D5 /* rubyMedal.png */; };
+		F114BFD81AB632E900CBC1D5 /* sapphireMedal.png in Resources */ = {isa = PBXBuildFile; fileRef = F114BFD01AB632E900CBC1D5 /* sapphireMedal.png */; };
+		F114BFD91AB632E900CBC1D5 /* silverMedal.png in Resources */ = {isa = PBXBuildFile; fileRef = F114BFD11AB632E900CBC1D5 /* silverMedal.png */; };
 		F12BA58519F6040F00C6B1FF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12BA58419F6040F00C6B1FF /* Foundation.framework */; };
 		F12BA58719F6040F00C6B1FF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12BA58619F6040F00C6B1FF /* CoreGraphics.framework */; };
 		F12BA58919F6040F00C6B1FF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12BA58819F6040F00C6B1FF /* UIKit.framework */; };
@@ -23,6 +31,8 @@
 		F12BA5AD19F6040F00C6B1FF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12BA58819F6040F00C6B1FF /* UIKit.framework */; };
 		F12BA5B519F6040F00C6B1FF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F12BA5B319F6040F00C6B1FF /* InfoPlist.strings */; };
 		F12BA5B719F6040F00C6B1FF /* Pie_FightTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F12BA5B619F6040F00C6B1FF /* Pie_FightTests.m */; };
+		F139B1EB1AB6542C003E3E1C /* finalScoreBackGround.png in Resources */ = {isa = PBXBuildFile; fileRef = F139B1E91AB6542C003E3E1C /* finalScoreBackGround.png */; };
+		F139B1ED1AB658D9003E3E1C /* noMedal.png in Resources */ = {isa = PBXBuildFile; fileRef = F139B1EC1AB658D9003E3E1C /* noMedal.png */; };
 		F14825721A9C1180006EDFE3 /* retryButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F14825701A9C1180006EDFE3 /* retryButton.png */; };
 		F14825781A9D61C7006EDFE3 /* gingerBreadManWithMuffin.png in Resources */ = {isa = PBXBuildFile; fileRef = F14825761A9D61C7006EDFE3 /* gingerBreadManWithMuffin.png */; };
 		F14825851A9D77C0006EDFE3 /* Icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = F148257A1A9D77C0006EDFE3 /* Icon-29.png */; };
@@ -97,6 +107,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F114BFCA1AB632E900CBC1D5 /* copperMedal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = copperMedal.png; path = en.lproj/medalImages/copperMedal.png; sourceTree = "<group>"; };
+		F114BFCB1AB632E900CBC1D5 /* emeraldMedal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = emeraldMedal.png; path = en.lproj/medalImages/emeraldMedal.png; sourceTree = "<group>"; };
+		F114BFCC1AB632E900CBC1D5 /* goldMedal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = goldMedal.png; path = en.lproj/medalImages/goldMedal.png; sourceTree = "<group>"; };
+		F114BFCD1AB632E900CBC1D5 /* platinumMedal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = platinumMedal.png; path = en.lproj/medalImages/platinumMedal.png; sourceTree = "<group>"; };
+		F114BFCE1AB632E900CBC1D5 /* rainbowMedal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rainbowMedal.png; path = en.lproj/medalImages/rainbowMedal.png; sourceTree = "<group>"; };
+		F114BFCF1AB632E900CBC1D5 /* rubyMedal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rubyMedal.png; path = en.lproj/medalImages/rubyMedal.png; sourceTree = "<group>"; };
+		F114BFD01AB632E900CBC1D5 /* sapphireMedal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sapphireMedal.png; path = en.lproj/medalImages/sapphireMedal.png; sourceTree = "<group>"; };
+		F114BFD11AB632E900CBC1D5 /* silverMedal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = silverMedal.png; path = en.lproj/medalImages/silverMedal.png; sourceTree = "<group>"; };
 		F12BA58119F6040F00C6B1FF /* Escape From Drury Lane.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Escape From Drury Lane.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F12BA58419F6040F00C6B1FF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F12BA58619F6040F00C6B1FF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -119,6 +137,8 @@
 		F12BA5B219F6040F00C6B1FF /* Escape From Drury LaneTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Escape From Drury LaneTests-Info.plist"; sourceTree = "<group>"; };
 		F12BA5B419F6040F00C6B1FF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F12BA5B619F6040F00C6B1FF /* Pie_FightTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Pie_FightTests.m; sourceTree = "<group>"; };
+		F139B1EA1AB6542C003E3E1C /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/finalScoreBackGround.png; sourceTree = "<group>"; };
+		F139B1EC1AB658D9003E3E1C /* noMedal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = noMedal.png; path = en.lproj/medalImages/noMedal.png; sourceTree = "<group>"; };
 		F14825711A9C1180006EDFE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/retryButton.png; sourceTree = "<group>"; };
 		F14825771A9D61C7006EDFE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/gingerBreadManWithMuffin.png; sourceTree = "<group>"; };
 		F148257A1A9D77C0006EDFE3 /* Icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-29.png"; path = "Icon Pics/Icon-29.png"; sourceTree = "<group>"; };
@@ -222,6 +242,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F114BFC91AB632D500CBC1D5 /* medals */ = {
+			isa = PBXGroup;
+			children = (
+				F139B1EC1AB658D9003E3E1C /* noMedal.png */,
+				F114BFCA1AB632E900CBC1D5 /* copperMedal.png */,
+				F114BFCB1AB632E900CBC1D5 /* emeraldMedal.png */,
+				F114BFCC1AB632E900CBC1D5 /* goldMedal.png */,
+				F114BFCD1AB632E900CBC1D5 /* platinumMedal.png */,
+				F114BFCE1AB632E900CBC1D5 /* rainbowMedal.png */,
+				F114BFCF1AB632E900CBC1D5 /* rubyMedal.png */,
+				F114BFD01AB632E900CBC1D5 /* sapphireMedal.png */,
+				F114BFD11AB632E900CBC1D5 /* silverMedal.png */,
+			);
+			name = medals;
+			sourceTree = "<group>";
+		};
 		F12BA57819F6040E00C6B1FF = {
 			isa = PBXGroup;
 			children = (
@@ -425,6 +461,7 @@
 		F1C006C71A91970A00E264EC /* Game Images */ = {
 			isa = PBXGroup;
 			children = (
+				F114BFC91AB632D500CBC1D5 /* medals */,
 				F1BC7A4F1AB1329A00824AC7 /* holeSpawn.atlas */,
 				F14825F51AAFD8C3006EDFE3 /* holeOpening.atlas */,
 				F14825EC1AACE167006EDFE3 /* enterDoor.atlas */,
@@ -448,6 +485,7 @@
 		F1C006C81A91972700E264EC /* Menu Images */ = {
 			isa = PBXGroup;
 			children = (
+				F139B1E91AB6542C003E3E1C /* finalScoreBackGround.png */,
 				F14825EF1AACF137006EDFE3 /* nextLevelButton.png */,
 				F148259F1AA24649006EDFE3 /* leftHandedSelectedButton.png */,
 				F14825A11AA24649006EDFE3 /* rightHandedSelectedButton.png */,
@@ -547,6 +585,7 @@
 				F1C006651A61F7FE00E264EC /* openhole.png in Resources */,
 				F12BA59119F6040F00C6B1FF /* InfoPlist.strings in Resources */,
 				F1C006CD1A91977100E264EC /* settingsButton.png in Resources */,
+				F114BFD31AB632E900CBC1D5 /* emeraldMedal.png in Resources */,
 				F14825721A9C1180006EDFE3 /* retryButton.png in Resources */,
 				F1C006A81A869CBA00E264EC /* muffinStack4.png in Resources */,
 				F1BC7A511AB1329A00824AC7 /* holeSpawn.atlas in Resources */,
@@ -555,6 +594,7 @@
 				F1C006A61A869CBA00E264EC /* muffinStack2.png in Resources */,
 				F1C006781A6E137900E264EC /* throwButton.png in Resources */,
 				F14825891A9D77C0006EDFE3 /* Icon-40@2x.png in Resources */,
+				F114BFD61AB632E900CBC1D5 /* rainbowMedal.png in Resources */,
 				F14825E51AAA43A9006EDFE3 /* frame10.png in Resources */,
 				F12BA5A419F6040F00C6B1FF /* Images.xcassets in Resources */,
 				F1C006A51A869CBA00E264EC /* muffinStack1.png in Resources */,
@@ -567,15 +607,20 @@
 				F148258E1A9D77C0006EDFE3 /* Icon-76@2x.png in Resources */,
 				F14825F71AAFD8C3006EDFE3 /* holeOpening.atlas in Resources */,
 				F14825951AA221B6006EDFE3 /* backButton.png in Resources */,
+				F114BFD81AB632E900CBC1D5 /* sapphireMedal.png in Resources */,
+				F114BFD71AB632E900CBC1D5 /* rubyMedal.png in Resources */,
 				F1C0066D1A63726A00E264EC /* baseCenter.png in Resources */,
 				F148258A1A9D77C0006EDFE3 /* Icon-40@3x.png in Resources */,
 				F12BA59A19F6040F00C6B1FF /* Main.storyboard in Resources */,
+				F114BFD41AB632E900CBC1D5 /* goldMedal.png in Resources */,
 				F148258C1A9D77C0006EDFE3 /* Icon-60@3x.png in Resources */,
 				F14825851A9D77C0006EDFE3 /* Icon-29.png in Resources */,
 				F1C006B71A89A6E500E264EC /* muffinMan.png in Resources */,
 				F14825861A9D77C0006EDFE3 /* Icon-29@2x.png in Resources */,
+				F139B1ED1AB658D9003E3E1C /* noMedal.png in Resources */,
 				F14825A31AA24649006EDFE3 /* leftHandedSelectedButton.png in Resources */,
 				F1C006AC1A869CBA00E264EC /* muffinStack8.png in Resources */,
+				F139B1EB1AB6542C003E3E1C /* finalScoreBackGround.png in Resources */,
 				F14825DF1AA935A2006EDFE3 /* gingerBreadMen.atlas in Resources */,
 				F14825E81AABC571006EDFE3 /* muffinMen.atlas in Resources */,
 				F14825A41AA24649006EDFE3 /* rightHandedSelectedButton.png in Resources */,
@@ -588,9 +633,12 @@
 				F148258F1A9D77C0006EDFE3 /* iTunesArtwork@2x.png in Resources */,
 				F1C0067E1A772A8F00E264EC /* muffin.png in Resources */,
 				F1C006A91A869CBA00E264EC /* muffinStack5.png in Resources */,
+				F114BFD91AB632E900CBC1D5 /* silverMedal.png in Resources */,
+				F114BFD21AB632E900CBC1D5 /* copperMedal.png in Resources */,
 				F1C0066E1A63726A00E264EC /* centerJoystick.png in Resources */,
 				F14825EB1AACCCF1006EDFE3 /* deathAnimation.atlas in Resources */,
 				F1C006A71A869CBA00E264EC /* muffinStack3.png in Resources */,
+				F114BFD51AB632E900CBC1D5 /* platinumMedal.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -672,6 +720,14 @@
 				F12BA5B419F6040F00C6B1FF /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F139B1E91AB6542C003E3E1C /* finalScoreBackGround.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F139B1EA1AB6542C003E3E1C /* en */,
+			);
+			name = finalScoreBackGround.png;
 			sourceTree = "<group>";
 		};
 		F14825701A9C1180006EDFE3 /* retryButton.png */ = {

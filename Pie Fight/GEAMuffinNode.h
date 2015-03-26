@@ -11,5 +11,7 @@
 @interface GEAMuffinNode : SKSpriteNode
 
 -(void)initializeCollisionConfig;
+-(void)launchMuffinTowardsDestination: (CGPoint) aDestination;
+-(CGPoint)launchDestination;
 
 @end

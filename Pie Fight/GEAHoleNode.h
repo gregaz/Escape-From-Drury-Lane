@@ -11,10 +11,11 @@
 
 @interface GEAHoleNode : GEARandomizablePositionNode
 
--(void)flipFlopHole;
--(id)initWithRandomState;
--(bool)isHoleOpen;
 -(void)initializeCollisionConfig;
 -(void) setKillable: (bool) isHoleKillable;
+-(id) initHoleWithOpeningArray: (NSMutableArray*) openingAnimationArray andCloseTexture: (SKTexture*) holeClosedTexture;
+-(void) resetSpawnSequenceFromStart;
+-(bool)isHoleKillable;
+-(void) spawnInitialMuffinManIfRequired;
 
 @end

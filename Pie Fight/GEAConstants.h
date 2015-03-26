@@ -17,4 +17,8 @@ extern const uint32_t muffinStackCategory;
 extern const uint32_t enemyCategory;
 extern const uint32_t doorCategory;
 
+extern const double muffinVelocity;
+
++(NSString*) medalImageNameForScore: (int) aScore;
+
 @end

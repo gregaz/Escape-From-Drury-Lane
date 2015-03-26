@@ -8,8 +8,20 @@
 
 #import "GEAMuffinNode.h"
 #import "GEAConstants.h"
+#import "GEAPointMath.h"
 
-@implementation GEAMuffinNode
+@implementation GEAMuffinNode {
+    CGPoint destination;
+}
+
+-(void) launchMuffinTowardsDestination: (CGPoint) aDestination {
+    destination = aDestination;
+    float duration = [GEAPointMath distanceBetween:self.position and: destination] / muffinVelocity;
+    
+    SKAction* moveAction = [SKAction moveTo:destination duration:duration];
+    SKAction* moveDoneAction = [SKAction removeFromParent];
+    [self runAction:[SKAction sequence:@[moveAction, moveDoneAction]]];
+}
 
 -(void)initializeCollisionConfig {
     self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.size];
@@ -18,6 +30,10 @@
     self.physicsBody.contactTestBitMask = enemyCategory;
     self.physicsBody.collisionBitMask = 0;
     
+}
+
+-(CGPoint)launchDestination {
+    return destination;
 }
 
 @end

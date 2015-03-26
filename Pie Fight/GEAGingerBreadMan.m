@@ -11,7 +11,7 @@
 
 static const NSString* withoutMuffinImageName = @"standingGingerBreadMan";
 static const NSString* withMuffinImageName = @"standingGingerBreadManWithMuffin";
-static const double speedModifier = 2;
+static const double speedModifier = 2.5;
 
 @implementation GEAGingerBreadMan {
     SKTextureAtlas *gingerBreadManAtlas;
@@ -203,16 +203,11 @@ static const double speedModifier = 2;
         CGPoint destination = [GEAPointMath addPoint:self.muffin.position
                                             andPoint:([GEAPointMath scalePoint: CGPointMake(x, y) by:1000.0])];
         
-        float velocity = 480.0/100.0;
-        float duration = self.size.width / velocity;
-        
-        SKAction* moveAction = [SKAction moveTo:destination duration:duration];
-        SKAction* moveDoneAction = [SKAction removeFromParent];
-        [self.muffin runAction:[SKAction sequence:@[moveAction, moveDoneAction]]];
-
+        [self.muffin launchMuffinTowardsDestination: destination];
         [self resetRunningDirectionBools];
-    self.muffin = nil;
-    //Check if there is a new muffin to pickup (didBeginContact won't be called again unless you leave the stack first
+        
+        self.muffin = nil;
+        //Check if there is a new muffin to pickup (didBeginContact won't be called again unless you leave the stack first
         for (SKPhysicsBody* physicsBody in self.physicsBody.allContactedBodies) {
             if([physicsBody.node isMemberOfClass: [GEAMuffinStackNode class]]){
                 [self pickupMuffinFromMuffinStack: (GEAMuffinStackNode*)physicsBody.node];
@@ -234,7 +229,7 @@ static const double speedModifier = 2;
     return self.muffin != nil;
 }
 
--(void) moveUsingVectorWithX: (double) x andY: (double) y {
+-(void) moveUsingVectorWithX: (double) x andY: (double) y andTimeDelta: (CFTimeInterval) timeDelta{
     if (ABS(x) < 0.00001 && ABS(y) < 0.00001) {
         [self standStill];
         [self resetRunningDirectionBools];
@@ -274,8 +269,13 @@ static const double speedModifier = 2;
             }
             
         }
-        float newPlayerX = (float) self.position.x + x*speedModifier;
-        float newPlayerY = (float) self.position.y + y*speedModifier;
+        float maxFps = 60.0 / self.parent.scene.view.frameInterval;
+        float timeDeltaModifier = maxFps / (MIN(1/timeDelta, maxFps));
+        
+        float newPlayerX = (float) self.position.x + x*speedModifier*timeDeltaModifier;
+        float newPlayerY = (float) self.position.y + y*speedModifier*timeDeltaModifier;
+        
+
         
         if((newPlayerX > self.parent.frame.size.width) || (newPlayerX < 0)) {
             newPlayerX = self.position.x;
