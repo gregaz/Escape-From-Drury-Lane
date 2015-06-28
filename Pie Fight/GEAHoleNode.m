@@ -21,6 +21,7 @@
     
     [self setTexture: (SKTexture *) openingAnimationArray[0]];
     [self setSize: [(SKTexture*) openingAnimationArray[0] size]];
+    [self setZPosition:-1.0];
     [self setScale: 0.6];
     [self initializeCollisionConfig];
     respawnWaitTime = arc4random_uniform(7)+1;

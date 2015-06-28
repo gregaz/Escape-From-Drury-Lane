@@ -37,7 +37,7 @@
         self.numberOfMuffins = muffinCount;
         NSString *imageName = [NSString stringWithFormat:@"muffinStack%i.png", muffinCount];
         [self runAction:[SKAction setTexture:[SKTexture textureWithImageNamed: imageName] resize:true]];
-        [self setScale:0.05];
+        [self setScale:0.075];
     }
 }
 

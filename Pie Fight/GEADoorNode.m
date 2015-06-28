@@ -47,6 +47,7 @@
                                       timePerFrame:0.2f
                                             resize:YES
                                            restore:YES]];
+    [self runAction: [SKAction waitForDuration:1.2] completion:^{[self runAction: [SKAction playSoundFileNamed:@"bye.mp3" waitForCompletion:NO]];} ];
     
 }
 

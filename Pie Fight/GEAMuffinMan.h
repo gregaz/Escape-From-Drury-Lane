@@ -13,7 +13,8 @@
 @interface GEAMuffinMan : GEARandomizablePositionNode
 
 -(void)moveTowardsLocation: (CGPoint) destination;
--(id)initMuffinManWithPhysicsBody: (SKPhysicsBody*) physicsBody andAnimationArray: (NSMutableArray*) animationArray;
+-(void)updateVeolictyIfNeededBasedOnTime: (CFTimeInterval) currentTime towardsPlayer: (SKSpriteNode*) player;
+-(id) initMuffinManWithPhysicsBody: (SKPhysicsBody*) physicsBody andAnimationArray: (NSMutableArray*) animationArray andImpactSound: (SKAction*) aImpactSound;
 -(void) animateEatGingerBreadMan;
 -(void) initializeCollisionConfigWithPhysicsBody: (SKPhysicsBody*) physicsBody ;
 -(void) wasHitByMuffin: (GEAMuffinNode*) aMuffin;

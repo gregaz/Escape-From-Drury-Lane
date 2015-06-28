@@ -26,10 +26,12 @@
 {
     if((self = [super initWithImageNamed:baseImage]))
     {
+        [self setScale:0.16];
         self.joystick = [[SKSpriteNode alloc]initWithImageNamed:joystickImage];
+        [self.joystick setScale:0.75];
         [self.joystick setPosition:CGPointMake(self.position.x/2, self.position.y/2)];
         [self addChild:self.joystick];
-        self.controlRadius = self.joystick.size.width/2;
+        self.controlRadius = self.joystick.size.width/5;
         self.radiusSquared = pow(self.controlRadius, 2);
         [self setUserInteractionEnabled:YES];
     }

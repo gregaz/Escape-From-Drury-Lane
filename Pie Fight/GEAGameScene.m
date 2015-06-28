@@ -6,12 +6,17 @@
 //  Copyright (c) 2014 Gregory Azuolas. All rights reserved.
 //
 // TODO:
-// Improve Enemy AI
-// Improve buttons/joystick?
-// Ads between screens/banner ads
+//v1
 // Sounds/Music
-// Level progression screen
+// Icons/itunes connect
+
+//v2
+// Rate Me
+// Show unlocked medals
 // Story Screen
+
+//v3
+// Level progression screen
 // Clean up code
 
 #import "GEAGameScene.h"
@@ -26,6 +31,7 @@
 #import "GEAConstants.h"
 #import "GEAStartMenuScene.h"
 #include <stdlib.h>
+@import AVFoundation;
 
 static const int incAmount = 30;
 static const int controlsHeight = 100;
@@ -36,16 +42,18 @@ static const int controlsHeight = 100;
     int levelNumber;
     int score;
     bool didFlipHolesOnce;
-    bool didUpdateTrajectories;
     bool shouldGoToNextLevel;
     bool shouldEndGame;
     bool hasGameEnded;
+    bool wasAdShown;
     NSMutableArray *holes;
     NSMutableArray *muffinStacks;
     NSMutableArray *muffinMen;
     GEAJoyStick *joystick;
     GEAButton *retryButton;
     GEAButton *nextLevelButton;
+    GEAButton *shareToFBButton;
+    GEAButton *shareToTheBirdButton;
     SKSpriteNode *nextLevelBackground;
     SKPhysicsBody *muffinManPhysicsBody;
     NSMutableArray *muffinManAnimationArray;
@@ -58,6 +66,9 @@ static const int controlsHeight = 100;
     NSMutableArray *holeClosingArray;
     
     CFTimeInterval lastUpdateTime;
+    SKAction *impactSound;
+    
+    AVAudioPlayer *gameMusicPlayer;
 }
 
 -(id)initWithSize:(CGSize)size {    
@@ -72,12 +83,14 @@ static const int controlsHeight = 100;
         muffinStacks = [NSMutableArray array];
         muffinMen = [NSMutableArray array];
         didFlipHolesOnce = false;
-        didUpdateTrajectories = false;
         shouldGoToNextLevel = false;
         shouldEndGame = false;
         hasGameEnded = false;
         lastUpdateTime = 0;
         retryButton = nil;
+        wasAdShown = false;
+        impactSound = [SKAction playSoundFileNamed:@"muffinImpact.wav" waitForCompletion:NO];
+        [self startMusicIfRequired];
         [self initAnimationAtlasAndArrays];
         [self initMuffinManPhysicsBody];
         [self addScoreBoard];
@@ -100,6 +113,20 @@ static const int controlsHeight = 100;
     [self spawnHoles];
     [self spawnMuffinStacks];
     [self resetDoorPosition];
+}
+
+-(void)startMusicIfRequired {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString* shouldPlayMusic = [defaults stringForKey:@"music"];
+    if([shouldPlayMusic isEqualToString:@"true"]) {
+        if (gameMusicPlayer == nil || !([gameMusicPlayer isPlaying]) ){
+            NSError *error;
+            NSURL * backgroundMusicURL = [[NSBundle mainBundle] URLForResource:@"gameMusic" withExtension:@"wav"];
+            gameMusicPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:backgroundMusicURL error:&error];
+            gameMusicPlayer.numberOfLoops = -1;
+            [gameMusicPlayer prepareToPlay];
+            [gameMusicPlayer play];
+        }}
 }
 
 -(void)drawGameOverOverlay {
@@ -135,10 +162,29 @@ static const int controlsHeight = 100;
     [self addChild:scoreLabel];
     
     retryButton = [[GEAButton alloc] initWithButtonImageNamed: @"retryButton.png"];
-    retryButton.position = CGPointMake(self.frame.size.width*0.65, self.frame.size.height*0.4);
+    retryButton.position = CGPointMake(self.frame.size.width*0.45, self.frame.size.height*0.4);
     [retryButton setZPosition: 100];
     
     [self addChild: retryButton];
+    
+    shareToFBButton = [[GEAButton alloc] initWithButtonImageNamed: @"shareToFb.png"];
+    shareToFBButton.position = CGPointMake(self.frame.size.width*0.65, self.frame.size.height*0.4);
+    [shareToFBButton setZPosition: 100];
+    
+    [self addChild: shareToFBButton];
+    
+    shareToTheBirdButton = [[GEAButton alloc] initWithButtonImageNamed: @"shareToTwitter.png"];
+    shareToTheBirdButton.position = CGPointMake(self.frame.size.width*0.85, self.frame.size.height*0.4);
+    [shareToTheBirdButton setZPosition: 100];
+    
+    if (self.frame.size.width == 480) {
+        [shareToFBButton setScale: 0.4];
+        [shareToTheBirdButton setScale:0.4];
+        [retryButton setScale:0.4];
+        scoreLabel.fontSize = 40;
+    }
+    
+    [self addChild: shareToTheBirdButton];
     
     [[self childNodeWithName: @"scoreLabel"] removeFromParent];
     
@@ -257,7 +303,7 @@ static const int controlsHeight = 100;
 }
 
 -(void)spawnMuffinManFromHole: (GEAHoleNode*) aHole {
-    GEAMuffinMan* muffinMan = [[GEAMuffinMan alloc] initMuffinManWithPhysicsBody: [muffinManPhysicsBody copy] andAnimationArray: muffinManAnimationArray];
+    GEAMuffinMan* muffinMan = [[GEAMuffinMan alloc] initMuffinManWithPhysicsBody: [muffinManPhysicsBody copy] andAnimationArray: muffinManAnimationArray andImpactSound:impactSound];
     [muffinMan setPosition: aHole.position];
     [muffinMan setScale: 0.3];
     [self addChild:muffinMan];
@@ -378,13 +424,37 @@ static const int controlsHeight = 100;
         if (![murderMan hasActions]) {
             if(retryButton == nil) {
                 [self drawGameOverOverlay];
+                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                NSString* shouldPostToLeaderBoard = [defaults stringForKey:@"postToLeaderBoard"];
+                if([shouldPostToLeaderBoard isEqualToString:@"true"]) {
+                    NSString* scoreString = [NSString stringWithFormat: @"%i", score];
+                    NSDictionary *userInfo = [NSMutableDictionary dictionaryWithObject:
+                                              scoreString forKey:@"score"];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"authenticateLocalPlayerAndSendScore" object:self userInfo:userInfo];
+                }
             }
         }
         if ([retryButton shouldActionPress]) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"showAd" object:nil];
             GEAStartMenuScene *startScene = [GEAStartMenuScene sceneWithSize:self.view.bounds.size];
             startScene.scaleMode = SKSceneScaleModeAspectFill;
             [self.view presentScene: startScene];
         }
+        
+        if ([shareToFBButton shouldActionPress]) {
+            NSString *postText = [NSString stringWithFormat: @"I just scored %i in Escape From Drury Lane!", score];
+            NSDictionary *userInfo = [NSMutableDictionary dictionaryWithObject:postText forKey:@"postText"];
+            [userInfo setValue: @"facebook" forKey: @"service"];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"CreatePost" object:self userInfo:userInfo];
+        }
+        
+        if ([shareToTheBirdButton shouldActionPress]) {
+            NSString *postText = [NSString stringWithFormat: @"I just scored %i in Escape From Drury Lane!", score];
+            NSDictionary *userInfo = [NSMutableDictionary dictionaryWithObject:postText forKey:@"postText"];
+            [userInfo setValue: @"twitter" forKey: @"service"];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"CreatePost" object:self userInfo:userInfo];
+        }
+        
     } else {
         if (shouldEndGame) {
             for (SKSpriteNode* child in [self children]) {
@@ -407,6 +477,7 @@ static const int controlsHeight = 100;
                 }
                 if( ![door hasActions]) {
                     if (nextLevelButton == nil) {
+                        [[NSNotificationCenter defaultCenter] postNotificationName:@"showAd" object:nil];
                         nextLevelButton = [[GEAButton alloc] initWithButtonImageNamed: @"nextLevelButton.png"];
                         [nextLevelButton setPosition: CGPointMake(self.frame.size.width * 0.5, self.frame.size.height * 0.5)];
                         [nextLevelButton setZPosition: 10.0];
@@ -426,26 +497,20 @@ static const int controlsHeight = 100;
                     }
                     
                     if ([nextLevelButton shouldActionPress]) {
-                        [nextLevelButton setHidden:true];
-                        [nextLevelBackground setHidden:true];
-                        shouldGoToNextLevel = false;
-                        [self nextLevel];
+                            wasAdShown = false;
+                            [nextLevelButton setHidden:true];
+                            [nextLevelBackground setHidden:true];
+                            shouldGoToNextLevel = false;
+                            [self nextLevel];
                     }
                     
                 }
 
             } else {
                 
-                if(((int)currentTime % 2) == 1 && !didUpdateTrajectories) {
-                    for (GEAMuffinMan *muffinMan in muffinMen) {
-                        if([muffinMan yScale] > 0.29 && ![muffinMan isDead]) {
-                            [muffinMan moveTowardsLocation:player.position];
-                        }
-                    }
-                    didUpdateTrajectories = true;
-                }
-                if(((int)currentTime % 2) == 0){
-                    didUpdateTrajectories = false;
+                
+                for (GEAMuffinMan *muffinMan in muffinMen) {
+                    [muffinMan updateVeolictyIfNeededBasedOnTime:currentTime towardsPlayer:player];
                 }
                 
                 [player moveUsingVectorWithX:joystick.x andY:joystick.y andTimeDelta: currentTime -lastUpdateTime];

@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <SpriteKit/SpriteKit.h>
+#import <iAd/iAd.h>
+#import <GameKit/GameKit.h>
 
-@interface GEAViewController : UIViewController
+@import Social;
+
+@interface GEAViewController : UIViewController <ADBannerViewDelegate>
 
 @end

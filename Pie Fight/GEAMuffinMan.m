@@ -17,16 +17,22 @@ static const int speed = 100;
     NSMutableArray *muffinManAnimationArray;
     SKTextureAtlas *eatAnimationAtlas;
     NSMutableArray *eatAnimationArray;
+    NSTimeInterval timeBeforeNewTarget;
+    CFTimeInterval timeOfLastUpdate;
+    SKAction *impactSound;
     bool isDead;
 }
 
--(id) initMuffinManWithPhysicsBody: (SKPhysicsBody*) physicsBody andAnimationArray: (NSMutableArray*) animationArray {
+-(id) initMuffinManWithPhysicsBody: (SKPhysicsBody*) physicsBody andAnimationArray: (NSMutableArray*) animationArray andImpactSound: (SKAction*) aImpactSound {
     self = [self init];
     muffinManAnimationArray = animationArray;
     [self setTexture: muffinManAnimationArray[0]];
     [self setSize: [((SKTexture*)muffinManAnimationArray[0]) size]];
     [self initializeCollisionConfigWithPhysicsBody: physicsBody];
     isDead = false;
+    timeBeforeNewTarget = 1.0;
+    timeOfLastUpdate = 0;
+    impactSound = aImpactSound;
     return self;
 }
 
@@ -73,6 +79,18 @@ static const int speed = 100;
                                       timePerFrame:0.2f
                                             resize:YES
                                            restore:NO]];
+    [self runAction: [SKAction waitForDuration:0.5] completion:^{[self runAction: [SKAction playSoundFileNamed:@"bite.wav" waitForCompletion:NO]];} ];
+}
+
+-(void)updateVeolictyIfNeededBasedOnTime: (CFTimeInterval) currentTime towardsPlayer: (SKSpriteNode*) player {
+    if (timeOfLastUpdate == 0) {
+        timeOfLastUpdate = currentTime - arc4random_uniform(10) * 0.1;
+    }
+    if([self yScale] > 0.29 && ![self isDead]) {
+        if(currentTime - timeOfLastUpdate > timeBeforeNewTarget) {
+            timeOfLastUpdate = currentTime;
+            [self moveTowardsLocation:player.position];
+    }}
 }
 
 -(void)moveTowardsLocation: (CGPoint) destination {
@@ -96,6 +114,7 @@ static const int speed = 100;
 
 -(void) wasHitByMuffin: (GEAMuffinNode*) aMuffin {
     [self removeAllActions];
+    [self runAction:impactSound];
     aMuffin.physicsBody = nil;
     isDead = true;
     self.physicsBody = nil;

@@ -9,6 +9,7 @@
 #import "GEAButton.h"
 
 @implementation GEAButton {
+    SKAction* buttonSoundAction;
     bool wasPressed;
 }
 
@@ -17,7 +18,12 @@
     [self setScale:0.5];
     self.isPressed = false;
     [self setUserInteractionEnabled:YES];
+    [self initSounds];
     return self;
+}
+
+-(void) initSounds {
+    buttonSoundAction = [SKAction playSoundFileNamed:@"buttonPress.wav" waitForCompletion:NO];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -47,7 +53,12 @@
 
 //Call this to check if you should action something based on button input (needs updateButtonStatus to work)
 -(bool) shouldActionPress {
-    return wasPressed && !self.isPressed;
+    if( wasPressed && !self.isPressed ) {
+        [self runAction: buttonSoundAction];
+        return true;
+    } else {
+        return false;
+    }
 }
 
 @end

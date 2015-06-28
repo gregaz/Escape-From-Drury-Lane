@@ -17,20 +17,36 @@
     GEAButton *startButton;
     GEAButton *settingsButton;
     GEAButton *highScoresButton;
+    
 }
 
 
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
+
         self.backgroundColor = [SKColor blackColor];
         //Making self delegate of physics World
         self.physicsWorld.gravity = CGVectorMake(0,0);
+        [self startBackgroundMusic];
         [self initUserDefaults];
         [self initMenuButtons];
         [self initMenuLabels];
         [self initGingerBreadMan];
+        [self authenticatePlayerIfNeeded];
     }
     return self;
+}
+
+-(void) startBackgroundMusic {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"startTitleMusic" object:nil];
+}
+
+-(void)authenticatePlayerIfNeeded {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString* shouldPostToLeaderBoard = [defaults stringForKey:@"postToLeaderBoard"];
+    if([shouldPostToLeaderBoard isEqualToString:@"true"]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"authenticateLocalPlayer" object:nil];
+    }
 }
 
 -(void) initGingerBreadMan {
@@ -44,8 +60,16 @@
 
 -(void) initUserDefaults {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if([defaults stringForKey:@"postToLeaderBoard"] == nil) {
+        [defaults setObject: @"false" forKey: @"postToLeaderBoard"];
+        [defaults synchronize];
+    }
     if([defaults stringForKey:@"handedness"] == nil) {
         [defaults setObject: @"right" forKey: @"handedness"];
+        [defaults synchronize];
+    }
+    if([defaults stringForKey:@"music"] == nil) {
+        [defaults setObject: @"true" forKey: @"music"];
         [defaults synchronize];
     }
 }
@@ -58,7 +82,7 @@
 
 -(void)initStartButton {
     startButton = [[GEAButton alloc] initWithButtonImageNamed: @"startButton.png"];
-    startButton.position = CGPointMake(self.frame.size.width*0.2, self.frame.size.height*0.2);
+    startButton.position = CGPointMake(self.frame.size.width*0.2, self.frame.size.height*0.15);
     startButton.name = @"startButton";
     [self addChild:startButton];
     
@@ -66,22 +90,26 @@
 
 -(void)initSettingsButton {
     settingsButton = [[GEAButton alloc] initWithButtonImageNamed: @"settingsButton.png"];
-    settingsButton.position = CGPointMake(self.frame.size.width*0.8, self.frame.size.height*0.2);
+    settingsButton.position = CGPointMake(self.frame.size.width*0.8, self.frame.size.height*0.15);
     settingsButton.name = @"settingsButton";
     [self addChild:settingsButton];
 }
 
 -(void)highScoresButton {
     highScoresButton = [[GEAButton alloc] initWithButtonImageNamed: @"highScoresButton.png"];
-    highScoresButton.position = CGPointMake(self.frame.size.width*0.5, self.frame.size.height*0.2);
+    highScoresButton.position = CGPointMake(self.frame.size.width*0.5, self.frame.size.height*0.15);
     highScoresButton.name = @"highScoresButton";
     [self addChild:highScoresButton];
 }
 
 -(void) initMenuLabels {
+
     SKLabelNode *titleLabel = [SKLabelNode labelNodeWithFontNamed: @"AmericanTypewriter"];
     titleLabel.position = CGPointMake(self.frame.size.width*0.5,self.frame.size.height*0.85);
     titleLabel.fontSize = 48;
+    if (self.frame.size.width == 480) {
+        titleLabel.fontSize = 32;
+    }
     titleLabel.fontColor = [UIColor whiteColor];
     titleLabel.text = @"Escape from Drury Lane";
     titleLabel.name = @"Title";
@@ -92,6 +120,7 @@
     if ( [startButton shouldActionPress]) {
         GEAGameScene* gameScene = [GEAGameScene sceneWithSize:self.view.bounds.size];
         gameScene.scaleMode = SKSceneScaleModeAspectFill;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"stopTitleMusic" object:nil];
         [self.view presentScene: gameScene];
     }
     

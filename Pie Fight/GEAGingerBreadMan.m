@@ -21,6 +21,8 @@ static const double speedModifier = 2.5;
     NSMutableArray *gingerBreadManDownRunArrayWithMuffin;
     NSMutableArray *gingerBreadManUpRunArray;
     NSMutableArray *gingerBreadManUpRunArrayWithMuffin;
+    
+    SKAction *throwMuffinSound;
 
     bool isRunningRight;
     bool isRunningLeft;
@@ -38,7 +40,12 @@ static const double speedModifier = 2.5;
     [self setSize: [firstTexture size]];
     [self resetRunningDirectionBools];
     [self initCollisionConfiguration];
+    [self initSounds];
     return self;
+}
+
+-(void) initSounds {
+    throwMuffinSound = [SKAction playSoundFileNamed:@"muffinThrow.wav" waitForCompletion:NO];
 }
 
 -(id) initGingerBreadManWithDefaultImage {
@@ -194,7 +201,15 @@ static const double speedModifier = 2.5;
 
 -(void) throwMuffinWithDirectionVectorX:(double)x andY: (double)y {
     if([self hasMuffin] && (x != 0.0 && y != 0.0)) {
-        [self.muffin setPosition: self.position];
+        [self runAction:throwMuffinSound];
+        CGPoint muffinPosition;
+        if(self.xScale > 0) {
+            muffinPosition = CGPointMake( self.position.x + self.size.width*0.5 + 1 , self.position.y + self.size.height * 0.35  );
+        } else {
+            muffinPosition = CGPointMake( self.position.x - self.size.width*0.5 - 1, self.position.y + self.size.height * 0.35  );
+        }
+        
+        [self.muffin setPosition: muffinPosition];
         [self.muffin setScale: 0.05];
         [self.muffin initializeCollisionConfig];
         

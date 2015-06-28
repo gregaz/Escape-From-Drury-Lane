@@ -59,6 +59,19 @@
 		F14825EE1AACE167006EDFE3 /* enterDoor.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F14825EC1AACE167006EDFE3 /* enterDoor.atlas */; };
 		F14825F11AACF137006EDFE3 /* nextLevelButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F14825EF1AACF137006EDFE3 /* nextLevelButton.png */; };
 		F14825F71AAFD8C3006EDFE3 /* holeOpening.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F14825F51AAFD8C3006EDFE3 /* holeOpening.atlas */; };
+		F16F7A1F1AED63CC004FAD39 /* buttonPress.wav in Resources */ = {isa = PBXBuildFile; fileRef = F16F7A1D1AED63CC004FAD39 /* buttonPress.wav */; };
+		F16F7A201AED63CC004FAD39 /* muffinThrow.wav in Resources */ = {isa = PBXBuildFile; fileRef = F16F7A1E1AED63CC004FAD39 /* muffinThrow.wav */; };
+		F16F7A2A1AED6E93004FAD39 /* titleMusic.caf in Resources */ = {isa = PBXBuildFile; fileRef = F16F7A291AED6E93004FAD39 /* titleMusic.caf */; };
+		F16F7A331AED7E05004FAD39 /* musicOffButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F16F7A2B1AED7E04004FAD39 /* musicOffButton.png */; };
+		F16F7A341AED7E05004FAD39 /* musicOffSelectedButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F16F7A2D1AED7E05004FAD39 /* musicOffSelectedButton.png */; };
+		F16F7A351AED7E05004FAD39 /* musicOnButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F16F7A2F1AED7E05004FAD39 /* musicOnButton.png */; };
+		F16F7A361AED7E05004FAD39 /* musicOnSelectedButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F16F7A311AED7E05004FAD39 /* musicOnSelectedButton.png */; };
+		F16F7A391AED8D44004FAD39 /* gameMusic.wav in Resources */ = {isa = PBXBuildFile; fileRef = F16F7A371AED8D44004FAD39 /* gameMusic.wav */; };
+		F16F7A3A1AED8D44004FAD39 /* bite.wav in Resources */ = {isa = PBXBuildFile; fileRef = F16F7A381AED8D44004FAD39 /* bite.wav */; };
+		F16F7A3C1AED8F3B004FAD39 /* muffinImpact.wav in Resources */ = {isa = PBXBuildFile; fileRef = F16F7A3B1AED8F3B004FAD39 /* muffinImpact.wav */; };
+		F16F7A3F1AEF1630004FAD39 /* launchImage@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = F16F7A3D1AEF1630004FAD39 /* launchImage@1x.png */; };
+		F16F7A401AEF1630004FAD39 /* launchImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F16F7A3E1AEF1630004FAD39 /* launchImage@2x.png */; };
+		F16F7A421AEF1716004FAD39 /* launchImageHD.png in Resources */ = {isa = PBXBuildFile; fileRef = F16F7A411AEF1715004FAD39 /* launchImageHD.png */; };
 		F1BC7A511AB1329A00824AC7 /* holeSpawn.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F1BC7A4F1AB1329A00824AC7 /* holeSpawn.atlas */; };
 		F1C0065C1A61F29800E264EC /* door.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C0065A1A61F29800E264EC /* door.png */; };
 		F1C006621A61F70F00E264EC /* closedhole.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C006601A61F70F00E264EC /* closedhole.png */; };
@@ -94,6 +107,28 @@
 		F1C006D11A919E4E00E264EC /* highScoresButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C006CF1A919E4E00E264EC /* highScoresButton.png */; };
 		F1C006D41A91A72000E264EC /* GEASettingsScene.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C006D31A91A72000E264EC /* GEASettingsScene.m */; };
 		F1C006D71A91A74900E264EC /* GEAHighScoreScene.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C006D61A91A74900E264EC /* GEAHighScoreScene.m */; };
+		F1C1EB061AE3013F002A9C37 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C1EB051AE3013E002A9C37 /* iAd.framework */; };
+		F1C1EB081AE42066002A9C37 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C1EB071AE42066002A9C37 /* Social.framework */; };
+		F1C1EB0D1AE423B4002A9C37 /* shareToFb.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C1EB091AE423B4002A9C37 /* shareToFb.png */; };
+		F1C1EB0E1AE423B4002A9C37 /* shareToTwitter.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C1EB0B1AE423B4002A9C37 /* shareToTwitter.png */; };
+		F1DA05491B1FCB0400826E19 /* bye.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1DA05481B1FCB0400826E19 /* bye.mp3 */; };
+		F1DC18161AF06D400078F21D /* Icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = F1DC180A1AF06D400078F21D /* Icon-29.png */; };
+		F1DC18171AF06D400078F21D /* Icon-29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1DC180B1AF06D400078F21D /* Icon-29@2x.png */; };
+		F1DC18181AF06D400078F21D /* Icon-29@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1DC180C1AF06D400078F21D /* Icon-29@3x.png */; };
+		F1DC18191AF06D400078F21D /* Icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = F1DC180D1AF06D400078F21D /* Icon-40.png */; };
+		F1DC181A1AF06D400078F21D /* Icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1DC180E1AF06D400078F21D /* Icon-40@2x.png */; };
+		F1DC181B1AF06D400078F21D /* Icon-40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1DC180F1AF06D400078F21D /* Icon-40@3x.png */; };
+		F1DC181C1AF06D400078F21D /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1DC18101AF06D400078F21D /* Icon-60@2x.png */; };
+		F1DC181D1AF06D400078F21D /* Icon-60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1DC18111AF06D400078F21D /* Icon-60@3x.png */; };
+		F1DC181E1AF06D400078F21D /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = F1DC18121AF06D400078F21D /* Icon-76.png */; };
+		F1DC181F1AF06D400078F21D /* Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1DC18131AF06D400078F21D /* Icon-76@2x.png */; };
+		F1DC18201AF06D400078F21D /* iTunesArtwork@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F1DC18141AF06D400078F21D /* iTunesArtwork@2x.jpg */; };
+		F1DC18211AF06D400078F21D /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1DC18151AF06D400078F21D /* iTunesArtwork@2x.png */; };
+		F1E2752B1AE87D46000B7073 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1E2752A1AE87D46000B7073 /* GameKit.framework */; };
+		F1E275341AE88856000B7073 /* dontPostToLeaderboard.png in Resources */ = {isa = PBXBuildFile; fileRef = F1E2752C1AE88856000B7073 /* dontPostToLeaderboard.png */; };
+		F1E275351AE88856000B7073 /* dontPostToLeaderboardSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = F1E2752E1AE88856000B7073 /* dontPostToLeaderboardSelected.png */; };
+		F1E275361AE88856000B7073 /* postToLeaderboard.png in Resources */ = {isa = PBXBuildFile; fileRef = F1E275301AE88856000B7073 /* postToLeaderboard.png */; };
+		F1E275371AE88856000B7073 /* postToLeaderboardSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = F1E275321AE88856000B7073 /* postToLeaderboardSelected.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -166,6 +201,20 @@
 		F14825ED1AACE167006EDFE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = en; path = en.lproj/enterDoor.atlas; sourceTree = "<group>"; };
 		F14825F01AACF137006EDFE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/nextLevelButton.png; sourceTree = "<group>"; };
 		F14825F61AAFD8C3006EDFE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = en; path = en.lproj/holeOpening.atlas; sourceTree = "<group>"; };
+		F16F7A1D1AED63CC004FAD39 /* buttonPress.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = buttonPress.wav; path = en.lproj/soundsFX/buttonPress.wav; sourceTree = "<group>"; };
+		F16F7A1E1AED63CC004FAD39 /* muffinThrow.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = muffinThrow.wav; path = en.lproj/soundsFX/muffinThrow.wav; sourceTree = "<group>"; };
+		F16F7A211AED66DF004FAD39 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		F16F7A291AED6E93004FAD39 /* titleMusic.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = titleMusic.caf; path = en.lproj/soundsFX/titleMusic.caf; sourceTree = "<group>"; };
+		F16F7A2C1AED7E05004FAD39 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/musicOffButton.png; sourceTree = "<group>"; };
+		F16F7A2E1AED7E05004FAD39 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/musicOffSelectedButton.png; sourceTree = "<group>"; };
+		F16F7A301AED7E05004FAD39 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/musicOnButton.png; sourceTree = "<group>"; };
+		F16F7A321AED7E05004FAD39 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/musicOnSelectedButton.png; sourceTree = "<group>"; };
+		F16F7A371AED8D44004FAD39 /* gameMusic.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = gameMusic.wav; path = en.lproj/soundsFX/gameMusic.wav; sourceTree = "<group>"; };
+		F16F7A381AED8D44004FAD39 /* bite.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = bite.wav; path = en.lproj/soundsFX/bite.wav; sourceTree = "<group>"; };
+		F16F7A3B1AED8F3B004FAD39 /* muffinImpact.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = muffinImpact.wav; path = en.lproj/soundsFX/muffinImpact.wav; sourceTree = "<group>"; };
+		F16F7A3D1AEF1630004FAD39 /* launchImage@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "launchImage@1x.png"; path = "Icon Pics/launchImage@1x.png"; sourceTree = "<group>"; };
+		F16F7A3E1AEF1630004FAD39 /* launchImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "launchImage@2x.png"; path = "Icon Pics/launchImage@2x.png"; sourceTree = "<group>"; };
+		F16F7A411AEF1715004FAD39 /* launchImageHD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = launchImageHD.png; path = "Icon Pics/launchImageHD.png"; sourceTree = "<group>"; };
 		F1BC7A501AB1329A00824AC7 /* en */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = en; path = en.lproj/holeSpawn.atlas; sourceTree = "<group>"; };
 		F1C0065B1A61F29800E264EC /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/door.png; sourceTree = "<group>"; };
 		F1C006611A61F70F00E264EC /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "Pie Fight/en.lproj/closedhole.png"; sourceTree = "<group>"; };
@@ -215,6 +264,28 @@
 		F1C006D31A91A72000E264EC /* GEASettingsScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GEASettingsScene.m; sourceTree = "<group>"; };
 		F1C006D51A91A74900E264EC /* GEAHighScoreScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GEAHighScoreScene.h; sourceTree = "<group>"; };
 		F1C006D61A91A74900E264EC /* GEAHighScoreScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GEAHighScoreScene.m; sourceTree = "<group>"; };
+		F1C1EB051AE3013E002A9C37 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		F1C1EB071AE42066002A9C37 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		F1C1EB0A1AE423B4002A9C37 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/shareToFb.png; sourceTree = "<group>"; };
+		F1C1EB0C1AE423B4002A9C37 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/shareToTwitter.png; sourceTree = "<group>"; };
+		F1DA05481B1FCB0400826E19 /* bye.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = bye.mp3; path = en.lproj/soundsFX/bye.mp3; sourceTree = "<group>"; };
+		F1DC180A1AF06D400078F21D /* Icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-29.png"; path = "icons-headshots/Icon-29.png"; sourceTree = SOURCE_ROOT; };
+		F1DC180B1AF06D400078F21D /* Icon-29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-29@2x.png"; path = "icons-headshots/Icon-29@2x.png"; sourceTree = SOURCE_ROOT; };
+		F1DC180C1AF06D400078F21D /* Icon-29@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-29@3x.png"; path = "icons-headshots/Icon-29@3x.png"; sourceTree = SOURCE_ROOT; };
+		F1DC180D1AF06D400078F21D /* Icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-40.png"; path = "icons-headshots/Icon-40.png"; sourceTree = SOURCE_ROOT; };
+		F1DC180E1AF06D400078F21D /* Icon-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-40@2x.png"; path = "icons-headshots/Icon-40@2x.png"; sourceTree = SOURCE_ROOT; };
+		F1DC180F1AF06D400078F21D /* Icon-40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-40@3x.png"; path = "icons-headshots/Icon-40@3x.png"; sourceTree = SOURCE_ROOT; };
+		F1DC18101AF06D400078F21D /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-60@2x.png"; path = "icons-headshots/Icon-60@2x.png"; sourceTree = SOURCE_ROOT; };
+		F1DC18111AF06D400078F21D /* Icon-60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-60@3x.png"; path = "icons-headshots/Icon-60@3x.png"; sourceTree = SOURCE_ROOT; };
+		F1DC18121AF06D400078F21D /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-76.png"; path = "icons-headshots/Icon-76.png"; sourceTree = SOURCE_ROOT; };
+		F1DC18131AF06D400078F21D /* Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-76@2x.png"; path = "icons-headshots/Icon-76@2x.png"; sourceTree = SOURCE_ROOT; };
+		F1DC18141AF06D400078F21D /* iTunesArtwork@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "iTunesArtwork@2x.jpg"; path = "icons-headshots/iTunesArtwork@2x.jpg"; sourceTree = SOURCE_ROOT; };
+		F1DC18151AF06D400078F21D /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iTunesArtwork@2x.png"; path = "icons-headshots/iTunesArtwork@2x.png"; sourceTree = SOURCE_ROOT; };
+		F1E2752A1AE87D46000B7073 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		F1E2752D1AE88856000B7073 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/dontPostToLeaderboard.png; sourceTree = "<group>"; };
+		F1E2752F1AE88856000B7073 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/dontPostToLeaderboardSelected.png; sourceTree = "<group>"; };
+		F1E275311AE88856000B7073 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/postToLeaderboard.png; sourceTree = "<group>"; };
+		F1E275331AE88856000B7073 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/postToLeaderboardSelected.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +293,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1E2752B1AE87D46000B7073 /* GameKit.framework in Frameworks */,
+				F1C1EB081AE42066002A9C37 /* Social.framework in Frameworks */,
+				F1C1EB061AE3013F002A9C37 /* iAd.framework in Frameworks */,
 				F12BA58719F6040F00C6B1FF /* CoreGraphics.framework in Frameworks */,
 				F12BA58919F6040F00C6B1FF /* UIKit.framework in Frameworks */,
 				F12BA58B19F6040F00C6B1FF /* SpriteKit.framework in Frameworks */,
@@ -280,6 +354,10 @@
 		F12BA58319F6040F00C6B1FF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F16F7A211AED66DF004FAD39 /* AVFoundation.framework */,
+				F1E2752A1AE87D46000B7073 /* GameKit.framework */,
+				F1C1EB071AE42066002A9C37 /* Social.framework */,
+				F1C1EB051AE3013E002A9C37 /* iAd.framework */,
 				F12BA58419F6040F00C6B1FF /* Foundation.framework */,
 				F12BA58619F6040F00C6B1FF /* CoreGraphics.framework */,
 				F12BA58819F6040F00C6B1FF /* UIKit.framework */,
@@ -292,17 +370,18 @@
 		F12BA58C19F6040F00C6B1FF /* Pie Fight */ = {
 			isa = PBXGroup;
 			children = (
+				F16F7A171AEB25D5004FAD39 /* SoundFX */,
 				F1C006BF1A8B086000E264EC /* Constants */,
 				F1C006BB1A8AF07C00E264EC /* Math */,
 				F1C006831A79D32B00E264EC /* Controller Classes */,
 				F1C006751A6E11D600E264EC /* Images */,
-				F1C006841A79D34A00E264EC /* GEA Nodes */,
-				F12BA59619F6040F00C6B1FF /* GEAAppDelegate.m */,
+				F1C006841A79D34A00E264EC /* GameNodes */,
+				F1C006C31A91926200E264EC /* GEA Scenes */,
 				F12BA59519F6040F00C6B1FF /* GEAAppDelegate.h */,
+				F12BA59619F6040F00C6B1FF /* GEAAppDelegate.m */,
 				F12BA59819F6040F00C6B1FF /* Main.storyboard */,
 				F12BA59B19F6040F00C6B1FF /* GEAViewController.h */,
 				F12BA59C19F6040F00C6B1FF /* GEAViewController.m */,
-				F1C006C31A91926200E264EC /* GEA Scenes */,
 				F12BA5A319F6040F00C6B1FF /* Images.xcassets */,
 				F12BA58D19F6040F00C6B1FF /* Supporting Files */,
 			);
@@ -351,6 +430,10 @@
 		F14825791A9D7791006EDFE3 /* Icon Images */ = {
 			isa = PBXGroup;
 			children = (
+				F1DC18091AF06D1B0078F21D /* headshotIcons */,
+				F16F7A411AEF1715004FAD39 /* launchImageHD.png */,
+				F16F7A3D1AEF1630004FAD39 /* launchImage@1x.png */,
+				F16F7A3E1AEF1630004FAD39 /* launchImage@2x.png */,
 				F148257A1A9D77C0006EDFE3 /* Icon-29.png */,
 				F148257B1A9D77C0006EDFE3 /* Icon-29@2x.png */,
 				F148257C1A9D77C0006EDFE3 /* Icon-29@3x.png */,
@@ -364,6 +447,20 @@
 				F14825841A9D77C0006EDFE3 /* iTunesArtwork@2x.png */,
 			);
 			name = "Icon Images";
+			sourceTree = "<group>";
+		};
+		F16F7A171AEB25D5004FAD39 /* SoundFX */ = {
+			isa = PBXGroup;
+			children = (
+				F1DA05481B1FCB0400826E19 /* bye.mp3 */,
+				F16F7A3B1AED8F3B004FAD39 /* muffinImpact.wav */,
+				F16F7A371AED8D44004FAD39 /* gameMusic.wav */,
+				F16F7A381AED8D44004FAD39 /* bite.wav */,
+				F16F7A291AED6E93004FAD39 /* titleMusic.caf */,
+				F16F7A1D1AED63CC004FAD39 /* buttonPress.wav */,
+				F16F7A1E1AED63CC004FAD39 /* muffinThrow.wav */,
+			);
+			name = SoundFX;
 			sourceTree = "<group>";
 		};
 		F1C006751A6E11D600E264EC /* Images */ = {
@@ -387,7 +484,7 @@
 			name = "Controller Classes";
 			sourceTree = "<group>";
 		};
-		F1C006841A79D34A00E264EC /* GEA Nodes */ = {
+		F1C006841A79D34A00E264EC /* GameNodes */ = {
 			isa = PBXGroup;
 			children = (
 				F1C0068C1A79D7A300E264EC /* GEAHoleNode.h */,
@@ -405,7 +502,7 @@
 				F1C006B81A89ADE900E264EC /* GEAMuffinMan.h */,
 				F1C006B91A89ADE900E264EC /* GEAMuffinMan.m */,
 			);
-			name = "GEA Nodes";
+			name = GameNodes;
 			sourceTree = "<group>";
 		};
 		F1C006AD1A869CC100E264EC /* muffinStacks */ = {
@@ -485,6 +582,16 @@
 		F1C006C81A91972700E264EC /* Menu Images */ = {
 			isa = PBXGroup;
 			children = (
+				F16F7A2B1AED7E04004FAD39 /* musicOffButton.png */,
+				F16F7A2D1AED7E05004FAD39 /* musicOffSelectedButton.png */,
+				F16F7A2F1AED7E05004FAD39 /* musicOnButton.png */,
+				F16F7A311AED7E05004FAD39 /* musicOnSelectedButton.png */,
+				F1E2752C1AE88856000B7073 /* dontPostToLeaderboard.png */,
+				F1E2752E1AE88856000B7073 /* dontPostToLeaderboardSelected.png */,
+				F1E275301AE88856000B7073 /* postToLeaderboard.png */,
+				F1E275321AE88856000B7073 /* postToLeaderboardSelected.png */,
+				F1C1EB091AE423B4002A9C37 /* shareToFb.png */,
+				F1C1EB0B1AE423B4002A9C37 /* shareToTwitter.png */,
 				F139B1E91AB6542C003E3E1C /* finalScoreBackGround.png */,
 				F14825EF1AACF137006EDFE3 /* nextLevelButton.png */,
 				F148259F1AA24649006EDFE3 /* leftHandedSelectedButton.png */,
@@ -498,6 +605,25 @@
 				F1C006CB1A91977100E264EC /* startButton.png */,
 			);
 			name = "Menu Images";
+			sourceTree = "<group>";
+		};
+		F1DC18091AF06D1B0078F21D /* headshotIcons */ = {
+			isa = PBXGroup;
+			children = (
+				F1DC180A1AF06D400078F21D /* Icon-29.png */,
+				F1DC180B1AF06D400078F21D /* Icon-29@2x.png */,
+				F1DC180C1AF06D400078F21D /* Icon-29@3x.png */,
+				F1DC180D1AF06D400078F21D /* Icon-40.png */,
+				F1DC180E1AF06D400078F21D /* Icon-40@2x.png */,
+				F1DC180F1AF06D400078F21D /* Icon-40@3x.png */,
+				F1DC18101AF06D400078F21D /* Icon-60@2x.png */,
+				F1DC18111AF06D400078F21D /* Icon-60@3x.png */,
+				F1DC18121AF06D400078F21D /* Icon-76.png */,
+				F1DC18131AF06D400078F21D /* Icon-76@2x.png */,
+				F1DC18141AF06D400078F21D /* iTunesArtwork@2x.jpg */,
+				F1DC18151AF06D400078F21D /* iTunesArtwork@2x.png */,
+			);
+			name = headshotIcons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -584,60 +710,92 @@
 				F14825871A9D77C0006EDFE3 /* Icon-29@3x.png in Resources */,
 				F1C006651A61F7FE00E264EC /* openhole.png in Resources */,
 				F12BA59119F6040F00C6B1FF /* InfoPlist.strings in Resources */,
+				F16F7A201AED63CC004FAD39 /* muffinThrow.wav in Resources */,
 				F1C006CD1A91977100E264EC /* settingsButton.png in Resources */,
+				F16F7A3C1AED8F3B004FAD39 /* muffinImpact.wav in Resources */,
 				F114BFD31AB632E900CBC1D5 /* emeraldMedal.png in Resources */,
 				F14825721A9C1180006EDFE3 /* retryButton.png in Resources */,
 				F1C006A81A869CBA00E264EC /* muffinStack4.png in Resources */,
 				F1BC7A511AB1329A00824AC7 /* holeSpawn.atlas in Resources */,
 				F148258B1A9D77C0006EDFE3 /* Icon-60@2x.png in Resources */,
+				F1DC18191AF06D400078F21D /* Icon-40.png in Resources */,
 				F14825F11AACF137006EDFE3 /* nextLevelButton.png in Resources */,
 				F1C006A61A869CBA00E264EC /* muffinStack2.png in Resources */,
+				F1DC18161AF06D400078F21D /* Icon-29.png in Resources */,
 				F1C006781A6E137900E264EC /* throwButton.png in Resources */,
 				F14825891A9D77C0006EDFE3 /* Icon-40@2x.png in Resources */,
 				F114BFD61AB632E900CBC1D5 /* rainbowMedal.png in Resources */,
 				F14825E51AAA43A9006EDFE3 /* frame10.png in Resources */,
 				F12BA5A419F6040F00C6B1FF /* Images.xcassets in Resources */,
 				F1C006A51A869CBA00E264EC /* muffinStack1.png in Resources */,
+				F16F7A1F1AED63CC004FAD39 /* buttonPress.wav in Resources */,
+				F16F7A341AED7E05004FAD39 /* musicOffSelectedButton.png in Resources */,
 				F14825EE1AACE167006EDFE3 /* enterDoor.atlas in Resources */,
 				F1C006741A6E11CA00E264EC /* gingerBreadMan.png in Resources */,
+				F1DC181C1AF06D400078F21D /* Icon-60@2x.png in Resources */,
+				F16F7A331AED7E05004FAD39 /* musicOffButton.png in Resources */,
 				F1C006AA1A869CBA00E264EC /* muffinStack6.png in Resources */,
 				F14825781A9D61C7006EDFE3 /* gingerBreadManWithMuffin.png in Resources */,
+				F1DC18171AF06D400078F21D /* Icon-29@2x.png in Resources */,
+				F1DC18211AF06D400078F21D /* iTunesArtwork@2x.png in Resources */,
 				F1C006621A61F70F00E264EC /* closedhole.png in Resources */,
 				F1C006CE1A91977100E264EC /* startButton.png in Resources */,
 				F148258E1A9D77C0006EDFE3 /* Icon-76@2x.png in Resources */,
 				F14825F71AAFD8C3006EDFE3 /* holeOpening.atlas in Resources */,
 				F14825951AA221B6006EDFE3 /* backButton.png in Resources */,
+				F16F7A361AED7E05004FAD39 /* musicOnSelectedButton.png in Resources */,
 				F114BFD81AB632E900CBC1D5 /* sapphireMedal.png in Resources */,
+				F1DC181F1AF06D400078F21D /* Icon-76@2x.png in Resources */,
 				F114BFD71AB632E900CBC1D5 /* rubyMedal.png in Resources */,
 				F1C0066D1A63726A00E264EC /* baseCenter.png in Resources */,
 				F148258A1A9D77C0006EDFE3 /* Icon-40@3x.png in Resources */,
+				F16F7A401AEF1630004FAD39 /* launchImage@2x.png in Resources */,
+				F1E275351AE88856000B7073 /* dontPostToLeaderboardSelected.png in Resources */,
 				F12BA59A19F6040F00C6B1FF /* Main.storyboard in Resources */,
 				F114BFD41AB632E900CBC1D5 /* goldMedal.png in Resources */,
+				F1C1EB0E1AE423B4002A9C37 /* shareToTwitter.png in Resources */,
+				F16F7A421AEF1716004FAD39 /* launchImageHD.png in Resources */,
 				F148258C1A9D77C0006EDFE3 /* Icon-60@3x.png in Resources */,
 				F14825851A9D77C0006EDFE3 /* Icon-29.png in Resources */,
 				F1C006B71A89A6E500E264EC /* muffinMan.png in Resources */,
+				F1DA05491B1FCB0400826E19 /* bye.mp3 in Resources */,
+				F1E275361AE88856000B7073 /* postToLeaderboard.png in Resources */,
 				F14825861A9D77C0006EDFE3 /* Icon-29@2x.png in Resources */,
+				F1E275371AE88856000B7073 /* postToLeaderboardSelected.png in Resources */,
 				F139B1ED1AB658D9003E3E1C /* noMedal.png in Resources */,
 				F14825A31AA24649006EDFE3 /* leftHandedSelectedButton.png in Resources */,
+				F16F7A2A1AED6E93004FAD39 /* titleMusic.caf in Resources */,
 				F1C006AC1A869CBA00E264EC /* muffinStack8.png in Resources */,
 				F139B1EB1AB6542C003E3E1C /* finalScoreBackGround.png in Resources */,
+				F1DC18181AF06D400078F21D /* Icon-29@3x.png in Resources */,
 				F14825DF1AA935A2006EDFE3 /* gingerBreadMen.atlas in Resources */,
+				F1DC181D1AF06D400078F21D /* Icon-60@3x.png in Resources */,
+				F16F7A3A1AED8D44004FAD39 /* bite.wav in Resources */,
 				F14825E81AABC571006EDFE3 /* muffinMen.atlas in Resources */,
 				F14825A41AA24649006EDFE3 /* rightHandedSelectedButton.png in Resources */,
+				F1DC18201AF06D400078F21D /* iTunesArtwork@2x.jpg in Resources */,
+				F16F7A3F1AEF1630004FAD39 /* launchImage@1x.png in Resources */,
 				F148259E1AA24511006EDFE3 /* rightHandedButton.png in Resources */,
 				F148259D1AA24511006EDFE3 /* leftHandedButton.png in Resources */,
+				F16F7A351AED7E05004FAD39 /* musicOnButton.png in Resources */,
+				F1C1EB0D1AE423B4002A9C37 /* shareToFb.png in Resources */,
 				F1C0065C1A61F29800E264EC /* door.png in Resources */,
 				F14825881A9D77C0006EDFE3 /* Icon-40.png in Resources */,
+				F1DC181E1AF06D400078F21D /* Icon-76.png in Resources */,
 				F1C006D11A919E4E00E264EC /* highScoresButton.png in Resources */,
+				F1DC181A1AF06D400078F21D /* Icon-40@2x.png in Resources */,
 				F148258D1A9D77C0006EDFE3 /* Icon-76.png in Resources */,
 				F148258F1A9D77C0006EDFE3 /* iTunesArtwork@2x.png in Resources */,
+				F1E275341AE88856000B7073 /* dontPostToLeaderboard.png in Resources */,
 				F1C0067E1A772A8F00E264EC /* muffin.png in Resources */,
 				F1C006A91A869CBA00E264EC /* muffinStack5.png in Resources */,
 				F114BFD91AB632E900CBC1D5 /* silverMedal.png in Resources */,
 				F114BFD21AB632E900CBC1D5 /* copperMedal.png in Resources */,
 				F1C0066E1A63726A00E264EC /* centerJoystick.png in Resources */,
 				F14825EB1AACCCF1006EDFE3 /* deathAnimation.atlas in Resources */,
+				F16F7A391AED8D44004FAD39 /* gameMusic.wav in Resources */,
 				F1C006A71A869CBA00E264EC /* muffinStack3.png in Resources */,
+				F1DC181B1AF06D400078F21D /* Icon-40@3x.png in Resources */,
 				F114BFD51AB632E900CBC1D5 /* platinumMedal.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -842,6 +1000,38 @@
 			name = holeOpening.atlas;
 			sourceTree = "<group>";
 		};
+		F16F7A2B1AED7E04004FAD39 /* musicOffButton.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F16F7A2C1AED7E05004FAD39 /* en */,
+			);
+			name = musicOffButton.png;
+			sourceTree = "<group>";
+		};
+		F16F7A2D1AED7E05004FAD39 /* musicOffSelectedButton.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F16F7A2E1AED7E05004FAD39 /* en */,
+			);
+			name = musicOffSelectedButton.png;
+			sourceTree = "<group>";
+		};
+		F16F7A2F1AED7E05004FAD39 /* musicOnButton.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F16F7A301AED7E05004FAD39 /* en */,
+			);
+			name = musicOnButton.png;
+			sourceTree = "<group>";
+		};
+		F16F7A311AED7E05004FAD39 /* musicOnSelectedButton.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F16F7A321AED7E05004FAD39 /* en */,
+			);
+			name = musicOnSelectedButton.png;
+			sourceTree = "<group>";
+		};
 		F1BC7A4F1AB1329A00824AC7 /* holeSpawn.atlas */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1012,6 +1202,54 @@
 			name = highScoresButton.png;
 			sourceTree = "<group>";
 		};
+		F1C1EB091AE423B4002A9C37 /* shareToFb.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1C1EB0A1AE423B4002A9C37 /* en */,
+			);
+			name = shareToFb.png;
+			sourceTree = "<group>";
+		};
+		F1C1EB0B1AE423B4002A9C37 /* shareToTwitter.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1C1EB0C1AE423B4002A9C37 /* en */,
+			);
+			name = shareToTwitter.png;
+			sourceTree = "<group>";
+		};
+		F1E2752C1AE88856000B7073 /* dontPostToLeaderboard.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1E2752D1AE88856000B7073 /* en */,
+			);
+			name = dontPostToLeaderboard.png;
+			sourceTree = "<group>";
+		};
+		F1E2752E1AE88856000B7073 /* dontPostToLeaderboardSelected.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1E2752F1AE88856000B7073 /* en */,
+			);
+			name = dontPostToLeaderboardSelected.png;
+			sourceTree = "<group>";
+		};
+		F1E275301AE88856000B7073 /* postToLeaderboard.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1E275311AE88856000B7073 /* en */,
+			);
+			name = postToLeaderboard.png;
+			sourceTree = "<group>";
+		};
+		F1E275321AE88856000B7073 /* postToLeaderboardSelected.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1E275331AE88856000B7073 /* en */,
+			);
+			name = postToLeaderboardSelected.png;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -1090,6 +1328,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Pie Fight/Escape From Drury Lane-Prefix.pch";
 				INFOPLIST_FILE = "Pie Fight/Escape From Drury Lane-Info.plist";
@@ -1105,6 +1344,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Pie Fight/Escape From Drury Lane-Prefix.pch";
 				INFOPLIST_FILE = "Pie Fight/Escape From Drury Lane-Info.plist";
