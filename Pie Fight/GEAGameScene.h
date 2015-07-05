@@ -13,6 +13,6 @@
 
 @interface GEAGameScene : GEAButtonEnabledScene
 
--(void)spawnMuffinManFromHole: (GEAHoleNode*) aHole;
+-(GEAMuffinMan*)spawnMuffinManFromHole: (GEAHoleNode*) aHole;
 
 @end

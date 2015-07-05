@@ -27,7 +27,7 @@
     self.physicsBody.contactTestBitMask = playerCategory;
     self.physicsBody.dynamic = YES;
     self.physicsBody.collisionBitMask = 0;
-    [self setZPosition:-1.0];
+    [self setZPosition:-80.0];
 }
 
 -(void)setMuffinCount: (int)muffinCount {

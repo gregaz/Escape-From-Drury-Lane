@@ -33,6 +33,7 @@ static const int speed = 100;
     timeBeforeNewTarget = 1.0;
     timeOfLastUpdate = 0;
     impactSound = aImpactSound;
+    [self setZPosition:-60.0];
     return self;
 }
 
@@ -115,7 +116,7 @@ static const int speed = 100;
 -(void) wasHitByMuffin: (GEAMuffinNode*) aMuffin {
     [self removeAllActions];
     [self runAction:impactSound];
-    aMuffin.physicsBody = nil;
+    aMuffin.physicsBody = nil; //lets try removing this some day
     isDead = true;
     self.physicsBody = nil;
     CGPoint destination = [aMuffin launchDestination];

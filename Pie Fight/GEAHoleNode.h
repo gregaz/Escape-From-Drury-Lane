@@ -16,6 +16,7 @@
 -(id) initHoleWithOpeningArray: (NSMutableArray*) openingAnimationArray andCloseTexture: (SKTexture*) holeClosedTexture;
 -(void) resetSpawnSequenceFromStart;
 -(bool)isHoleKillable;
+-(void) spawnMuffinManFromSelf;
 -(void) spawnInitialMuffinManIfRequired;
 
 @end

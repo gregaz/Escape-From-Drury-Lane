@@ -29,6 +29,7 @@
     self.physicsBody.dynamic = YES;
     self.physicsBody.contactTestBitMask = enemyCategory;
     self.physicsBody.collisionBitMask = 0;
+    [self setZPosition: -50.0];
     
 }
 

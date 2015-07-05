@@ -20,21 +20,21 @@ const uint32_t doorCategory =  0x1 << 5;
 const double muffinVelocity = 300;
 
 +(NSString*) medalImageNameForScore: (int) aScore {
-    if (aScore >= 1000) {
+    if (aScore >= 100) {
         return @"rainbowMedal.png";
-    } else if ( aScore >= 500) {
+    } else if ( aScore >= 50) {
         return @"emeraldMedal.png";
-    } else if( aScore >= 100) {
-        return @"rubyMedal.png";
-    } else if( aScore >= 50) {
-        return @"sapphireMedal.png";
     } else if( aScore >= 25) {
-        return @"platinumMedal.png";
+        return @"rubyMedal.png";
+    } else if( aScore >= 20) {
+        return @"sapphireMedal.png";
     } else if( aScore >= 15) {
+        return @"platinumMedal.png";
+    } else if( aScore >= 10) {
         return @"goldMedal.png";
-    } else if (aScore >= 10) {
+    } else if (aScore >= 5) {
         return @"silverMedal.png";
-    } else if(aScore >= 5) {
+    } else if(aScore >= 3) {
         return @"copperMedal.png";
     }
     return @"noMedal.png";

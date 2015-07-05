@@ -21,7 +21,6 @@
     
     [self setTexture: (SKTexture *) openingAnimationArray[0]];
     [self setSize: [(SKTexture*) openingAnimationArray[0] size]];
-    [self setZPosition:-1.0];
     [self setScale: 0.6];
     [self initializeCollisionConfig];
     respawnWaitTime = arc4random_uniform(7)+1;
@@ -38,7 +37,7 @@
             [(GEAGameScene*) self.parent spawnMuffinManFromHole: self ];}];
 
     
-    animationAction = [SKAction repeatActionForever: [SKAction sequence: @[setUnkillableAction, setClosedHoleAction,  waitTimeBetweenSpawns, setKillableAction, holeOpening, spawnMuffinManAction]]];
+    animationAction = [SKAction repeatActionForever: [SKAction sequence: @[ setUnkillableAction, setClosedHoleAction, waitTimeBetweenSpawns, setKillableAction, holeOpening, setUnkillableAction, setClosedHoleAction, spawnMuffinManAction]]];
     
     [self runAction: animationAction];
     
@@ -64,13 +63,17 @@
     isKillable = isHoleKillable;
 }
 
+-(void) spawnMuffinManFromSelf {
+    [((GEAGameScene *)[self parent]) spawnMuffinManFromHole: self];
+}
+
 -(void)initializeCollisionConfig {
     self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.size];
     self.physicsBody.categoryBitMask = holeCategory;
     self.physicsBody.dynamic = YES;
     self.physicsBody.contactTestBitMask = muffinCategory;
     self.physicsBody.collisionBitMask = 0;
-    [self setZPosition: -1.0];
+    [self setZPosition: -70.0];
 }
 
 

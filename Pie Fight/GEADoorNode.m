@@ -38,6 +38,7 @@
     self.physicsBody.dynamic = YES;
     self.physicsBody.contactTestBitMask = playerCategory;
     self.physicsBody.collisionBitMask = 0;
+    [self setZPosition:-30.0];
 }
 
 -(void) animateDoorWalkThrough {
@@ -47,7 +48,7 @@
                                       timePerFrame:0.2f
                                             resize:YES
                                            restore:YES]];
-    [self runAction: [SKAction waitForDuration:1.2] completion:^{[self runAction: [SKAction playSoundFileNamed:@"bye.mp3" waitForCompletion:NO]];} ];
+    [self runAction: [SKAction waitForDuration:1.2] completion:^{[self runAction: [SKAction playSoundFileNamed:@"bye.wav" waitForCompletion:NO]];} ];
     
 }
 

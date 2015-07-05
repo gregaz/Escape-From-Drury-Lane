@@ -9,6 +9,7 @@
 #import "GEAViewController.h"
 #import "GEAGameScene.h"
 #import "GEAStartMenuScene.h"
+#import "Appirater.h"
 @import AVFoundation;
 
 @implementation GEAViewController {
@@ -71,6 +72,14 @@
         // Present the scene.
         [skView presentScene:scene];
     }
+    
+    [Appirater setAppId:@"970874247"];    // Change for your "Your APP ID"
+    [Appirater setDaysUntilPrompt:5];     // Days from first entered the app until prompt
+    [Appirater setUsesUntilPrompt:5];     // Number of uses until prompt
+    [Appirater setTimeBeforeReminding:5];
+    
+    [Appirater appLaunched:true];
+    
 }
 
 - (void)startBackgroundMusic{
@@ -106,6 +115,7 @@
     } else if ( [(NSString *)[postData objectForKey: @"service"]  isEqual: @"twitter"] ) {
         mySLComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
     }
+    [mySLComposerSheet setInitialText: postText];
     [self presentViewController:mySLComposerSheet animated:YES completion:nil];
     
 }

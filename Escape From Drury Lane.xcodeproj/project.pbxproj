@@ -111,7 +111,8 @@
 		F1C1EB081AE42066002A9C37 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C1EB071AE42066002A9C37 /* Social.framework */; };
 		F1C1EB0D1AE423B4002A9C37 /* shareToFb.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C1EB091AE423B4002A9C37 /* shareToFb.png */; };
 		F1C1EB0E1AE423B4002A9C37 /* shareToTwitter.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C1EB0B1AE423B4002A9C37 /* shareToTwitter.png */; };
-		F1DA05491B1FCB0400826E19 /* bye.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1DA05481B1FCB0400826E19 /* bye.mp3 */; };
+		F1DA05511B408A3100826E19 /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = F1DA05501B408A3100826E19 /* Appirater.m */; };
+		F1DA05541B44D7D400826E19 /* bye.wav in Resources */ = {isa = PBXBuildFile; fileRef = F1DA05531B44D7D400826E19 /* bye.wav */; };
 		F1DC18161AF06D400078F21D /* Icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = F1DC180A1AF06D400078F21D /* Icon-29.png */; };
 		F1DC18171AF06D400078F21D /* Icon-29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1DC180B1AF06D400078F21D /* Icon-29@2x.png */; };
 		F1DC18181AF06D400078F21D /* Icon-29@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1DC180C1AF06D400078F21D /* Icon-29@3x.png */; };
@@ -268,7 +269,10 @@
 		F1C1EB071AE42066002A9C37 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		F1C1EB0A1AE423B4002A9C37 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/shareToFb.png; sourceTree = "<group>"; };
 		F1C1EB0C1AE423B4002A9C37 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/shareToTwitter.png; sourceTree = "<group>"; };
-		F1DA05481B1FCB0400826E19 /* bye.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = bye.mp3; path = en.lproj/soundsFX/bye.mp3; sourceTree = "<group>"; };
+		F1DA054F1B408A3100826E19 /* Appirater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Appirater.h; sourceTree = "<group>"; };
+		F1DA05501B408A3100826E19 /* Appirater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Appirater.m; sourceTree = "<group>"; };
+		F1DA05521B408E4400826E19 /* AppiraterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppiraterDelegate.h; sourceTree = "<group>"; };
+		F1DA05531B44D7D400826E19 /* bye.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = bye.wav; path = en.lproj/soundsFX/bye.wav; sourceTree = "<group>"; };
 		F1DC180A1AF06D400078F21D /* Icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-29.png"; path = "icons-headshots/Icon-29.png"; sourceTree = SOURCE_ROOT; };
 		F1DC180B1AF06D400078F21D /* Icon-29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-29@2x.png"; path = "icons-headshots/Icon-29@2x.png"; sourceTree = SOURCE_ROOT; };
 		F1DC180C1AF06D400078F21D /* Icon-29@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-29@3x.png"; path = "icons-headshots/Icon-29@3x.png"; sourceTree = SOURCE_ROOT; };
@@ -370,6 +374,7 @@
 		F12BA58C19F6040F00C6B1FF /* Pie Fight */ = {
 			isa = PBXGroup;
 			children = (
+				F1DA054E1B408A1800826E19 /* External Libs */,
 				F16F7A171AEB25D5004FAD39 /* SoundFX */,
 				F1C006BF1A8B086000E264EC /* Constants */,
 				F1C006BB1A8AF07C00E264EC /* Math */,
@@ -452,7 +457,7 @@
 		F16F7A171AEB25D5004FAD39 /* SoundFX */ = {
 			isa = PBXGroup;
 			children = (
-				F1DA05481B1FCB0400826E19 /* bye.mp3 */,
+				F1DA05531B44D7D400826E19 /* bye.wav */,
 				F16F7A3B1AED8F3B004FAD39 /* muffinImpact.wav */,
 				F16F7A371AED8D44004FAD39 /* gameMusic.wav */,
 				F16F7A381AED8D44004FAD39 /* bite.wav */,
@@ -607,6 +612,16 @@
 			name = "Menu Images";
 			sourceTree = "<group>";
 		};
+		F1DA054E1B408A1800826E19 /* External Libs */ = {
+			isa = PBXGroup;
+			children = (
+				F1DA05521B408E4400826E19 /* AppiraterDelegate.h */,
+				F1DA054F1B408A3100826E19 /* Appirater.h */,
+				F1DA05501B408A3100826E19 /* Appirater.m */,
+			);
+			name = "External Libs";
+			sourceTree = "<group>";
+		};
 		F1DC18091AF06D1B0078F21D /* headshotIcons */ = {
 			isa = PBXGroup;
 			children = (
@@ -747,6 +762,7 @@
 				F114BFD81AB632E900CBC1D5 /* sapphireMedal.png in Resources */,
 				F1DC181F1AF06D400078F21D /* Icon-76@2x.png in Resources */,
 				F114BFD71AB632E900CBC1D5 /* rubyMedal.png in Resources */,
+				F1DA05541B44D7D400826E19 /* bye.wav in Resources */,
 				F1C0066D1A63726A00E264EC /* baseCenter.png in Resources */,
 				F148258A1A9D77C0006EDFE3 /* Icon-40@3x.png in Resources */,
 				F16F7A401AEF1630004FAD39 /* launchImage@2x.png in Resources */,
@@ -758,7 +774,6 @@
 				F148258C1A9D77C0006EDFE3 /* Icon-60@3x.png in Resources */,
 				F14825851A9D77C0006EDFE3 /* Icon-29.png in Resources */,
 				F1C006B71A89A6E500E264EC /* muffinMan.png in Resources */,
-				F1DA05491B1FCB0400826E19 /* bye.mp3 in Resources */,
 				F1E275361AE88856000B7073 /* postToLeaderboard.png in Resources */,
 				F14825861A9D77C0006EDFE3 /* Icon-29@2x.png in Resources */,
 				F1E275371AE88856000B7073 /* postToLeaderboardSelected.png in Resources */,
@@ -821,6 +836,7 @@
 				F14825981AA240AE006EDFE3 /* GEAButtonEnabledScene.m in Sources */,
 				F1C006901A79D7A300E264EC /* GEAHoleNode.m in Sources */,
 				F1C006D41A91A72000E264EC /* GEASettingsScene.m in Sources */,
+				F1DA05511B408A3100826E19 /* Appirater.m in Sources */,
 				F12BA59719F6040F00C6B1FF /* GEAAppDelegate.m in Sources */,
 				F1C0067B1A6E152C00E264EC /* GEAGingerBreadMan.m in Sources */,
 				F1C006B01A86BF0900E264EC /* GEAMuffinNode.m in Sources */,

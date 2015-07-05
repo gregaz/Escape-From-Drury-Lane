@@ -62,6 +62,7 @@ static const double speedModifier = 2.5;
     self.physicsBody.dynamic = YES;
     self.physicsBody.contactTestBitMask = muffinStackCategory + holeCategory + doorCategory + enemyCategory;
     self.physicsBody.collisionBitMask = 0;
+    [self setZPosition:-40.0];
 }
 
 -(void) resetRunningDirectionBools {

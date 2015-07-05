@@ -6,18 +6,14 @@
 //  Copyright (c) 2014 Gregory Azuolas. All rights reserved.
 //
 // TODO:
-//v1
-// Sounds/Music
-// Icons/itunes connect
+//v1.1
+// Sounds/Music - improve bye and bakground music
 
-//v2
-// Rate Me
-// Show unlocked medals
-// Story Screen
-
-//v3
+//v1.2
 // Level progression screen
 // Clean up code
+// Show unlocked medals
+// Story Screen
 
 #import "GEAGameScene.h"
 #import "GEAJoyStick.h"
@@ -61,6 +57,7 @@ static const int controlsHeight = 100;
     GEAMuffinMan *murderMan;
     SKTextureAtlas *holeSpawnAtlas;
     SKTexture *closedHoleTexture;
+    NSMutableArray *holesThatShouldSpawn;
     
     NSMutableArray *holeOpeningArray;
     NSMutableArray *holeClosingArray;
@@ -82,6 +79,7 @@ static const int controlsHeight = 100;
         holes = [NSMutableArray array];
         muffinStacks = [NSMutableArray array];
         muffinMen = [NSMutableArray array];
+        holesThatShouldSpawn = [NSMutableArray array];
         didFlipHolesOnce = false;
         shouldGoToNextLevel = false;
         shouldEndGame = false;
@@ -246,7 +244,7 @@ static const int controlsHeight = 100;
     }
     
     joystick = [[GEAJoyStick alloc] initWithJoystickImage: @"centerJoystick.png" baseImage: @"baseCenter.png"];
-    [joystick setPosition:CGPointMake(self.frame.size.width*joystickX,self.frame.size.height*0.1)];
+    [joystick setPosition:CGPointMake(self.frame.size.width*joystickX,self.frame.size.height*0.15)];
     [joystick setZPosition: -100.0];
     [self addChild: joystick];
 }
@@ -302,12 +300,13 @@ static const int controlsHeight = 100;
     
 }
 
--(void)spawnMuffinManFromHole: (GEAHoleNode*) aHole {
+-(GEAMuffinMan *)spawnMuffinManFromHole: (GEAHoleNode*) aHole {
     GEAMuffinMan* muffinMan = [[GEAMuffinMan alloc] initMuffinManWithPhysicsBody: [muffinManPhysicsBody copy] andAnimationArray: muffinManAnimationArray andImpactSound:impactSound];
     [muffinMan setPosition: aHole.position];
     [muffinMan setScale: 0.3];
     [self addChild:muffinMan];
     [muffinMen addObject: muffinMan];
+    return muffinMan;
     
 }
 
@@ -420,6 +419,7 @@ static const int controlsHeight = 100;
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
+    //MAIN GAME LOOP
     if (hasGameEnded) {
         if (![murderMan hasActions]) {
             if(retryButton == nil) {
@@ -449,7 +449,7 @@ static const int controlsHeight = 100;
         }
         
         if ([shareToTheBirdButton shouldActionPress]) {
-            NSString *postText = [NSString stringWithFormat: @"I just scored %i in Escape From Drury Lane!", score];
+            NSString *postText = [NSString stringWithFormat: @"I just scored %i in Escape From Drury Lane! http://www.escapefromdrurylane.com/", score];
             NSDictionary *userInfo = [NSMutableDictionary dictionaryWithObject:postText forKey:@"postText"];
             [userInfo setValue: @"twitter" forKey: @"service"];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"CreatePost" object:self userInfo:userInfo];
@@ -508,6 +508,7 @@ static const int controlsHeight = 100;
 
             } else {
                 
+                [self spawnMuffinPairsIfNeeded];
                 
                 for (GEAMuffinMan *muffinMan in muffinMen) {
                     [muffinMan updateVeolictyIfNeededBasedOnTime:currentTime towardsPlayer:player];
@@ -519,6 +520,14 @@ static const int controlsHeight = 100;
     }
     lastUpdateTime = currentTime;
     [super update:currentTime];
+}
+
+-(void) spawnMuffinPairsIfNeeded {
+    for (NSMutableArray *muffinPair in holesThatShouldSpawn) {
+        [(GEAMuffinMan*)[self spawnMuffinManFromHole:(GEAHoleNode*)muffinPair[0]] wasHitByMuffin: (GEAMuffinNode*) muffinPair[1] ];
+        
+    }
+    [holesThatShouldSpawn removeAllObjects];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -557,10 +566,18 @@ static const int controlsHeight = 100;
         {
             if ([contact.bodyA.node isKindOfClass: [GEAHoleNode class]]) {
                 if([(GEAHoleNode *) contact.bodyA.node isHoleKillable]) {
+                    NSMutableArray* muffinPair = [NSMutableArray new];
+                    [muffinPair addObject:(GEAHoleNode *) contact.bodyA.node];
+                    [muffinPair addObject: (GEAMuffinNode *) contact.bodyB.node];
+                    [holesThatShouldSpawn addObject: muffinPair];
                     [(GEAHoleNode *) contact.bodyA.node resetSpawnSequenceFromStart];
                 }
             } else if ([contact.bodyB.node isKindOfClass: [GEAHoleNode class]]) {
                 if([(GEAHoleNode *) contact.bodyB.node isHoleKillable]) {
+                    NSMutableArray* muffinPair = [NSMutableArray new];
+                    [muffinPair addObject:(GEAHoleNode *) contact.bodyB.node];
+                    [muffinPair addObject: (GEAMuffinNode *) contact.bodyA.node];
+                    [holesThatShouldSpawn addObject: muffinPair];
                     [(GEAHoleNode *) contact.bodyB.node resetSpawnSequenceFromStart];
                 }
             }
